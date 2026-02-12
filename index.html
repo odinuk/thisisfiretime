@@ -408,7 +408,7 @@
 
       <!-- Social proof -->
       <p class="reveal text-[14px] text-txt-subtle font-normal max-w-lg mx-auto mb-10 italic">
-        Built by a solo dev who got tired of spending longer setting up workouts than actually working out.
+        Built by a solo dev who got tired of spending longer setting up timers than actually working out.
       </p>
 
       <!-- Phone mockups -->
@@ -457,11 +457,31 @@
           <p class="reveal text-[17px] text-txt-default font-normal max-w-lg mb-4" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
             Choose your duration, style, and focus area. FireTime generates a complete workout with curated exercises — ready to go before you've finished tying your shoes.
           </p>
-          <p class="reveal text-[17px] text-txt-default font-normal max-w-lg mb-4" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-            Or build your own from scratch.
-          </p>
           <p class="reveal text-[15px] text-txt-subtle font-normal max-w-lg" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
             150+ curated exercises across bodyweight and weights.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== OR BUILD YOUR OWN ===== -->
+  <section class="py-24 relative">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row-reverse items-center gap-10">
+        <!-- Phone -->
+        <div class="reveal flex-shrink-0">
+          <div class="phone-mockup w-80 sm:w-96 md:w-[24rem] shadow-ds-3">
+            <img src="firetime_images/workout-builder.png" alt="Workout Builder screen" loading="lazy">
+          </div>
+        </div>
+        <!-- Text -->
+        <div class="flex-1 text-center lg:text-left">
+          <span class="reveal inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Full Control</span>
+          <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">Or build your own.</h2>
+          <p class="reveal text-[17px] text-txt-default font-normal max-w-lg" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+            Name it. Time it. Make it yours.
           </p>
         </div>
       </div>
@@ -499,7 +519,7 @@
     <div class="absolute inset-0 bg-gradient-to-br from-[#1a0a0a] via-transparent to-[#0a1a0a] opacity-50"></div>
 
     <div class="relative max-w-6xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-4">
 
         <!-- Left: Content -->
         <div class="flex-1 text-center lg:text-left">
@@ -553,6 +573,59 @@
   </section>
 
 
+  <!-- ===== PRIVACY SECTION ===== -->
+  <section class="py-24 relative">
+    <div class="w-[80%] mx-auto">
+      <!-- Video Bento Box with Overlay -->
+      <div class="reveal relative rounded-[2rem] overflow-hidden">
+        <!-- Video Background -->
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          class="w-full h-auto"
+        >
+          <source src="Videos/7676731-uhd_4096_2160_25fps.mp4" type="video/mp4">
+        </video>
+
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black/50"></div>
+
+        <!-- Content Overlay -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
+          <span class="inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Privacy First</span>
+          <h2 class="text-[2.5rem] sm:text-5xl font-bold text-white mb-5" style="line-height: 1.0834933333;">Your data stays yours.</h2>
+          <p class="text-[17px] text-white/80 font-normal max-w-lg mb-8" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+            No account required. No tracking. No ads. Just you and your workout.
+          </p>
+
+          <!-- Privacy Stats -->
+          <div class="flex flex-wrap justify-center gap-8" style="font-family: 'SF Pro Rounded', 'SF Pro Display', system-ui, sans-serif;">
+            <div class="text-center">
+              <div class="text-6xl sm:text-7xl md:text-8xl font-bold text-white opacity-80">0</div>
+              <div class="text-sm text-white/60 uppercase tracking-wider mt-2">Accounts</div>
+            </div>
+            <div class="text-center">
+              <div class="text-6xl sm:text-7xl md:text-8xl font-bold text-white opacity-80">0</div>
+              <div class="text-sm text-white/60 uppercase tracking-wider mt-2">Tracking</div>
+            </div>
+            <div class="text-center">
+              <div class="text-6xl sm:text-7xl md:text-8xl font-bold text-white opacity-80">0</div>
+              <div class="text-sm text-white/60 uppercase tracking-wider mt-2">Ads</div>
+            </div>
+            <div class="text-center">
+              <div class="text-6xl sm:text-7xl md:text-8xl font-bold text-primary">100<span class="text-5xl">%</span></div>
+              <div class="text-sm text-white/60 uppercase tracking-wider mt-2">Yours</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
   <!-- ===== BOTTOM CTA ===== -->
   <section class="py-24 relative overflow-hidden">
     <div class="hero-glow absolute inset-0 pointer-events-none"></div>
@@ -560,10 +633,7 @@
       <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">
         3 taps. 10 seconds. <span class="text-primary">Go.</span>
       </h2>
-      <p class="reveal text-[17px] text-txt-default font-normal mb-4 max-w-lg mx-auto" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-        No account needed. No Watch required.
-      </p>
-      <p class="reveal text-[15px] text-txt-subtle font-normal mb-10 max-w-lg mx-auto" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+      <p class="reveal text-[17px] text-txt-default font-normal mb-10 max-w-lg mx-auto" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
         No account. No tracking. No ads. Just train.
       </p>
       <button onclick="event.preventDefault(); alert('Coming Soon!')" class="reveal px-8 py-4 rounded-ds-full bg-interactive-primary text-txt-contrast font-semibold hover:bg-interactive-primary-hover transition-all duration-ds-fast shadow-ds-3">
