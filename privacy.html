@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — FireTime</title>
+  <meta name="description" content="FireTime Privacy Policy. Your data stays yours.">
+
+  <!-- Design System CSS Variables -->
+  <link rel="stylesheet" href="FireTime_Test/build/core/variables.css">
+  <link rel="stylesheet" href="FireTime_Test/build/components/variables.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg': 'var(--semantic-color-surface-neutral-subtle)',
+            'surface': 'var(--semantic-color-surface-neutral-default)',
+            'border': 'var(--semantic-color-border-neutral-default)',
+            'border-subtle': 'var(--semantic-color-border-neutral-subtle)',
+            'txt': 'var(--semantic-color-text-neutral-bold)',
+            'txt-default': 'var(--semantic-color-text-neutral-default)',
+            'txt-subtle': 'var(--semantic-color-text-neutral-subtle)',
+            'txt-contrast': 'var(--semantic-color-text-neutral-contrast)',
+            'primary': {
+              DEFAULT: 'var(--primitive-color-brand-primary-500)',
+              400: 'var(--primitive-color-brand-primary-400)',
+              500: 'var(--primitive-color-brand-primary-500)',
+              700: 'var(--primitive-color-brand-primary-700)',
+              800: 'var(--primitive-color-brand-primary-800)',
+              950: 'var(--primitive-color-brand-primary-950)',
+            },
+            'gray': {
+              800: 'var(--primitive-color-neutral-gray-800)',
+              900: 'var(--primitive-color-neutral-gray-900)',
+              950: 'var(--primitive-color-neutral-gray-950)',
+            },
+            'interactive-primary': 'var(--semantic-color-interactive-primary-default)',
+            'interactive-primary-hover': 'var(--semantic-color-interactive-primary-hover)',
+          },
+          borderRadius: {
+            'ds-full': 'var(--primitive-radius-full)',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background: var(--primitive-color-neutral-gray-950);
+      color: var(--semantic-color-text-neutral-bold);
+    }
+    .prose h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--semantic-color-text-neutral-bold);
+    }
+    .prose h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--semantic-color-text-neutral-bold);
+    }
+    .prose p {
+      font-size: 17px;
+      line-height: 1.4705882353;
+      letter-spacing: -0.022em;
+      margin-bottom: 1rem;
+      color: var(--semantic-color-text-neutral-default);
+    }
+    .prose ul {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+    .prose li {
+      font-size: 17px;
+      line-height: 1.4705882353;
+      letter-spacing: -0.022em;
+      margin-bottom: 0.5rem;
+      color: var(--semantic-color-text-neutral-default);
+    }
+    .prose a {
+      color: var(--primitive-color-brand-primary-400);
+      text-decoration: underline;
+    }
+    .prose a:hover {
+      color: var(--primitive-color-brand-primary-500);
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-gray-950/80 border-b border-border-subtle">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-txt tracking-tight">
+        <img src="firetime_images/FireTimePhoneIcon.svg" alt="FireTime" class="w-8 h-8">
+        <span style="font-family: 'SF Pro Rounded', 'SF Pro Display', system-ui, sans-serif;"><span class="text-primary">Fire</span>Time</span>
+      </a>
+      <a href="index.html" class="text-txt-subtle hover:text-txt-default transition-colors text-sm">
+        ← Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="pt-32 pb-24">
+    <div class="max-w-3xl mx-auto px-6">
+
+      <h1 class="text-4xl sm:text-5xl font-bold text-txt mb-4" style="line-height: 1.08;">Privacy Policy</h1>
+      <p class="text-txt-subtle mb-12">Last updated: February 12, 2026</p>
+
+      <div class="prose">
+
+        <p>FireTime is built with a simple philosophy: <strong>your data is yours</strong>. We don't collect it, we don't store it, and we don't sell it.</p>
+
+        <h2>What We Collect</h2>
+        <p><strong>Nothing.</strong> FireTime does not collect any personal information, usage data, or analytics. The app runs entirely on your device.</p>
+
+        <h2>Apple Health Integration</h2>
+        <p>FireTime can sync your workouts to Apple Health if you grant permission. This data:</p>
+        <ul>
+          <li>Is stored only on your device and in your personal iCloud (if you use iCloud for Health)</li>
+          <li>Is never transmitted to FireTime or any third party</li>
+          <li>Can be deleted at any time through the Apple Health app</li>
+          <li>Requires your explicit permission before any data is written</li>
+        </ul>
+        <p>We request write-only access to Apple Health to log your workouts. We do not read any of your health data.</p>
+
+        <h2>No Account Required</h2>
+        <p>FireTime does not require you to create an account, sign in, or provide any personal information to use the app.</p>
+
+        <h2>No Tracking</h2>
+        <p>FireTime does not use any analytics services, tracking pixels, or advertising identifiers. We have no idea how you use the app — and we prefer it that way.</p>
+
+        <h2>No Advertising</h2>
+        <p>FireTime does not display advertisements and does not share any information with advertising networks.</p>
+
+        <h2>Local Storage</h2>
+        <p>Your custom workouts and preferences are stored locally on your device. This data:</p>
+        <ul>
+          <li>Never leaves your device</li>
+          <li>Is not backed up to any external servers</li>
+          <li>Is deleted if you uninstall the app</li>
+        </ul>
+
+        <h2>Third-Party Services</h2>
+        <p>FireTime does not integrate with any third-party services that collect user data. The only external integration is Apple Health, which is entirely controlled by Apple and your device settings.</p>
+
+        <h2>Children's Privacy</h2>
+        <p>FireTime does not collect any personal information from anyone, including children under 13.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>If we ever change this privacy policy, we will update the "Last updated" date at the top of this page. Given our commitment to not collecting data, we don't anticipate significant changes.</p>
+
+        <h2>Contact</h2>
+        <p>If you have any questions about this Privacy Policy, please contact us at:</p>
+        <p><a href="mailto:firetime.app@gmail.com">firetime.app@gmail.com</a></p>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-border-subtle">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-txt-subtle">&copy; 2026 FireTime</p>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="privacy.html" class="text-txt-default font-medium">Privacy Policy</a>
+        <a href="terms.html" class="text-txt-subtle hover:text-txt-default transition-colors">Terms & Conditions</a>
+        <a href="mailto:firetime.app@gmail.com" class="text-txt-subtle hover:text-txt-default transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
