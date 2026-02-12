@@ -1,0 +1,65 @@
+{
+  "name": "FireTime_Test - Extended",
+  "$schema": "https://design-tokens.org/schemas/1.0.0/design-tokens.json",
+  "metadata": {
+    "layer": "extended",
+    "extends": "./tokens-core.json",
+    "editable": true,
+    "aiInstructions": {
+      "PURPOSE": "This file is for AI-created token extensions. New component variants, experimental tokens, and customizations go here.",
+      "example": {
+        "newComponentVariant": {
+          "component": {
+            "button": {
+              "compact": {
+                "padding-x": {
+                  "$type": "dimension",
+                  "$value": "{core.semantic.spacing.inset.xs}",
+                  "$metadata": {
+                    "reason": "User requested more compact button for dense UIs",
+                    "status": "experimental",
+                    "createdAt": "2025-01-12T10:00:00Z",
+                    "createdBy": "claude"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "tokenUsage": {
+        "WHY": "Skipping layers breaks the chain. Updates to semantic tokens won't flow through if you reference foundation directly.",
+        "CRITICAL_RULE": "Always use semantic tokens wherever possible. Use foundation tokens only if no relevant semantic tokens exist. Only hard-code values where no semantic OR foundation tokens can be applied.",
+        "referenceOrder": [
+          "1. Semantic tokens ({core.semantic.*}) - first choice",
+          "2. Foundation tokens ({core.foundation.*}) - fallback if no semantic exists",
+          "3. Hard-coded values - last resort only"
+        ]
+      },
+      "creatingTokens": {
+        "CHANGELOG": "Add an entry to changelog.entries for every change",
+        "STATUS_VALUES": [
+          "experimental - New token being tested",
+          "approved - Ready for promotion to core",
+          "deprecated - Being phased out"
+        ],
+        "REFERENCE_FORMAT": "Always use {core.*} prefix when referencing tokens from tokens-core.json (e.g., {core.semantic.typography.label.sm})",
+        "METADATA_REQUIRED": "Every new token must include $metadata with: createdBy, createdAt, status, reason"
+      },
+      "filePermissions": {
+        "CAN_EDIT": [
+          "tokens-extended.json - This file. Add new tokens here."
+        ],
+        "DO_NOT_EDIT": [
+          "tokens-core.json - Read-only, managed by DesignPush app",
+          "variables.css - Generated output, will be overwritten"
+        ]
+      }
+    }
+  },
+  "changelog": {
+    "entries": []
+  },
+  "component": {},
+  "experimental": {}
+}
