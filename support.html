@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — FireTime</title>
+  <meta name="description" content="FireTime Support. Get help with the interval timer app.">
+
+  <!-- Design System CSS Variables -->
+  <link rel="stylesheet" href="FireTime_Test/build/core/variables.css">
+  <link rel="stylesheet" href="FireTime_Test/build/components/variables.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg': 'var(--semantic-color-surface-neutral-subtle)',
+            'surface': 'var(--semantic-color-surface-neutral-default)',
+            'border': 'var(--semantic-color-border-neutral-default)',
+            'border-subtle': 'var(--semantic-color-border-neutral-subtle)',
+            'txt': 'var(--semantic-color-text-neutral-bold)',
+            'txt-default': 'var(--semantic-color-text-neutral-default)',
+            'txt-subtle': 'var(--semantic-color-text-neutral-subtle)',
+            'txt-contrast': 'var(--semantic-color-text-neutral-contrast)',
+            'primary': {
+              DEFAULT: 'var(--primitive-color-brand-primary-500)',
+              400: 'var(--primitive-color-brand-primary-400)',
+              500: 'var(--primitive-color-brand-primary-500)',
+              700: 'var(--primitive-color-brand-primary-700)',
+              800: 'var(--primitive-color-brand-primary-800)',
+              950: 'var(--primitive-color-brand-primary-950)',
+            },
+            'gray': {
+              800: 'var(--primitive-color-neutral-gray-800)',
+              900: 'var(--primitive-color-neutral-gray-900)',
+              950: 'var(--primitive-color-neutral-gray-950)',
+            },
+            'interactive-primary': 'var(--semantic-color-interactive-primary-default)',
+            'interactive-primary-hover': 'var(--semantic-color-interactive-primary-hover)',
+          },
+          borderRadius: {
+            'ds-md': 'var(--primitive-radius-md)',
+            'ds-lg': 'var(--primitive-radius-lg)',
+            'ds-xl': 'var(--primitive-radius-xl)',
+            'ds-full': 'var(--primitive-radius-full)',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background: var(--primitive-color-neutral-gray-950);
+      color: var(--semantic-color-text-neutral-bold);
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--semantic-color-border-neutral-subtle);
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-question {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--semantic-color-text-neutral-bold);
+      padding: 1.25rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-question:hover {
+      color: var(--primitive-color-brand-primary-400);
+    }
+    .faq-answer {
+      font-size: 17px;
+      line-height: 1.4705882353;
+      letter-spacing: -0.022em;
+      color: var(--semantic-color-text-neutral-default);
+      padding-bottom: 1.25rem;
+      display: none;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+    .faq-icon {
+      transition: transform 0.2s ease;
+      color: var(--semantic-color-text-neutral-subtle);
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-gray-950/80 border-b border-border-subtle">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-txt tracking-tight">
+        <img src="firetime_images/FireTimePhoneIcon.svg" alt="FireTime" class="w-8 h-8">
+        <span style="font-family: 'SF Pro Rounded', 'SF Pro Display', system-ui, sans-serif;"><span class="text-primary">Fire</span>Time</span>
+      </a>
+      <a href="index.html" class="text-txt-subtle hover:text-txt-default transition-colors text-sm">
+        ← Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold text-txt mb-4" style="line-height: 1.08;">Support</h1>
+      <p class="text-[17px] text-txt-default" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+        Got a question? We're here to help.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT CARD -->
+  <section class="pb-16">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="bg-surface border border-border-subtle rounded-ds-xl p-8 text-center">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-ds-lg bg-primary-950 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary-400">
+            <rect width="20" height="16" x="2" y="4" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+        </div>
+        <h2 class="text-xl font-bold text-txt mb-2">Contact Us</h2>
+        <p class="text-[17px] text-txt-default mb-4" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+          For bugs, feature requests, or general questions
+        </p>
+        <a href="mailto:firetime.app@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-ds-full bg-interactive-primary text-txt-contrast font-semibold hover:bg-interactive-primary-hover transition-all">
+          firetime.app@gmail.com
+        </a>
+        <p class="text-sm text-txt-subtle mt-4">We typically respond within 24-48 hours</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pb-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-txt mb-8">Frequently Asked Questions</h2>
+
+      <div class="bg-surface border border-border-subtle rounded-ds-xl overflow-hidden">
+
+        <div class="faq-item px-6">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>How do I create a quick workout?</span>
+            <span class="faq-icon text-xl">+</span>
+          </div>
+          <div class="faq-answer">
+            From the home screen, tap "Quick Build". Choose your workout duration, style (HIIT, EMOM, Tabata, etc.), and focus area (full body, upper, lower, core). FireTime will generate a complete workout with exercises — ready in about 10 seconds.
+          </div>
+        </div>
+
+        <div class="faq-item px-6">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Can I create my own custom workouts?</span>
+            <span class="faq-icon text-xl">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes! Tap "New Workout" to open the workout builder. You can add intervals, set work and rest times, name your exercises, and save your workout for future use. Your custom workouts are stored locally on your device.
+          </div>
+        </div>
+
+        <div class="faq-item px-6">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Does FireTime work with Apple Watch?</span>
+            <span class="faq-icon text-xl">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes! FireTime includes a companion Apple Watch app. Start a workout on your iPhone and it syncs to your watch, or start directly from your watch. You'll see the timer, current exercise, and upcoming intervals right on your wrist.
+          </div>
+        </div>
+
+        <div class="faq-item px-6">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>How does Apple Health integration work?</span>
+            <span class="faq-icon text-xl">+</span>
+          </div>
+          <div class="faq-answer">
+            When you complete a workout, FireTime can log it to Apple Health (with your permission). This includes workout duration, estimated calories burned, and heart rate data if you're wearing an Apple Watch. You can enable or disable this in Settings.
+          </div>
+        </div>
+
+        <div class="faq-item px-6">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Do I need to create an account?</span>
+            <span class="faq-icon text-xl">+</span>
+          </div>
+          <div class="faq-answer">
+            No. FireTime works completely offline and doesn't require any account, login, or personal information. Just download and start training.
+          </div>
+        </div>
+
+        <div class="faq-item px-6">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Can I use FireTime without an Apple Watch?</span>
+            <span class="faq-icon text-xl">+</span>
+          </div>
+          <div class="faq-answer">
+            Absolutely. The Apple Watch app is optional. FireTime works perfectly on iPhone alone with audio cues and haptic feedback to guide you through your workout.
+          </div>
+        </div>
+
+        <div class="faq-item px-6">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>How do I change the audio or haptic settings?</span>
+            <span class="faq-icon text-xl">+</span>
+          </div>
+          <div class="faq-answer">
+            Go to Settings in the app. You can adjust voice announcements, sound effects, and haptic feedback. You can also choose different countdown sounds and toggle the "3-2-1" countdown announcement.
+          </div>
+        </div>
+
+        <div class="faq-item px-6">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>My workouts disappeared. How do I get them back?</span>
+            <span class="faq-icon text-xl">+</span>
+          </div>
+          <div class="faq-answer">
+            Workouts are stored locally on your device. If you deleted and reinstalled the app, or got a new device, the workouts won't transfer automatically. We recommend taking screenshots of important custom workouts as a backup. A cloud sync feature may be added in a future update.
+          </div>
+        </div>
+
+        <div class="faq-item px-6">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>Is FireTime free?</span>
+            <span class="faq-icon text-xl">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes, FireTime is free to download and use. There are no ads, no subscriptions, and no hidden fees. All features are available to everyone.
+          </div>
+        </div>
+
+        <div class="faq-item px-6">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>How do I report a bug or request a feature?</span>
+            <span class="faq-icon text-xl">+</span>
+          </div>
+          <div class="faq-answer">
+            Email us at <a href="mailto:firetime.app@gmail.com" class="text-primary-400 underline">firetime.app@gmail.com</a>. We read every message and appreciate your feedback. Bug reports help us improve, and feature requests shape the future of the app.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-border-subtle">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-txt-subtle">&copy; 2026 FireTime</p>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="privacy.html" class="text-txt-subtle hover:text-txt-default transition-colors">Privacy Policy</a>
+        <a href="terms.html" class="text-txt-subtle hover:text-txt-default transition-colors">Terms & Conditions</a>
+        <a href="support.html" class="text-txt-default font-medium">Support</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
