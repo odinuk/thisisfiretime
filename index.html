@@ -396,14 +396,19 @@
 
       <!-- Heading -->
       <h1 class="reveal text-5xl sm:text-6xl md:text-7xl font-bold text-txt leading-[1.08] tracking-tight mb-6">
-        Your workout.<br />
-        <span class="text-primary">Built in seconds.</span>
+        3 taps. 10 seconds.<br />
+        Workout built. <span class="text-primary">Train.</span>
       </h1>
 
       <!-- Subtitle -->
-      <p class="reveal text-[20px] text-white font-normal max-w-xl mx-auto mb-10" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+      <p class="reveal text-[20px] text-white font-normal max-w-xl mx-auto mb-6" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
         Most interval timers take longer to set up than the workout itself.<br />
-        FireTime: 3 taps, 10 seconds, you're training.
+        FireTime doesn't.
+      </p>
+
+      <!-- Social proof -->
+      <p class="reveal text-[14px] text-txt-subtle font-normal max-w-lg mx-auto mb-10 italic">
+        Built by a solo dev who got tired of spending longer setting up timers than actually working out.
       </p>
 
       <!-- Phone mockups -->
@@ -425,48 +430,11 @@
       <!-- Buttons -->
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
         <button onclick="event.preventDefault(); alert('Coming Soon!')" class="inline-flex items-center gap-2 px-8 py-4 rounded-ds-full bg-interactive-primary text-txt-contrast font-semibold hover:bg-interactive-primary-hover transition-all duration-ds-fast shadow-ds-3 w-full sm:w-auto">
-          Download Free
+          Notify Me When It's Live
         </button>
         <a href="#features" class="border border-border text-txt-default rounded-ds-full px-8 py-4 font-medium hover:border-border hover:bg-surface hover:text-txt transition-all w-full sm:w-auto text-center">
           See Features
         </a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ===== SPEED SECTION ===== -->
-  <section class="py-24">
-    <div class="px-8">
-      <!-- Bento box with video -->
-      <div class="relative overflow-hidden rounded-ds-2xl min-h-[75vh] flex items-center">
-        <!-- Video Background -->
-        <video
-          autoplay
-          muted
-          loop
-          playsinline
-          class="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="Videos/8401254-hd_1920_1080_30fps.mp4" type="video/mp4">
-        </video>
-
-        <!-- Dark overlay for readability -->
-        <div class="absolute inset-0 bg-black/70"></div>
-
-        <!-- Content overlay -->
-        <div class="relative z-10 w-full py-16">
-          <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="reveal text-5xl md:text-6xl lg:text-7xl font-bold text-txt mb-6" style="line-height: 1.0834933333;">
-              The fastest way from<br /><span class="text-primary">intention to exertion.</span>
-            </h2>
-            <p class="reveal text-[17px] text-txt-default font-normal max-w-2xl mx-auto" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-              No endless menus. No account setup. No learning curve.<br />
-              Open the app, pick your style, and you're training in seconds.<br />
-              FireTime is built for people who'd rather sweat than scroll.
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -486,8 +454,14 @@
         <div class="flex-1 text-center lg:text-left">
           <span class="reveal inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Quick Build</span>
           <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">Pick your workout<br />in 3 taps.</h2>
-          <p class="reveal text-[17px] text-txt-default font-normal max-w-lg" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+          <p class="reveal text-[17px] text-txt-default font-normal max-w-lg mb-4" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
             Choose your duration, style, and focus area. FireTime generates a complete workout with curated exercises — ready to go before you've finished tying your shoes.
+          </p>
+          <p class="reveal text-[17px] text-txt-default font-normal max-w-lg mb-4" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+            Or build your own from scratch.
+          </p>
+          <p class="reveal text-[15px] text-txt-subtle font-normal max-w-lg" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+            150+ curated exercises across bodyweight and weights.
           </p>
         </div>
       </div>
@@ -517,31 +491,6 @@
       </div>
     </div>
   </section>
-
-
-  <!-- ===== FEATURE 03 — WORKOUT BUILDER ===== -->
-  <section class="py-24 relative">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row-reverse items-center gap-10">
-        <!-- Text -->
-        <div class="flex-1 text-center lg:text-left">
-          <span class="reveal inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Workout Builder</span>
-          <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">Build it your way.<br />Every interval is yours.</h2>
-          <p class="reveal text-[17px] text-txt-default font-normal max-w-lg" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-            Name each interval, set individual durations, add open intervals for exercises that don&rsquo;t need a clock. Save your favourites and they&rsquo;re ready whenever you are.
-          </p>
-        </div>
-        <!-- Phone -->
-        <div class="reveal flex-shrink-0">
-          <div class="phone-mockup w-80 sm:w-96 md:w-[24rem] shadow-ds-3">
-            <img src="firetime_images/workout-builder.png" alt="Workout Builder screen" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
 
 
   <!-- ===== APPLE FITNESS SECTION ===== -->
@@ -604,291 +553,21 @@
   </section>
 
 
-  <!-- ===== YOUR DATA, YOUR RULES ===== -->
-  <section class="py-24">
-    <div class="px-8">
-      <!-- Bento box with video -->
-      <div class="relative overflow-hidden rounded-ds-2xl min-h-[60vh] flex items-center">
-        <!-- Video Background -->
-        <video
-          autoplay
-          muted
-          loop
-          playsinline
-          class="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="Videos/7676731-uhd_4096_2160_25fps.mp4" type="video/mp4">
-        </video>
-
-        <!-- Dark overlay for readability -->
-        <div class="absolute inset-0 bg-black/60"></div>
-
-        <!-- Content overlay -->
-        <div class="relative z-10 w-full py-16">
-          <div class="max-w-4xl mx-auto px-6 text-center">
-            <span class="reveal inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Privacy First</span>
-            <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">
-              Your data stays <span class="text-primary">yours.</span>
-            </h2>
-            <p class="reveal text-[17px] text-txt-default font-normal max-w-2xl mx-auto mb-14" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-              No account. No tracking. No ads. Just open the app, build a workout, and train. Your workouts live on your device — we never see them.
-            </p>
-
-            <!-- No BS stats - Apple-style typography with SF Pro Rounded Bold -->
-            <div class="reveal flex flex-wrap justify-center gap-6" style="font-family: 'SF Pro Rounded', 'SF Pro Display', system-ui, sans-serif;">
-              <div class="text-center">
-                <span class="block text-7xl md:text-8xl font-bold text-white/80 mb-2">0</span>
-                <span class="text-lg text-txt-default font-bold">Sign ups</span>
-              </div>
-              <div class="text-center">
-                <span class="block text-7xl md:text-8xl font-bold text-white/80 mb-2">0</span>
-                <span class="text-lg text-txt-default font-bold">Tracking</span>
-              </div>
-              <div class="text-center">
-                <span class="block text-7xl md:text-8xl font-bold text-white/80 mb-2">0</span>
-                <span class="text-lg text-txt-default font-bold">Ads</span>
-              </div>
-              <div class="text-center">
-                <span class="block text-7xl md:text-8xl font-bold text-primary mb-2">100%</span>
-                <span class="text-lg text-txt-default font-bold">On device</span>
-              </div>
-            </div>
-
-            <p class="reveal text-txt-subtle text-sm mt-12">
-              Just you and your workout. The way it should be.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ===== EXERCISE LIBRARY ===== -->
-  <section class="py-24">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <span class="reveal inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Exercise Library</span>
-      <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">150+ curated exercises.<br />Bodyweight &amp; weights.</h2>
-      <p class="reveal text-[17px] text-txt-default font-normal max-w-2xl mx-auto mb-12" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-        Every Quick Build pulls from a hand-picked exercise library. No filler, no nonsense — just movements that work.
-      </p>
-
-      <!-- Tabs -->
-      <div class="reveal flex flex-wrap justify-center gap-2 mb-8" id="exercise-tabs">
-        <button class="tab-btn active px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="core">Core</button>
-        <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="fullbody">Full Body</button>
-        <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="upper">Upper Body</button>
-        <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="lower">Lower Body</button>
-        <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="calisthenics">Calisthenics</button>
-        <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="cardio">Cardio</button>
-        <span class="text-txt-subtle text-[13px] py-2.5 px-1">|</span>
-        <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="weights-upper">Weights &middot; Upper</button>
-        <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="weights-lower">Weights &middot; Lower</button>
-        <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="weights-full">Weights &middot; Full Body</button>
-        <button class="tab-btn px-5 py-2.5 rounded-xl text-sm font-medium transition-all" data-tab="weights-core">Weights &middot; Core</button>
-      </div>
-
-      <!-- Panels -->
-      <div id="exercise-panels" class="min-h-[120px]">
-
-        <!-- Core -->
-        <div class="tab-panel active" data-panel="core">
-          <span class="exercise-pill">Plank</span>
-          <span class="exercise-pill">Mountain Climbers</span>
-          <span class="exercise-pill">Dead Bug</span>
-          <span class="exercise-pill">Bicycle Crunches</span>
-          <span class="exercise-pill">Russian Twists</span>
-          <span class="exercise-pill">Leg Raises</span>
-          <span class="exercise-pill">Flutter Kicks</span>
-          <span class="exercise-pill">Bird Dogs</span>
-          <span class="exercise-pill">Side Plank <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span></span>
-          <span class="exercise-pill">V-Ups</span>
-          <span class="exercise-pill">Hollow Hold</span>
-          <span class="exercise-pill">Reverse Crunches</span>
-          <span class="exercise-pill">Toe Touches</span>
-          <span class="exercise-pill">Plank Hip Dips</span>
-        </div>
-
-        <!-- Full Body -->
-        <div class="tab-panel" data-panel="fullbody">
-          <span class="exercise-pill">Burpees</span>
-          <span class="exercise-pill">Mountain Climbers</span>
-          <span class="exercise-pill">Squat to Press</span>
-          <span class="exercise-pill">Plank Jacks</span>
-          <span class="exercise-pill">Jumping Jacks</span>
-          <span class="exercise-pill">Thrusters</span>
-          <span class="exercise-pill">Bear Crawl</span>
-          <span class="exercise-pill">Inchworms</span>
-          <span class="exercise-pill">Star Jumps</span>
-          <span class="exercise-pill">Sprawls</span>
-          <span class="exercise-pill">Turkish Get-Up</span>
-          <span class="exercise-pill">Renegade Rows</span>
-          <span class="exercise-pill">Man Makers</span>
-          <span class="exercise-pill">Devil Press</span>
-          <span class="exercise-pill">Squat Thrusts</span>
-        </div>
-
-        <!-- Upper Body -->
-        <div class="tab-panel" data-panel="upper">
-          <span class="exercise-pill">Push-Ups</span>
-          <span class="exercise-pill">Diamond Push-Ups</span>
-          <span class="exercise-pill">Wide Push-Ups</span>
-          <span class="exercise-pill">Pike Push-Ups</span>
-          <span class="exercise-pill">Tricep Dips</span>
-          <span class="exercise-pill">Shoulder Taps</span>
-          <span class="exercise-pill">Arm Circles</span>
-          <span class="exercise-pill">Plank Up-Downs</span>
-          <span class="exercise-pill">Superman Pull</span>
-          <span class="exercise-pill">Decline Push-Ups</span>
-          <span class="exercise-pill">Archer Push-Ups</span>
-          <span class="exercise-pill">Hindu Push-Ups</span>
-          <span class="exercise-pill">Dive Bombers</span>
-          <span class="exercise-pill">Plank Shoulder Taps</span>
-          <span class="exercise-pill">Commando Planks</span>
-        </div>
-
-        <!-- Lower Body -->
-        <div class="tab-panel" data-panel="lower">
-          <span class="exercise-pill">Squats</span>
-          <span class="exercise-pill">Lunges</span>
-          <span class="exercise-pill">Jump Squats</span>
-          <span class="exercise-pill">Glute Bridges</span>
-          <span class="exercise-pill">Wall Sit</span>
-          <span class="exercise-pill">Calf Raises</span>
-          <span class="exercise-pill">Sumo Squats</span>
-          <span class="exercise-pill">Step-Ups</span>
-          <span class="exercise-pill">Bulgarian Split Squat <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span></span>
-          <span class="exercise-pill">Single Leg Deadlift <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span></span>
-          <span class="exercise-pill">Box Jumps</span>
-          <span class="exercise-pill">Lateral Lunges</span>
-          <span class="exercise-pill">Pistol Squats</span>
-          <span class="exercise-pill">Curtsy Lunges</span>
-          <span class="exercise-pill">Frog Jumps</span>
-        </div>
-
-        <!-- Calisthenics -->
-        <div class="tab-panel" data-panel="calisthenics">
-          <span class="exercise-pill">Pull-Ups</span>
-          <span class="exercise-pill">Push-Ups</span>
-          <span class="exercise-pill">Dips</span>
-          <span class="exercise-pill">Muscle-Ups</span>
-          <span class="exercise-pill">Handstand Hold</span>
-          <span class="exercise-pill">L-Sit</span>
-          <span class="exercise-pill">Pistol Squats</span>
-          <span class="exercise-pill">Hanging Leg Raises</span>
-          <span class="exercise-pill">Dragon Flags</span>
-          <span class="exercise-pill">Planche Lean</span>
-          <span class="exercise-pill">Front Lever Raises</span>
-          <span class="exercise-pill">Skin the Cat</span>
-          <span class="exercise-pill">Archer Push-Ups</span>
-          <span class="exercise-pill">One Arm Push-Up Prep</span>
-          <span class="exercise-pill">Nordic Curls</span>
-        </div>
-
-        <!-- Cardio -->
-        <div class="tab-panel" data-panel="cardio">
-          <span class="exercise-pill">High Knees</span>
-          <span class="exercise-pill">Jumping Jacks</span>
-          <span class="exercise-pill">Burpees</span>
-          <span class="exercise-pill">Mountain Climbers</span>
-          <span class="exercise-pill">Jump Rope</span>
-          <span class="exercise-pill">Speed Skaters</span>
-          <span class="exercise-pill">Tuck Jumps</span>
-          <span class="exercise-pill">Box Jumps</span>
-          <span class="exercise-pill">Lateral Shuffles</span>
-          <span class="exercise-pill">Fast Feet</span>
-          <span class="exercise-pill">Butt Kicks</span>
-          <span class="exercise-pill">Sprint in Place</span>
-          <span class="exercise-pill">Squat Jumps</span>
-          <span class="exercise-pill">Star Jumps</span>
-          <span class="exercise-pill">Plank Jacks</span>
-        </div>
-
-        <!-- Weights Upper -->
-        <div class="tab-panel" data-panel="weights-upper">
-          <span class="exercise-pill">Bench Press</span>
-          <span class="exercise-pill">Overhead Press</span>
-          <span class="exercise-pill">Bent Over Rows</span>
-          <span class="exercise-pill">Lat Pulldowns</span>
-          <span class="exercise-pill">Bicep Curls</span>
-          <span class="exercise-pill">Tricep Pushdowns</span>
-          <span class="exercise-pill">Dumbbell Flyes</span>
-          <span class="exercise-pill">Lateral Raises</span>
-          <span class="exercise-pill">Face Pulls</span>
-          <span class="exercise-pill">Cable Crossovers</span>
-          <span class="exercise-pill">Incline Dumbbell Press</span>
-          <span class="exercise-pill">Seated Rows</span>
-          <span class="exercise-pill">Skull Crushers</span>
-          <span class="exercise-pill">Hammer Curls</span>
-          <span class="exercise-pill">Reverse Flyes</span>
-        </div>
-
-        <!-- Weights Lower -->
-        <div class="tab-panel" data-panel="weights-lower">
-          <span class="exercise-pill">Barbell Squats</span>
-          <span class="exercise-pill">Leg Press</span>
-          <span class="exercise-pill">Romanian Deadlifts</span>
-          <span class="exercise-pill">Leg Curls</span>
-          <span class="exercise-pill">Leg Extensions</span>
-          <span class="exercise-pill">Hip Thrusts</span>
-          <span class="exercise-pill">Calf Raises</span>
-          <span class="exercise-pill">Goblet Squats</span>
-          <span class="exercise-pill">Walking Lunges</span>
-          <span class="exercise-pill">Bulgarian Split Squats <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span></span>
-          <span class="exercise-pill">Sumo Deadlifts</span>
-          <span class="exercise-pill">Front Squats</span>
-          <span class="exercise-pill">Good Mornings</span>
-          <span class="exercise-pill">Hack Squats</span>
-          <span class="exercise-pill">Glute Kickbacks</span>
-        </div>
-
-        <!-- Weights Full Body -->
-        <div class="tab-panel" data-panel="weights-full">
-          <span class="exercise-pill">Deadlifts</span>
-          <span class="exercise-pill">Clean and Press</span>
-          <span class="exercise-pill">Thrusters</span>
-          <span class="exercise-pill">Kettlebell Swings</span>
-          <span class="exercise-pill">Turkish Get-Ups</span>
-          <span class="exercise-pill">Man Makers</span>
-          <span class="exercise-pill">Barbell Complexes</span>
-          <span class="exercise-pill">Farmers Carry</span>
-        </div>
-
-        <!-- Weights Core -->
-        <div class="tab-panel" data-panel="weights-core">
-          <span class="exercise-pill">Cable Crunches</span>
-          <span class="exercise-pill">Weighted Russian Twists</span>
-          <span class="exercise-pill">Hanging Leg Raises</span>
-          <span class="exercise-pill">Ab Rollouts</span>
-          <span class="exercise-pill">Weighted Planks</span>
-          <span class="exercise-pill">Pallof Press</span>
-          <span class="exercise-pill">Landmine Rotations</span>
-          <span class="exercise-pill">Decline Weighted Sit-Ups</span>
-        </div>
-
-      </div>
-
-      <!-- Footer note -->
-      <p class="reveal text-center text-sm text-txt-subtle mt-8">
-        Unilateral exercises (marked <span class="text-primary">L+R</span>) automatically split into left and right intervals for balance.
-      </p>
-    </div>
-  </section>
-
-
-
   <!-- ===== BOTTOM CTA ===== -->
   <section class="py-24 relative overflow-hidden">
     <div class="hero-glow absolute inset-0 pointer-events-none"></div>
     <div class="relative max-w-3xl mx-auto px-6 text-center">
       <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">
-        Pick. Build. <span class="text-primary">Train.</span>
+        3 taps. 10 seconds. <span class="text-primary">Go.</span>
       </h2>
-      <p class="reveal text-[17px] text-txt-default font-normal mb-10 max-w-lg mx-auto" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-        Start training smarter today. No account needed, no Watch required.
+      <p class="reveal text-[17px] text-txt-default font-normal mb-4 max-w-lg mx-auto" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+        No account needed. No Watch required.
+      </p>
+      <p class="reveal text-[15px] text-txt-subtle font-normal mb-10 max-w-lg mx-auto" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+        No account. No tracking. No ads. Just train.
       </p>
       <button onclick="event.preventDefault(); alert('Coming Soon!')" class="reveal px-8 py-4 rounded-ds-full bg-interactive-primary text-txt-contrast font-semibold hover:bg-interactive-primary-hover transition-all duration-ds-fast shadow-ds-3">
-        Download on the App Store
+        Notify Me When It's Live
       </button>
     </div>
   </section>
