@@ -174,7 +174,8 @@
     .phone-mockup {
       overflow: hidden;
     }
-    .phone-mockup img {
+    .phone-mockup img,
+    .phone-mockup video {
       width: 100%;
       height: auto;
       display: block;
@@ -414,7 +415,7 @@
       </div>
 
       <!-- Heading -->
-      <h1 class="reveal text-5xl sm:text-6xl md:text-7xl font-bold text-txt leading-[1.08] tracking-tight mb-6">
+      <h1 class="reveal text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-txt leading-[1.08] tracking-tight mb-6">
         10 seconds.<br />
         Workout built. <span class="text-primary">Train.</span>
       </h1>
@@ -432,28 +433,28 @@
 
       <!-- Phone mockups -->
       <div class="reveal flex items-center justify-center mb-14">
-        <!-- Left phone -->
-        <div class="phone-mockup w-60 sm:w-72 md:w-[19.5rem] -mr-20 sm:-mr-24 md:-mr-28 z-0 opacity-80">
+        <!-- Left phone - hidden on mobile -->
+        <div class="phone-mockup hidden sm:block w-72 md:w-[19.5rem] -mr-[78px] md:-mr-[94px] z-0 opacity-80">
           <img src="firetime_images/CompleteWorkout.webp" alt="Workout Complete screen" loading="lazy" decoding="async">
         </div>
         <!-- Center phone with video -->
-        <div class="phone-mockup w-64 sm:w-[19rem] md:w-[21rem] relative z-10 shadow-ds-4 rounded-[4rem] overflow-hidden">
-          <video autoplay muted loop playsinline preload="auto" class="w-full h-auto">
+        <div class="phone-mockup w-72 sm:w-[19rem] md:w-[21rem] relative z-10" style="filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));">
+          <video autoplay muted loop playsinline webkit-playsinline preload="auto" class="w-full h-auto rounded-[4rem]">
             <source src="Videos/FireTimeHeroVideo.webm" type="video/webm">
           </video>
         </div>
-        <!-- Right phone -->
-        <div class="phone-mockup w-60 sm:w-72 md:w-[19.5rem] -ml-20 sm:-ml-24 md:-ml-28 z-0 opacity-80">
+        <!-- Right phone - hidden on mobile -->
+        <div class="phone-mockup hidden sm:block w-72 md:w-[19.5rem] -ml-[78px] md:-ml-[94px] z-0 opacity-80">
           <img src="firetime_images/workout-builder.webp" alt="Workout Builder screen" loading="lazy" decoding="async">
         </div>
       </div>
 
       <!-- Buttons -->
-      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-        <button onclick="event.preventDefault(); alert('Coming Soon!')" class="inline-flex items-center gap-2 px-8 py-4 rounded-ds-full bg-interactive-primary text-txt-contrast font-semibold hover:bg-interactive-primary-hover transition-all duration-ds-fast shadow-ds-3 w-full sm:w-auto">
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-20">
+        <button onclick="event.preventDefault(); alert('Coming Soon!')" class="flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-ds-full bg-interactive-primary text-txt-contrast font-semibold hover:bg-interactive-primary-hover transition-all duration-ds-fast shadow-ds-3 w-auto text-center">
           Notify Me When It's Live
         </button>
-        <a href="#features" class="border border-border text-txt-default rounded-ds-full px-8 py-4 font-medium hover:border-border hover:bg-surface hover:text-txt transition-all w-full sm:w-auto text-center">
+        <a href="#features" class="flex items-center justify-center border border-border text-txt-default rounded-ds-full px-6 py-3 sm:px-8 sm:py-4 font-medium hover:border-border hover:bg-surface hover:text-txt transition-all w-auto text-center">
           See Features
         </a>
       </div>
@@ -462,17 +463,18 @@
 
 
   <!-- ===== SPEED SECTION ===== -->
-  <section class="py-12">
-    <div class="px-8">
+  <section class="py-8 sm:py-12">
+    <div class="px-4 sm:px-8">
       <!-- Bento box with video -->
-      <div class="relative overflow-hidden rounded-ds-2xl min-h-[75vh] flex items-center">
+      <div class="relative overflow-hidden rounded-2xl sm:rounded-ds-2xl min-h-[60vh] sm:min-h-[75vh] flex items-center">
         <!-- Video Background -->
         <video
           autoplay
           muted
           loop
           playsinline
-          preload="metadata"
+          webkit-playsinline
+          preload="auto"
           class="absolute inset-0 w-full h-full object-cover"
         >
           <source src="Videos/8401254-hd_1920_1080_30fps.webm" type="video/webm">
@@ -484,13 +486,12 @@
         <!-- Content overlay -->
         <div class="relative z-10 w-full py-16">
           <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="reveal text-5xl md:text-6xl lg:text-7xl font-bold text-txt mb-6" style="line-height: 1.0834933333;">
-              The fastest way from<br /><span class="text-primary">intention to exertion.</span>
+            <h2 class="reveal text-[2.5rem] md:text-[5rem] font-bold text-txt mb-6" style="line-height: 1.0834933333;">
+              The fastest<br />way from <span class="text-primary">intention<br />to&nbsp;exertion.</span>
             </h2>
             <p class="reveal text-[17px] text-txt-default font-normal max-w-2xl mx-auto" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-              No endless menus. No account setup. No learning curve.<br />
-              Open the app, pick your style, and you're training in seconds.<br />
-              FireTime is built for people who'd rather sweat than scroll.
+              Open the app, pick your style, and you're training&nbsp;in&nbsp;seconds.<br />
+              FireTime is built for people who'd rather sweat&nbsp;than&nbsp;scroll.
             </p>
           </div>
         </div>
@@ -502,10 +503,10 @@
   <!-- ===== FEATURE 01 — QUICK BUILD ===== -->
   <section id="features" class="py-12 relative">
     <div class="max-w-4xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-center gap-10">
+      <div class="flex flex-col-reverse lg:flex-row items-center gap-10">
         <!-- Phone -->
-        <div class="reveal flex-shrink-0">
-          <div class="phone-mockup w-80 sm:w-96 md:w-[24rem] shadow-ds-3">
+        <div class="reveal w-full sm:w-auto flex justify-center sm:flex-shrink-0">
+          <div class="phone-mockup w-[92%] sm:w-96 md:w-[24rem] shadow-ds-3">
             <img src="firetime_images/quick-build.webp" alt="Quick Build screen" loading="lazy" decoding="async">
           </div>
         </div>
@@ -528,10 +529,10 @@
   <!-- ===== OR BUILD YOUR OWN ===== -->
   <section class="py-8 relative">
     <div class="max-w-4xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row-reverse items-center gap-10">
+      <div class="flex flex-col-reverse lg:flex-row-reverse items-center gap-10">
         <!-- Phone -->
-        <div class="reveal flex-shrink-0">
-          <div class="phone-mockup w-80 sm:w-96 md:w-[24rem] shadow-ds-3">
+        <div class="reveal w-full sm:w-auto flex justify-center sm:flex-shrink-0">
+          <div class="phone-mockup w-[92%] sm:w-96 md:w-[24rem] shadow-ds-3">
             <img src="firetime_images/workout-builder.webp" alt="Workout Builder screen" loading="lazy" decoding="async">
           </div>
         </div>
@@ -551,8 +552,8 @@
   <!-- ===== FEATURE 02 — TIMER ===== -->
   <section class="py-12 relative">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
-        <!-- Text - left side -->
+      <div class="flex flex-col lg:flex-row-reverse items-center gap-10">
+        <!-- Text - left side (above on mobile) -->
         <div class="flex-1 text-center lg:text-left max-w-md">
           <span class="reveal inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Active Timer</span>
           <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">A timer that<br />respects your focus.</h2>
@@ -561,11 +562,11 @@
           </p>
         </div>
         <!-- Devices - right side -->
-        <div class="reveal flex-shrink-0 flex items-end gap-5">
+        <div class="reveal w-full sm:w-auto flex flex-col sm:flex-row items-center sm:items-end gap-5 sm:flex-shrink-0">
+          <!-- Watch - above phone on mobile, left of phone on desktop -->
+          <img src="firetime_images/Watch/FireTimeWatch.webp" alt="FireTime on Apple Watch" class="w-36 sm:w-40 md:w-48 sm:-translate-y-20 sm:-translate-x-6" loading="lazy" decoding="async">
           <!-- Phone -->
-          <img src="firetime_images/Watch/TimerPhone.webp" alt="Active Timer screen" class="w-80 sm:w-96 md:w-[24rem]" loading="lazy" decoding="async">
-          <!-- Watch -->
-          <img src="firetime_images/Watch/FireTimeWatch.webp" alt="FireTime on Apple Watch" class="w-32 sm:w-40 md:w-48 -translate-y-20" loading="lazy" decoding="async">
+          <img src="firetime_images/Watch/TimerPhone.webp" alt="Active Timer screen" class="w-[92%] sm:w-96 md:w-[24rem]" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -578,42 +579,44 @@
     <div class="absolute inset-0 bg-gradient-to-br from-[#1a0a0a] via-transparent to-[#0a1a0a] opacity-50"></div>
 
     <div class="relative max-w-6xl mx-auto px-6">
-      <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-4">
+      <div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
 
         <!-- Left: Content -->
-        <div class="flex-1 text-center lg:text-left">
+        <div class="text-center lg:text-left">
           <span class="reveal inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Apple Fitness</span>
           <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">
-            Every rep. Every calorie.<br /><span class="text-primary">Logged.</span>
+            Every rep.<br />Every calorie.<br /><span class="text-primary">Logged.</span>
           </h2>
           <p class="reveal text-[17px] text-txt-default font-normal max-w-lg mb-8" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
             FireTime automatically syncs your workouts to Apple Health. See your effort in the Fitness app — duration, calories burned, heart rate zones, and more.
           </p>
 
           <!-- Stats stack - Apple Fitness style -->
-          <div class="reveal flex flex-col mb-8 mx-auto lg:mx-0" style="font-family: 'Nunito', 'SF Pro Rounded', system-ui, sans-serif; gap: 8px;">
-            <!-- Row 1: Duration -->
-            <div class="flex items-end">
-              <span class="text-5xl sm:text-6xl font-semibold text-primary tabular-nums" style="line-height: 0.75; min-width: 225px;">46:00</span>
-              <div class="flex flex-col" style="gap: 2px; margin-bottom: 2px;">
-                <span class="text-sm sm:text-base text-txt-subtle uppercase tracking-wider" style="line-height: 0.75;">Duration</span>
-                <span class="text-3xl sm:text-4xl md:text-5xl text-txt font-semibold uppercase" style="line-height: 0.75;">MINS</span>
+          <div class="reveal flex justify-center lg:justify-start mb-8 text-left" style="font-family: 'Nunito', 'SF Pro Rounded', system-ui, sans-serif;">
+            <div class="flex flex-col" style="gap: 24px;">
+              <!-- Row 1: Duration -->
+              <div class="flex items-end">
+                <span class="text-6xl font-semibold text-primary tabular-nums" style="line-height: 0.75; min-width: 225px;">46:00</span>
+                <div class="flex flex-col" style="gap: 2px; margin-bottom: 2px;">
+                  <span class="text-base text-txt-subtle uppercase tracking-wider" style="line-height: 0.75;">Duration</span>
+                  <span class="text-5xl text-txt font-semibold uppercase" style="line-height: 0.75;">MINS</span>
+                </div>
               </div>
-            </div>
-            <!-- Row 2: Calories -->
-            <div class="flex items-end">
-              <span class="text-5xl sm:text-6xl font-semibold text-[#FFD60A] tabular-nums" style="line-height: 0.75; min-width: 225px;">290</span>
-              <div class="flex flex-col" style="gap: 2px; margin-bottom: 2px;">
-                <span class="text-sm sm:text-base text-txt-subtle uppercase tracking-wider" style="line-height: 0.75;">Est. Active</span>
-                <span class="text-3xl sm:text-4xl md:text-5xl text-txt font-semibold uppercase" style="line-height: 0.75;">CALS</span>
+              <!-- Row 2: Calories -->
+              <div class="flex items-end">
+                <span class="text-6xl font-semibold text-[#FFD60A] tabular-nums" style="line-height: 0.75; min-width: 225px;">290</span>
+                <div class="flex flex-col" style="gap: 2px; margin-bottom: 2px;">
+                  <span class="text-base text-txt-subtle uppercase tracking-wider" style="line-height: 0.75;">Est. Active</span>
+                  <span class="text-5xl text-txt font-semibold uppercase" style="line-height: 0.75;">CALS</span>
+                </div>
               </div>
-            </div>
-            <!-- Row 3: Heart Rate -->
-            <div class="flex items-end">
-              <span class="text-5xl sm:text-6xl font-semibold text-[#FF375F] tabular-nums" style="line-height: 0.75; min-width: 225px;">89</span>
-              <div class="flex flex-col" style="gap: 2px; margin-bottom: 2px;">
-                <span class="text-sm sm:text-base text-txt-subtle uppercase tracking-wider" style="line-height: 0.75;">Average</span>
-                <span class="text-3xl sm:text-4xl md:text-5xl text-txt font-semibold uppercase" style="line-height: 0.75;">HR</span>
+              <!-- Row 3: Heart Rate -->
+              <div class="flex items-end">
+                <span class="text-6xl font-semibold text-[#FF375F] tabular-nums" style="line-height: 0.75; min-width: 225px;">89</span>
+                <div class="flex flex-col" style="gap: 2px; margin-bottom: 2px;">
+                  <span class="text-base text-txt-subtle uppercase tracking-wider" style="line-height: 0.75;">Average</span>
+                  <span class="text-5xl text-txt font-semibold uppercase" style="line-height: 0.75;">HR</span>
+                </div>
               </div>
             </div>
           </div>
@@ -621,8 +624,8 @@
         </div>
 
         <!-- Right: Phone mockup -->
-        <div class="reveal flex-shrink-0">
-          <div class="phone-mockup w-80 sm:w-96 md:w-[24rem] shadow-ds-4">
+        <div class="reveal w-full sm:w-auto flex justify-center sm:flex-shrink-0">
+          <div class="phone-mockup w-[92%] sm:w-96 md:w-[24rem] shadow-ds-4">
             <img src="firetime_images/apple-fitness.webp" alt="FireTime workout in Apple Fitness" loading="lazy" decoding="async">
           </div>
         </div>
@@ -634,48 +637,50 @@
 
   <!-- ===== PRIVACY SECTION ===== -->
   <section class="py-12 relative">
-    <div class="w-[80%] mx-auto">
+    <div class="w-[92%] sm:w-[92%] md:w-[80%] mx-auto">
       <!-- Video Bento Box with Overlay -->
-      <div class="reveal relative rounded-[2rem] overflow-hidden">
+      <div class="reveal relative rounded-2xl sm:rounded-[2rem] overflow-hidden min-h-[80vh] sm:min-h-0">
         <!-- Video Background -->
         <video
           autoplay
           muted
           loop
           playsinline
-          class="w-full h-auto"
+          webkit-playsinline
+          preload="auto"
+          class="absolute inset-0 w-full h-full object-cover sm:relative sm:w-full sm:h-auto"
         >
           <source src="Videos/7676731-uhd_4096_2160_25fps.webm" type="video/webm">
         </video>
 
         <!-- Dark Overlay -->
-        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="absolute inset-0 bg-black/60 sm:bg-black/50"></div>
 
         <!-- Content Overlay -->
-        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-          <span class="inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Privacy First</span>
-          <h2 class="text-[2.5rem] sm:text-5xl font-bold text-white mb-5" style="line-height: 1.0834933333;">Your data stays yours.</h2>
-          <p class="text-[17px] text-white/80 font-normal max-w-lg mb-8" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-            No account required. No tracking. No ads. Just you and your workout.
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 sm:p-8">
+          <span class="inline-block text-xs sm:text-sm font-medium text-primary-400 uppercase tracking-widest mb-3 sm:mb-4">Privacy First</span>
+          <h2 class="text-[2.5rem] font-bold text-white mb-5" style="line-height: 1.0834933333;">Your data stays&nbsp;<span class="text-primary">yours.</span></h2>
+          <p class="text-sm sm:text-[17px] text-white/80 font-normal max-w-lg mb-6 sm:mb-8" style="line-height: 1.5; letter-spacing: -0.022em;">
+            No account required. No tracking. No&nbsp;ads. Just you and your&nbsp;workout.
           </p>
 
           <!-- Privacy Stats -->
-          <div class="flex flex-wrap justify-center gap-8" style="font-family: 'Nunito', 'SF Pro Rounded', system-ui, sans-serif;">
+          <div class="grid grid-cols-3 gap-3 sm:flex sm:flex-wrap sm:justify-center sm:gap-8 w-full max-w-xs sm:max-w-none" style="font-family: 'Nunito', 'SF Pro Rounded', system-ui, sans-serif;">
             <div class="text-center">
-              <div class="text-6xl sm:text-7xl md:text-8xl font-bold text-white opacity-80">0</div>
-              <div class="text-sm text-white/60 uppercase tracking-wider mt-2">Accounts</div>
+              <div class="text-7xl sm:text-8xl md:text-9xl font-bold text-white opacity-80">0</div>
+              <div class="text-[10px] sm:text-sm text-white/60 uppercase tracking-wider mt-1 sm:mt-2">Accounts</div>
             </div>
             <div class="text-center">
-              <div class="text-6xl sm:text-7xl md:text-8xl font-bold text-white opacity-80">0</div>
-              <div class="text-sm text-white/60 uppercase tracking-wider mt-2">Tracking</div>
+              <div class="text-7xl sm:text-8xl md:text-9xl font-bold text-white opacity-80">0</div>
+              <div class="text-[10px] sm:text-sm text-white/60 uppercase tracking-wider mt-1 sm:mt-2">Tracking</div>
             </div>
             <div class="text-center">
-              <div class="text-6xl sm:text-7xl md:text-8xl font-bold text-white opacity-80">0</div>
-              <div class="text-sm text-white/60 uppercase tracking-wider mt-2">Ads</div>
+              <div class="text-7xl sm:text-8xl md:text-9xl font-bold text-white opacity-80">0</div>
+              <div class="text-[10px] sm:text-sm text-white/60 uppercase tracking-wider mt-1 sm:mt-2">Ads</div>
             </div>
-            <div class="text-center">
-              <div class="text-6xl sm:text-7xl md:text-8xl font-bold text-primary">100<span class="text-5xl">%</span></div>
-              <div class="text-sm text-white/60 uppercase tracking-wider mt-2">Yours</div>
+            <div class="text-center col-span-3 sm:col-span-1 mt-2 sm:mt-0">
+              <div class="text-7xl sm:text-8xl md:text-9xl font-bold text-primary">100<span class="text-5xl sm:text-6xl md:text-7xl">%</span></div>
+              <div class="text-[10px] sm:text-sm text-[#AD68FF] uppercase tracking-wider mt-1 sm:mt-2">Yours</div>
             </div>
           </div>
         </div>

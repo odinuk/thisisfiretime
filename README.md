@@ -2,7 +2,7 @@
 
 Marketing landing page for FireTime — the interval timer app for iPhone.
 
-**Last Updated:** February 12, 2026
+**Last Updated:** February 13, 2026 (Evening)
 
 ## Tech Stack
 
@@ -17,37 +17,59 @@ Marketing landing page for FireTime — the interval timer app for iPhone.
 ```
 Website/
 ├── index.html              # Main landing page
+├── support.html            # Support page with FAQ & Exercise Library
+├── privacy.html            # Privacy Policy
+├── terms.html              # Terms & Conditions
 ├── README.md               # This file
+├── Videos/                 # Video assets
+│   ├── FireTimeHeroVideo.webm
+│   └── *.webm              # Background videos
 ├── firetime_images/        # Screenshots and assets
-│   ├── apple-fitness.png
-│   ├── quick-build.png
-│   ├── workout-builder.png
-│   ├── workout-complete.png
-│   ├── watch-timer.png
-│   ├── watch-live-activity.png
-│   └── Simulator Screenshot - iPhone 17 - *.png
+│   ├── apple-fitness.webp
+│   ├── quick-build.webp
+│   ├── workout-builder.webp
+│   ├── CompleteWorkout.webp
+│   ├── FireTimePhoneIcon.svg
+│   └── Watch/
+│       ├── TimerPhone.webp
+│       └── FireTimeWatch.webp
 └── FireTime_Test/
     └── build/
-        └── core/variables.css      # Design tokens
+        └── core/variables.css
         └── components/variables.css
 ```
 
-## Page Sections
+## Page Sections (index.html)
 
 | Section | Description |
 |---------|-------------|
-| Hero | App intro with 3 phone mockups (fan layout) |
+| Hero | App intro with 3 phone mockups (fan layout with video center) |
+| Speed | Full-width video bento with "intention to exertion" headline |
 | Quick Build | Feature highlight — workout generation |
-| Active Timer | Timer UI showcase (2 phones, subtle rotation) |
-| Workout Builder | Custom interval editing |
-| Why FireTime? | 6 benefit cards with Lucide icons |
-| Apple Watch | Watch companion showcase |
-| Apple Fitness | Health integration with floating stat cards |
-| Privacy | "Your data stays yours" — 0/0/0/100% stats |
-| Exercise Library | Tabbed exercise browser (150+ exercises) |
-| Testimonials | 3 user quotes |
+| Full Control | Custom interval editing |
+| Active Timer | Timer UI showcase (watch + phone side by side) |
+| Apple Fitness | Health integration with animated stat display |
+| Privacy | "Your data stays yours" — 0/0/0/100% stats with video bg |
 | CTA | Final download prompt |
-| Footer | Links to Privacy Policy, Terms, Contact |
+| Footer | Links to Privacy Policy, Terms, Support |
+
+## Support Page (support.html)
+
+| Section | Description |
+|---------|-------------|
+| Exercise Library | Tabbed exercise browser (150+ exercises) with tooltips |
+| FAQ | Apple-style "Questions? Answers." accordion |
+
+## Mobile Responsiveness
+
+The site is fully responsive with these key adaptations:
+
+- **Hero phones**: Side phones hidden on mobile, center phone only
+- **Feature sections**: Text above phone on mobile (`flex-col-reverse`)
+- **Phone widths**: 92% width on mobile, fixed widths on desktop
+- **Typography**: Scaled headings for mobile readability
+- **Privacy section**: Portrait-style layout with taller min-height
+- **Stats**: Centered on mobile, left-aligned on desktop
 
 ## Design Tokens
 
@@ -55,7 +77,7 @@ All colors, radii, shadows, and durations use CSS variables from the design syst
 
 ```css
 /* Colors */
---primitive-color-brand-primary-500    /* Main purple */
+--primitive-color-brand-primary-500    /* Main purple #AD68FF */
 --primitive-color-brand-primary-950    /* Dark purple bg */
 --semantic-color-surface-neutral-default
 --semantic-color-text-neutral-bold
@@ -72,48 +94,40 @@ All colors, radii, shadows, and durations use CSS variables from the design syst
 ### Phone Mockup
 ```css
 .phone-mockup {
-  border-radius: 2.875rem;  /* 46px - iPhone corners */
-  padding: 0.4rem;
-  background: var(--primitive-color-neutral-gray-950);
+  overflow: hidden;
+}
+.phone-mockup img,
+.phone-mockup video {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 ```
 
-### Watch Mockup
-```css
-.watch-mockup {
-  border-radius: 2.875rem;  /* Apple Watch corners */
-  padding: 6px;
-}
-```
+### Hero Video
+- Center phone uses rounded corners (`rounded-[4rem]`)
+- Drop shadow for depth (`filter: drop-shadow()`)
 
-### Benefit Cards
-```css
-.benefit-card {
-  /* Hover: purple border + tinted background */
-}
-```
+### Apple Fitness Stats
+- Three-row layout with colored numbers
+- Purple (duration), Yellow (calories), Red (heart rate)
+- Centered on mobile, left-aligned on desktop
+- Uses Nunito font for numbers
 
-### Tab Buttons (Exercise Library)
-- **Inactive:** Dark gray bg, muted text
-- **Hover:** Lighter gray bg, border
-- **Active:** Purple border, purple text, purple-tinted bg
+### Exercise Pills (Support Page)
+- Tap-to-show tooltips on mobile
+- Hover tooltips on desktop
+- Staggered fade-in animation
 
-### Exercise Pills
-- **Default:** Gray-800 bg, bold white text
-- **Hover:** Subtle purple border
+### FAQ Accordion (Support Page)
+- Apple-style "Questions? Answers." heading
+- Chevron icons with rotation animation
+- No card borders, clean minimal design
 
 ## Animations
 
 ### Scroll Reveal
 Elements with `.reveal` class fade in and slide up when scrolled into view.
-
-### Floating Stat Cards (Apple Fitness)
-```css
-@keyframes floatCard {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-```
 
 ### Timer Ring
 ```css
@@ -123,28 +137,24 @@ Elements with `.reveal` class fade in and slide up when scrolled into view.
 }
 ```
 
-## Images
+## Videos
 
-Screenshots should be placed in `firetime_images/`. The phone/watch mockups add bezels via CSS — just provide the raw screen content.
+Videos are in `.webm` format. For Safari/iOS compatibility, `.mp4` versions are recommended as fallbacks.
 
-**Required images:**
-- `quick-build.png` — Quick Build sheet
-- `workout-builder.png` — Workout builder screen
-- `workout-complete.png` — Completion screen
-- `apple-fitness.png` — Apple Fitness showing FireTime workout
-- `watch-timer.png` — Watch timer view
-- `watch-live-activity.png` — Watch data view
-- Timer screenshots (Simulator Screenshot files)
+**Current videos:**
+- `FireTimeHeroVideo.webm` — Hero phone demo
+- `8401254-hd_1920_1080_30fps.webm` — Speed section background
+- `7676731-uhd_4096_2160_25fps.webm` — Privacy section background
 
 ## Brand Colors
 
 | Color | Hex | Usage |
 |-------|-----|-------|
 | Primary Purple | #AD68FF | Accents, CTAs, highlights |
-| Primary Dark | ~#1a0d2e | Backgrounds, hover states |
-| Success Green | #30D158 | Apple Fitness duration |
-| Warning Orange | #FF9F0A | Apple Fitness calories |
-| Error Red | #FF375F | Apple Fitness heart rate |
+| Primary Dark | #1c1c1e | Backgrounds |
+| Duration Purple | #AD68FF | Apple Fitness duration |
+| Calories Yellow | #FFD60A | Apple Fitness calories |
+| Heart Rate Red | #FF375F | Apple Fitness heart rate |
 
 ## Development
 
@@ -162,6 +172,7 @@ npx serve .
 ## Notes
 
 - Download buttons currently show "Coming Soon!" alert
-- Privacy Policy and Terms link to Notion pages
+- Privacy Policy and Terms pages available
 - Contact email: firetime.app@gmail.com
-- All DEBUG/test code is in the app, not the website
+- Videos may not autoplay on iOS Safari (webm format limitation)
+- All images use `.webp` format for better compression
