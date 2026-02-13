@@ -134,20 +134,20 @@
       position: absolute;
       bottom: 100%;
       left: 50%;
-      transform: translateX(-50%) translateY(-8px);
-      background: var(--semantic-color-surface-neutral-default);
-      border: 1px solid var(--semantic-color-border-neutral-subtle);
-      border-radius: var(--primitive-radius-lg);
-      padding: 0.75rem 1rem;
-      width: 280px;
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--semantic-color-text-neutral-default);
+      transform: translateX(-50%) translateY(-10px);
+      background: var(--primitive-color-brand-primary-950);
+      border: 1px solid var(--primitive-color-brand-primary-700);
+      border-radius: var(--primitive-radius-2xl);
+      padding: 1.2rem 1.5rem;
+      width: 360px;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--semantic-color-text-neutral-bold);
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.2s ease, visibility 0.2s ease;
+      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
       z-index: 100;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
       pointer-events: none;
     }
     .exercise-pill .tooltip::after {
@@ -156,12 +156,38 @@
       top: 100%;
       left: 50%;
       transform: translateX(-50%);
-      border: 6px solid transparent;
-      border-top-color: var(--semantic-color-surface-neutral-default);
+      border: 10px solid transparent;
+      border-top-color: var(--primitive-color-brand-primary-950);
     }
-    .exercise-pill:hover .tooltip {
+    /* Desktop: show on hover */
+    @media (hover: hover) {
+      .exercise-pill:hover .tooltip {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(-12px);
+      }
+    }
+    /* Mobile: show on tap (via JS class) */
+    .exercise-pill.tooltip-active .tooltip {
       opacity: 1;
       visibility: visible;
+      transform: translateX(-50%) translateY(-12px);
+      pointer-events: auto;
+    }
+    /* Mobile responsive tooltip */
+    @media (max-width: 480px) {
+      .exercise-pill .tooltip {
+        width: calc(100vw - 48px);
+        max-width: 360px;
+        left: auto;
+        right: auto;
+        transform: translateX(-50%) translateY(-10px);
+        font-size: 15px;
+        padding: 1rem 1.25rem;
+      }
+      .exercise-pill.tooltip-active .tooltip {
+        transform: translateX(-50%) translateY(-12px);
+      }
     }
 
     /* Category Tabs */
@@ -174,20 +200,20 @@
     }
 
     .category-tab {
-      background: var(--primitive-color-neutral-gray-800);
-      border: 1px solid transparent;
+      background: transparent;
+      border: 1px solid var(--semantic-color-border-neutral-subtle);
       border-radius: var(--primitive-radius-lg);
       padding: 0.625rem 1.25rem;
       font-size: 14px;
-      font-weight: 500;
-      color: var(--semantic-color-text-neutral-bold);
+      font-weight: 600;
+      color: var(--semantic-color-text-neutral-default);
       cursor: pointer;
       transition: all 0.2s ease;
     }
 
     .category-tab:hover {
       border-color: var(--primitive-color-brand-primary-500);
-      color: var(--semantic-color-text-neutral-bold);
+      color: var(--primitive-color-brand-primary-400);
     }
 
     .category-tab.active {
@@ -284,7 +310,7 @@
   </section>
 
   <!-- EXERCISE LIBRARY -->
-  <section class="pb-16">
+  <section class="pb-8">
     <div class="max-w-5xl mx-auto px-6">
       <div class="text-center mb-8">
         <h2 class="text-2xl font-bold text-txt mb-4">Exercise Library</h2>
@@ -626,6 +652,33 @@
         }
       });
     });
+
+    // Mobile tooltip tap-to-show
+    const isTouchDevice = window.matchMedia('(hover: none)').matches;
+
+    if (isTouchDevice) {
+      const allPills = document.querySelectorAll('.exercise-pill');
+
+      allPills.forEach((pill) => {
+        pill.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const wasActive = pill.classList.contains('tooltip-active');
+
+          // Close all other tooltips
+          allPills.forEach((p) => p.classList.remove('tooltip-active'));
+
+          // Toggle this one
+          if (!wasActive) {
+            pill.classList.add('tooltip-active');
+          }
+        });
+      });
+
+      // Close tooltip when tapping outside
+      document.addEventListener('click', () => {
+        allPills.forEach((p) => p.classList.remove('tooltip-active'));
+      });
+    }
   </script>
 
 </body>
