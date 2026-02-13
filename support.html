@@ -193,158 +193,134 @@
       box-shadow: 0 2px 8px rgba(173, 104, 255, 0.3);
     }
 
-    /* Exercise Library Layout */
-    .exercise-library-layout {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 24px;
-      min-height: 400px;
-    }
-
-    @media (max-width: 768px) {
-      .exercise-library-layout {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-    }
-
-    /* Category List (Left Side) */
-    .category-list {
+    /* Exercise Accordion - The Breathing Soul */
+    .exercise-accordion {
+      max-width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 8px;
+      --accordion-border-color: var(--primitive-color-brand-primary-700);
+      --accordion-text-color: var(--semantic-color-text-neutral-bold);
+      --accordion-hover-color: var(--primitive-color-brand-primary-400);
+      --accordion-body-color: var(--semantic-color-text-neutral-subtle);
+      --accordion-expanded-width: 100%;
+      --accordion-animation-speed: 0.7s;
     }
 
-    .category-btn {
+    .exercise-accordion .accordion-item {
+      background: var(--primitive-color-neutral-gray-900);
+      border: 1px solid var(--semantic-color-border-neutral-subtle);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: width var(--accordion-animation-speed) cubic-bezier(0.4, 0, 0.2, 1),
+                  border-color 0.3s ease;
+      width: fit-content;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .exercise-accordion .accordion-item:hover {
+      border-color: var(--accordion-border-color);
+    }
+
+    .exercise-accordion .accordion-item.active {
+      width: 100%;
+      border-color: var(--primitive-color-brand-primary-500);
+    }
+
+    .exercise-accordion .accordion-button {
+      padding: 0 20px;
+      height: 56px;
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 12px 14px;
-      background: var(--primitive-color-neutral-gray-900);
-      border: 1px solid transparent;
-      border-radius: 12px;
+      gap: 12px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
-      color: var(--semantic-color-text-neutral-default);
-      text-align: left;
-      transition: all 0.2s ease;
+      color: var(--accordion-text-color);
+      user-select: none;
+      white-space: nowrap;
     }
 
-    .category-btn:hover {
-      background: var(--primitive-color-neutral-gray-800);
-      border-color: var(--semantic-color-border-neutral-subtle);
+    .exercise-accordion .accordion-button:hover {
+      color: var(--accordion-hover-color);
     }
 
-    .category-btn.active {
-      background: var(--primitive-color-brand-primary-950);
-      border-color: var(--primitive-color-brand-primary-500);
-      color: var(--primitive-color-brand-primary-400);
-    }
-
-    .category-btn .cat-icon {
-      width: 28px;
-      height: 28px;
+    /* Icon fades out when expanded */
+    .exercise-accordion .accordion-icon {
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 6px;
-      background: var(--primitive-color-neutral-gray-800);
-      color: var(--semantic-color-text-neutral-subtle);
-      flex-shrink: 0;
-      transition: all 0.2s ease;
-    }
-
-    .category-btn.active .cat-icon {
-      background: var(--primitive-color-brand-primary-500);
-      color: white;
-    }
-
-    .category-btn .cat-count {
-      margin-left: auto;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--semantic-color-text-neutral-subtle);
-      background: var(--primitive-color-neutral-gray-800);
-      padding: 2px 8px;
+      width: 32px;
+      height: 32px;
       border-radius: 10px;
+      background: var(--primitive-color-brand-primary-950);
+      color: var(--primitive-color-brand-primary-400);
+      flex-shrink: 0;
+      opacity: 1;
+      transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
     }
 
-    .category-btn.active .cat-count {
-      background: var(--primitive-color-brand-primary-700);
-      color: var(--primitive-color-brand-primary-200);
+    .exercise-accordion .accordion-item.active .accordion-icon {
+      opacity: 0;
+      transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
     }
 
-    /* Content Panel (Right Side) */
-    .exercise-content-panel {
-      background: var(--primitive-color-neutral-gray-900);
-      border: 1px solid var(--semantic-color-border-neutral-subtle);
-      border-radius: 16px;
-      padding: 24px;
-      position: relative;
+    /* Text slides left when expanded */
+    .exercise-accordion .accordion-button-text {
+      display: inline-block;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+      transform: translateX(0);
+    }
+
+    .exercise-accordion .accordion-item.active .accordion-button-text {
+      transform: translateX(-44px);
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    }
+
+    /* Content breathing animation */
+    .exercise-accordion .accordion-content {
+      max-height: 0;
       overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+                  visibility 0s 0.2s;
     }
 
-    .exercise-content-panel::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--primitive-color-brand-primary-500);
-      opacity: 0.6;
+    .exercise-accordion .accordion-item.active .accordion-content {
+      max-height: 600px;
+      opacity: 1;
+      visibility: visible;
+      transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
+                  visibility 0s;
     }
 
-    .panel-header {
+    .exercise-accordion .accordion-content-inner {
+      padding: 0 20px 20px 20px;
+    }
+
+    .exercise-accordion .accordion-desc {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--accordion-body-color);
       margin-bottom: 16px;
     }
 
-    .panel-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--semantic-color-text-neutral-bold);
-      margin-bottom: 6px;
-    }
-
-    .panel-description {
-      font-size: 14px;
-      color: var(--semantic-color-text-neutral-subtle);
-      line-height: 1.5;
-    }
-
-    .exercise-grid {
+    .exercise-accordion .exercise-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
-    /* Content panels */
-    .exercise-panel {
+    /* Hidden accordion (for mode switching) */
+    .exercise-accordion[data-mode] {
       display: none;
     }
-    .exercise-panel.active {
-      display: block;
-      animation: fadeIn 0.25s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Hidden layouts (for mode switching) */
-    .exercise-library-layout[data-mode] {
-      display: none;
-    }
-    .exercise-library-layout[data-mode].active {
-      display: grid;
-    }
-    @media (max-width: 768px) {
-      .exercise-library-layout[data-mode].active {
-        display: flex;
-        flex-direction: column;
-      }
+    .exercise-accordion[data-mode].active {
+      display: flex;
     }
   </style>
 </head>
@@ -412,338 +388,322 @@
         </div>
       </div>
 
-      <!-- BODYWEIGHT LAYOUT -->
-      <div class="exercise-library-layout active" data-mode="bodyweight">
+      <!-- BODYWEIGHT ACCORDION -->
+      <div class="exercise-accordion active" data-mode="bodyweight">
 
-        <!-- Category List (Left) -->
-        <div class="category-list">
-          <button class="category-btn active" data-cat="bw-core">
-            <span class="cat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span>
-            Core
-            <span class="cat-count">14</span>
-          </button>
-          <button class="category-btn" data-cat="bw-fullbody">
-            <span class="cat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/></svg></span>
-            Full Body
-            <span class="cat-count">15</span>
-          </button>
-          <button class="category-btn" data-cat="bw-upper">
-            <span class="cat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></span>
-            Upper Body
-            <span class="cat-count">15</span>
-          </button>
-          <button class="category-btn" data-cat="bw-lower">
-            <span class="cat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/></svg></span>
-            Lower Body
-            <span class="cat-count">15</span>
-          </button>
-          <button class="category-btn" data-cat="bw-calisthenics">
-            <span class="cat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><path d="M12 22V8"/></svg></span>
-            Calisthenics
-            <span class="cat-count">15</span>
-          </button>
-          <button class="category-btn" data-cat="bw-cardio">
-            <span class="cat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
-            Cardio
-            <span class="cat-count">15</span>
-          </button>
+        <!-- Core -->
+        <div class="accordion-item">
+          <div class="accordion-button">
+            <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span>
+            <span class="accordion-button-text">Core</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">Strengthen your midsection — abs, obliques, and lower back for better stability and posture.</p>
+              <div class="exercise-grid">
+                <span class="exercise-pill">Plank<span class="tooltip">Hold a straight line from head to heels. Engage core, don't let hips sag or pike. Keep neck neutral.</span></span>
+                <span class="exercise-pill">Mountain Climbers<span class="tooltip">Start in plank. Drive knees to chest alternately at pace. Keep hips low and core tight throughout.</span></span>
+                <span class="exercise-pill">Dead Bug<span class="tooltip">Lie on back, arms up, knees at 90°. Lower opposite arm and leg while pressing lower back into floor.</span></span>
+                <span class="exercise-pill">Bicycle Crunches<span class="tooltip">Hands behind head, bring elbow to opposite knee. Rotate through the torso, not just the arms.</span></span>
+                <span class="exercise-pill">Russian Twists<span class="tooltip">Sit with knees bent, lean back slightly. Rotate torso side to side, keeping core engaged throughout.</span></span>
+                <span class="exercise-pill">Leg Raises<span class="tooltip">Lie flat, hands under hips. Raise legs to 90° then lower slowly. Press lower back into floor.</span></span>
+                <span class="exercise-pill">Flutter Kicks<span class="tooltip">Lie flat, hands under hips. Small alternating kicks with straight legs. Keep lower back pressed down.</span></span>
+                <span class="exercise-pill">Bird Dogs<span class="tooltip">From all fours, extend opposite arm and leg. Keep back flat and hips level. Pause at full extension.</span></span>
+                <span class="exercise-pill">Side Plank <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span><span class="tooltip">Stack feet or stagger, lift hips forming straight line. Hold, keeping hips up. Do both sides.</span></span>
+                <span class="exercise-pill">V-Ups<span class="tooltip">Lie flat, arms overhead. Lift legs and torso simultaneously, reaching hands to toes. Control the descent.</span></span>
+                <span class="exercise-pill">Hollow Hold<span class="tooltip">Lie flat, press lower back down. Lift shoulders and legs slightly off ground. Hold the banana shape.</span></span>
+                <span class="exercise-pill">Reverse Crunches<span class="tooltip">Lie flat, knees bent. Curl hips off floor bringing knees to chest. Lower with control, don't swing.</span></span>
+                <span class="exercise-pill">Toe Touches<span class="tooltip">Lie flat, legs vertical. Reach hands to toes, lifting shoulders off ground. Lower with control.</span></span>
+                <span class="exercise-pill">Plank Hip Dips<span class="tooltip">In forearm plank, rotate hips to touch floor each side. Keep core tight, control the movement.</span></span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Content Panel (Right) -->
-        <div class="exercise-content-panel">
-
-          <!-- Core -->
-          <div class="exercise-panel active" data-panel="bw-core">
-            <div class="panel-header">
-              <h3 class="panel-title">Core</h3>
-              <p class="panel-description">Strengthen your midsection with exercises targeting abs, obliques, and lower back for better stability and posture.</p>
-            </div>
-            <div class="exercise-grid">
-              <span class="exercise-pill">Plank<span class="tooltip">Hold a straight line from head to heels. Engage core, don't let hips sag or pike. Keep neck neutral.</span></span>
-              <span class="exercise-pill">Mountain Climbers<span class="tooltip">Start in plank. Drive knees to chest alternately at pace. Keep hips low and core tight throughout.</span></span>
-              <span class="exercise-pill">Dead Bug<span class="tooltip">Lie on back, arms up, knees at 90°. Lower opposite arm and leg while pressing lower back into floor.</span></span>
-              <span class="exercise-pill">Bicycle Crunches<span class="tooltip">Hands behind head, bring elbow to opposite knee. Rotate through the torso, not just the arms.</span></span>
-              <span class="exercise-pill">Russian Twists<span class="tooltip">Sit with knees bent, lean back slightly. Rotate torso side to side, keeping core engaged throughout.</span></span>
-              <span class="exercise-pill">Leg Raises<span class="tooltip">Lie flat, hands under hips. Raise legs to 90° then lower slowly. Press lower back into floor.</span></span>
-              <span class="exercise-pill">Flutter Kicks<span class="tooltip">Lie flat, hands under hips. Small alternating kicks with straight legs. Keep lower back pressed down.</span></span>
-              <span class="exercise-pill">Bird Dogs<span class="tooltip">From all fours, extend opposite arm and leg. Keep back flat and hips level. Pause at full extension.</span></span>
-              <span class="exercise-pill">Side Plank <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span><span class="tooltip">Stack feet or stagger, lift hips forming straight line. Hold, keeping hips up. Do both sides.</span></span>
-              <span class="exercise-pill">V-Ups<span class="tooltip">Lie flat, arms overhead. Lift legs and torso simultaneously, reaching hands to toes. Control the descent.</span></span>
-              <span class="exercise-pill">Hollow Hold<span class="tooltip">Lie flat, press lower back down. Lift shoulders and legs slightly off ground. Hold the banana shape.</span></span>
-              <span class="exercise-pill">Reverse Crunches<span class="tooltip">Lie flat, knees bent. Curl hips off floor bringing knees to chest. Lower with control, don't swing.</span></span>
-              <span class="exercise-pill">Toe Touches<span class="tooltip">Lie flat, legs vertical. Reach hands to toes, lifting shoulders off ground. Lower with control.</span></span>
-              <span class="exercise-pill">Plank Hip Dips<span class="tooltip">In forearm plank, rotate hips to touch floor each side. Keep core tight, control the movement.</span></span>
+        <!-- Full Body -->
+        <div class="accordion-item">
+          <div class="accordion-button">
+            <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/></svg></span>
+            <span class="accordion-button-text">Full Body</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">Compound movements hitting multiple muscle groups for maximum calorie burn and functional fitness.</p>
+              <div class="exercise-grid">
+                <span class="exercise-pill">Burpees<span class="tooltip">Drop to floor, chest down. Push up, jump feet to hands, then jump with arms overhead. Full extension.</span></span>
+                <span class="exercise-pill">Mountain Climbers<span class="tooltip">Start in plank. Drive knees to chest alternately at pace. Keep hips low and core tight throughout.</span></span>
+                <span class="exercise-pill">Squat to Press<span class="tooltip">Squat holding weight at shoulders. As you stand, press weight overhead. Lower and repeat fluidly.</span></span>
+                <span class="exercise-pill">Plank Jacks<span class="tooltip">In plank position, jump feet wide then back together. Keep hips stable and core tight.</span></span>
+                <span class="exercise-pill">Jumping Jacks<span class="tooltip">Jump feet wide while raising arms overhead. Jump back to start. Keep a steady rhythm.</span></span>
+                <span class="exercise-pill">Thrusters<span class="tooltip">Front squat into overhead press in one fluid motion. Use leg drive to power the press.</span></span>
+                <span class="exercise-pill">Bear Crawl<span class="tooltip">On all fours, knees hovering. Move opposite hand and foot together. Keep back flat, hips low.</span></span>
+                <span class="exercise-pill">Inchworms<span class="tooltip">From standing, walk hands out to plank. Walk feet to hands, stand up. Keep legs as straight as possible.</span></span>
+                <span class="exercise-pill">Star Jumps<span class="tooltip">Squat down, explode up spreading arms and legs wide like a star. Land softly in squat.</span></span>
+                <span class="exercise-pill">Sprawls<span class="tooltip">Like a burpee without the push-up. Drop hips to floor, chest stays up. Pop back up quickly.</span></span>
+                <span class="exercise-pill">Turkish Get-Up<span class="tooltip">Lie down, weight in one hand. Stand up while keeping weight overhead. Reverse to return. Complex but effective.</span></span>
+                <span class="exercise-pill">Renegade Rows<span class="tooltip">Plank on dumbbells. Row one weight while stabilizing. Alternate sides. Minimize hip rotation.</span></span>
+                <span class="exercise-pill">Man Makers<span class="tooltip">Burpee with dumbbells plus rows and press. Drop, push-up, row each side, jump up, press overhead.</span></span>
+                <span class="exercise-pill">Devil Press<span class="tooltip">Burpee with dumbbells, swing weights overhead at top. Powerful hip drive on the way up.</span></span>
+                <span class="exercise-pill">Squat Thrusts<span class="tooltip">From standing, drop to plank, jump feet back to hands, stand. No push-up or jump at top.</span></span>
+              </div>
             </div>
           </div>
-
-          <!-- Full Body -->
-          <div class="exercise-panel" data-panel="bw-fullbody">
-            <div class="panel-header">
-              <h3 class="panel-title">Full Body</h3>
-              <p class="panel-description">Compound movements that work multiple muscle groups simultaneously for maximum calorie burn and functional fitness.</p>
-            </div>
-            <div class="exercise-grid">
-              <span class="exercise-pill">Burpees<span class="tooltip">Drop to floor, chest down. Push up, jump feet to hands, then jump with arms overhead. Full extension.</span></span>
-              <span class="exercise-pill">Mountain Climbers<span class="tooltip">Start in plank. Drive knees to chest alternately at pace. Keep hips low and core tight throughout.</span></span>
-              <span class="exercise-pill">Squat to Press<span class="tooltip">Squat holding weight at shoulders. As you stand, press weight overhead. Lower and repeat fluidly.</span></span>
-              <span class="exercise-pill">Plank Jacks<span class="tooltip">In plank position, jump feet wide then back together. Keep hips stable and core tight.</span></span>
-              <span class="exercise-pill">Jumping Jacks<span class="tooltip">Jump feet wide while raising arms overhead. Jump back to start. Keep a steady rhythm.</span></span>
-              <span class="exercise-pill">Thrusters<span class="tooltip">Front squat into overhead press in one fluid motion. Use leg drive to power the press.</span></span>
-              <span class="exercise-pill">Bear Crawl<span class="tooltip">On all fours, knees hovering. Move opposite hand and foot together. Keep back flat, hips low.</span></span>
-              <span class="exercise-pill">Inchworms<span class="tooltip">From standing, walk hands out to plank. Walk feet to hands, stand up. Keep legs as straight as possible.</span></span>
-              <span class="exercise-pill">Star Jumps<span class="tooltip">Squat down, explode up spreading arms and legs wide like a star. Land softly in squat.</span></span>
-              <span class="exercise-pill">Sprawls<span class="tooltip">Like a burpee without the push-up. Drop hips to floor, chest stays up. Pop back up quickly.</span></span>
-              <span class="exercise-pill">Turkish Get-Up<span class="tooltip">Lie down, weight in one hand. Stand up while keeping weight overhead. Reverse to return. Complex but effective.</span></span>
-              <span class="exercise-pill">Renegade Rows<span class="tooltip">Plank on dumbbells. Row one weight while stabilizing. Alternate sides. Minimize hip rotation.</span></span>
-              <span class="exercise-pill">Man Makers<span class="tooltip">Burpee with dumbbells plus rows and press. Drop, push-up, row each side, jump up, press overhead.</span></span>
-              <span class="exercise-pill">Devil Press<span class="tooltip">Burpee with dumbbells, swing weights overhead at top. Powerful hip drive on the way up.</span></span>
-              <span class="exercise-pill">Squat Thrusts<span class="tooltip">From standing, drop to plank, jump feet back to hands, stand. No push-up or jump at top.</span></span>
-            </div>
-          </div>
-
-          <!-- Upper Body -->
-          <div class="exercise-panel" data-panel="bw-upper">
-            <div class="panel-header">
-              <h3 class="panel-title">Upper Body</h3>
-              <p class="panel-description">Build pushing and pulling strength through chest, shoulders, back, and arm exercises using your bodyweight.</p>
-            </div>
-            <div class="exercise-grid">
-              <span class="exercise-pill">Push-Ups<span class="tooltip">Hands shoulder-width, body straight. Lower chest to floor, elbows at 45°. Push back up fully.</span></span>
-              <span class="exercise-pill">Diamond Push-Ups<span class="tooltip">Hands together forming diamond. Elbows stay close to body. Great for triceps emphasis.</span></span>
-              <span class="exercise-pill">Wide Push-Ups<span class="tooltip">Hands wider than shoulders. More chest emphasis. Keep elbows tracking over wrists.</span></span>
-              <span class="exercise-pill">Pike Push-Ups<span class="tooltip">Hips high in inverted V. Lower head toward floor between hands. Targets shoulders.</span></span>
-              <span class="exercise-pill">Tricep Dips<span class="tooltip">Hands on edge behind you. Lower body by bending elbows to 90°. Press back up without locking.</span></span>
-              <span class="exercise-pill">Shoulder Taps<span class="tooltip">In plank, tap opposite shoulder with hand. Minimize hip rotation. Keep core tight.</span></span>
-              <span class="exercise-pill">Arm Circles<span class="tooltip">Arms extended to sides. Make small circles, gradually increasing size. Keep shoulders down.</span></span>
-              <span class="exercise-pill">Plank Up-Downs<span class="tooltip">From forearm plank, push up to hands one arm at a time. Alternate leading arm each rep.</span></span>
-              <span class="exercise-pill">Superman Pull<span class="tooltip">Lie face down, arms extended. Lift chest and pull elbows back squeezing shoulder blades together.</span></span>
-              <span class="exercise-pill">Decline Push-Ups<span class="tooltip">Feet elevated on bench or step. Increases difficulty and shoulder engagement. Keep body straight.</span></span>
-              <span class="exercise-pill">Archer Push-Ups<span class="tooltip">Wide push-up, shift weight to one arm while other extends. Alternate sides. Builds toward one-arm.</span></span>
-              <span class="exercise-pill">Hindu Push-Ups<span class="tooltip">Start in downward dog, swoop down and through to upward dog. Reverse the motion. Fluid movement.</span></span>
-              <span class="exercise-pill">Dive Bombers<span class="tooltip">Like Hindu push-ups but reverse back through the same path. Great for shoulders and chest.</span></span>
-              <span class="exercise-pill">Plank Shoulder Taps<span class="tooltip">In high plank, tap opposite shoulder with hand. Keep hips square, don't rotate. Core engaged.</span></span>
-              <span class="exercise-pill">Commando Planks<span class="tooltip">Forearm plank to high plank and back. Alternate leading arm. Keep hips stable throughout.</span></span>
-            </div>
-          </div>
-
-          <!-- Lower Body -->
-          <div class="exercise-panel" data-panel="bw-lower">
-            <div class="panel-header">
-              <h3 class="panel-title">Lower Body</h3>
-              <p class="panel-description">Target quads, hamstrings, glutes, and calves with squat and lunge variations for powerful legs.</p>
-            </div>
-            <div class="exercise-grid">
-              <span class="exercise-pill">Squats<span class="tooltip">Feet shoulder-width, toes slightly out. Sit back and down, knees tracking toes. Depth to parallel or below.</span></span>
-              <span class="exercise-pill">Lunges<span class="tooltip">Step forward, lower back knee toward floor. Front knee stays over ankle. Push back to start.</span></span>
-              <span class="exercise-pill">Jump Squats<span class="tooltip">Squat down, then explode upward. Land softly with bent knees. Go straight into next rep.</span></span>
-              <span class="exercise-pill">Glute Bridges<span class="tooltip">Lie on back, knees bent. Drive hips up squeezing glutes. Pause at top, lower with control.</span></span>
-              <span class="exercise-pill">Wall Sit<span class="tooltip">Back flat against wall, thighs parallel to floor. Hold position. Don't rest hands on legs.</span></span>
-              <span class="exercise-pill">Calf Raises<span class="tooltip">Rise onto balls of feet, pause at top. Lower with control. Use wall for balance if needed.</span></span>
-              <span class="exercise-pill">Sumo Squats<span class="tooltip">Wide stance, toes pointed out. Squat keeping knees over toes. Great for inner thighs and glutes.</span></span>
-              <span class="exercise-pill">Step-Ups<span class="tooltip">Step onto box, drive through heel. Bring other foot up, then step down with control.</span></span>
-              <span class="exercise-pill">Bulgarian Split Squat <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span><span class="tooltip">Rear foot elevated on bench. Lower until back knee nearly touches floor. Drive up through front heel.</span></span>
-              <span class="exercise-pill">Single Leg Deadlift <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span><span class="tooltip">Hinge at hip on one leg, back leg extends behind. Keep back flat. Touch floor and return.</span></span>
-              <span class="exercise-pill">Box Jumps<span class="tooltip">Jump onto box landing with both feet. Stand fully, step down. Use arm swing for power.</span></span>
-              <span class="exercise-pill">Lateral Lunges<span class="tooltip">Step wide to side, sit back into hip. Keep other leg straight. Push back to center.</span></span>
-              <span class="exercise-pill">Pistol Squats<span class="tooltip">Single leg squat, other leg extended forward. Go deep, drive up through heel. Use support if needed.</span></span>
-              <span class="exercise-pill">Curtsy Lunges<span class="tooltip">Step back and across behind standing leg. Lower into lunge, then return. Works glutes and inner thighs.</span></span>
-              <span class="exercise-pill">Frog Jumps<span class="tooltip">Deep squat, hands touch floor. Explode forward and up. Land softly, immediately repeat.</span></span>
-            </div>
-          </div>
-
-          <!-- Calisthenics -->
-          <div class="exercise-panel" data-panel="bw-calisthenics">
-            <div class="panel-header">
-              <h3 class="panel-title">Calisthenics</h3>
-              <p class="panel-description">Advanced bodyweight skills and strength moves. Progress from basics to impressive feats of control.</p>
-            </div>
-            <div class="exercise-grid">
-              <span class="exercise-pill">Pull-Ups<span class="tooltip">Hang with palms forward, pull chin over bar. Lead with chest, squeeze back at top. Control down.</span></span>
-              <span class="exercise-pill">Push-Ups<span class="tooltip">Hands shoulder-width, body straight. Lower chest to floor, elbows at 45°. Push back up fully.</span></span>
-              <span class="exercise-pill">Dips<span class="tooltip">Support on parallel bars, lower until shoulders below elbows. Press up to lockout. Lean forward for chest.</span></span>
-              <span class="exercise-pill">Muscle-Ups<span class="tooltip">Explosive pull-up transitioning over bar to dip. Requires strong pull and hip drive. Advanced move.</span></span>
-              <span class="exercise-pill">Handstand Hold<span class="tooltip">Kick up against wall or freestanding. Stack shoulders over wrists, engage core. Build time gradually.</span></span>
-              <span class="exercise-pill">L-Sit<span class="tooltip">Support on parallettes or floor, legs extended forward. Keep legs parallel to ground, core tight.</span></span>
-              <span class="exercise-pill">Pistol Squats<span class="tooltip">Single leg squat, other leg extended forward. Go deep, drive up through heel. Use support if needed.</span></span>
-              <span class="exercise-pill">Hanging Leg Raises<span class="tooltip">Hang from bar, raise legs to parallel or higher. Control the swing, squeeze abs at top.</span></span>
-              <span class="exercise-pill">Dragon Flags<span class="tooltip">Lie on bench, grip behind head. Raise body as one unit, lower slowly. Keep body straight throughout.</span></span>
-              <span class="exercise-pill">Planche Lean<span class="tooltip">In push-up position, lean forward shifting weight over hands. Shoulders past wrists. Build hold time.</span></span>
-              <span class="exercise-pill">Front Lever Raises<span class="tooltip">Hang from bar, raise body horizontal with straight arms. Lower with control. Very advanced.</span></span>
-              <span class="exercise-pill">Skin the Cat<span class="tooltip">Hang, rotate backwards through arms until stretched behind. Return through same path. Shoulder mobility.</span></span>
-              <span class="exercise-pill">Archer Push-Ups<span class="tooltip">Wide push-up, shift weight to one arm while other extends. Alternate sides. Builds toward one-arm.</span></span>
-              <span class="exercise-pill">One Arm Push-Up Prep<span class="tooltip">Staggered hand push-up, gradually widen until one arm does most work. Progress slowly.</span></span>
-              <span class="exercise-pill">Nordic Curls<span class="tooltip">Kneel, anchor feet. Lower body forward with control using hamstrings. Push off floor to return if needed.</span></span>
-            </div>
-          </div>
-
-          <!-- Cardio -->
-          <div class="exercise-panel" data-panel="bw-cardio">
-            <div class="panel-header">
-              <h3 class="panel-title">Cardio</h3>
-              <p class="panel-description">Heart-pumping exercises to boost endurance, burn calories, and improve cardiovascular health.</p>
-            </div>
-            <div class="exercise-grid">
-              <span class="exercise-pill">High Knees<span class="tooltip">Run in place driving knees to hip height. Pump arms. Stay on balls of feet for quick turnover.</span></span>
-              <span class="exercise-pill">Jumping Jacks<span class="tooltip">Jump feet wide while raising arms overhead. Jump back to start. Keep a steady rhythm.</span></span>
-              <span class="exercise-pill">Burpees<span class="tooltip">Drop to floor, chest down. Push up, jump feet to hands, then jump with arms overhead. Full extension.</span></span>
-              <span class="exercise-pill">Mountain Climbers<span class="tooltip">Start in plank. Drive knees to chest alternately at pace. Keep hips low and core tight throughout.</span></span>
-              <span class="exercise-pill">Jump Rope<span class="tooltip">Light bounce on balls of feet, wrists turn rope. Keep elbows close, jump just high enough to clear.</span></span>
-              <span class="exercise-pill">Speed Skaters<span class="tooltip">Leap side to side, landing on one foot. Touch down with opposite hand. Stay low.</span></span>
-              <span class="exercise-pill">Tuck Jumps<span class="tooltip">Jump and pull knees to chest at peak. Land softly with bent knees. Reset and repeat.</span></span>
-              <span class="exercise-pill">Box Jumps<span class="tooltip">Jump onto box landing with both feet. Stand fully, step down. Use arm swing for power.</span></span>
-              <span class="exercise-pill">Lateral Shuffles<span class="tooltip">Low athletic stance, shuffle sideways quickly. Stay low, don't cross feet. Quick direction changes.</span></span>
-              <span class="exercise-pill">Fast Feet<span class="tooltip">Quick small steps in place as fast as possible. Stay on balls of feet. Keep core engaged.</span></span>
-              <span class="exercise-pill">Butt Kicks<span class="tooltip">Run in place kicking heels to glutes. Keep upper body tall. Quick foot turnover.</span></span>
-              <span class="exercise-pill">Sprint in Place<span class="tooltip">Full speed running motion without moving forward. Drive knees high, pump arms hard.</span></span>
-              <span class="exercise-pill">Squat Jumps<span class="tooltip">Squat down, explode upward. Land softly back into squat. Continuous movement.</span></span>
-              <span class="exercise-pill">Star Jumps<span class="tooltip">Squat down, explode up spreading arms and legs wide like a star. Land softly in squat.</span></span>
-              <span class="exercise-pill">Plank Jacks<span class="tooltip">In plank position, jump feet wide then back together. Keep hips stable and core tight.</span></span>
-            </div>
-          </div>
-
         </div>
+
+        <!-- Upper Body -->
+        <div class="accordion-item">
+          <div class="accordion-button">
+            <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></span>
+            <span class="accordion-button-text">Upper Body</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">Push and pull strength through chest, shoulders, back, and arms using your bodyweight.</p>
+              <div class="exercise-grid">
+                <span class="exercise-pill">Push-Ups<span class="tooltip">Hands shoulder-width, body straight. Lower chest to floor, elbows at 45°. Push back up fully.</span></span>
+                <span class="exercise-pill">Diamond Push-Ups<span class="tooltip">Hands together forming diamond. Elbows stay close to body. Great for triceps emphasis.</span></span>
+                <span class="exercise-pill">Wide Push-Ups<span class="tooltip">Hands wider than shoulders. More chest emphasis. Keep elbows tracking over wrists.</span></span>
+                <span class="exercise-pill">Pike Push-Ups<span class="tooltip">Hips high in inverted V. Lower head toward floor between hands. Targets shoulders.</span></span>
+                <span class="exercise-pill">Tricep Dips<span class="tooltip">Hands on edge behind you. Lower body by bending elbows to 90°. Press back up without locking.</span></span>
+                <span class="exercise-pill">Shoulder Taps<span class="tooltip">In plank, tap opposite shoulder with hand. Minimize hip rotation. Keep core tight.</span></span>
+                <span class="exercise-pill">Arm Circles<span class="tooltip">Arms extended to sides. Make small circles, gradually increasing size. Keep shoulders down.</span></span>
+                <span class="exercise-pill">Plank Up-Downs<span class="tooltip">From forearm plank, push up to hands one arm at a time. Alternate leading arm each rep.</span></span>
+                <span class="exercise-pill">Superman Pull<span class="tooltip">Lie face down, arms extended. Lift chest and pull elbows back squeezing shoulder blades together.</span></span>
+                <span class="exercise-pill">Decline Push-Ups<span class="tooltip">Feet elevated on bench or step. Increases difficulty and shoulder engagement. Keep body straight.</span></span>
+                <span class="exercise-pill">Archer Push-Ups<span class="tooltip">Wide push-up, shift weight to one arm while other extends. Alternate sides. Builds toward one-arm.</span></span>
+                <span class="exercise-pill">Hindu Push-Ups<span class="tooltip">Start in downward dog, swoop down and through to upward dog. Reverse the motion. Fluid movement.</span></span>
+                <span class="exercise-pill">Dive Bombers<span class="tooltip">Like Hindu push-ups but reverse back through the same path. Great for shoulders and chest.</span></span>
+                <span class="exercise-pill">Plank Shoulder Taps<span class="tooltip">In high plank, tap opposite shoulder with hand. Keep hips square, don't rotate. Core engaged.</span></span>
+                <span class="exercise-pill">Commando Planks<span class="tooltip">Forearm plank to high plank and back. Alternate leading arm. Keep hips stable throughout.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower Body -->
+        <div class="accordion-item">
+          <div class="accordion-button">
+            <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/></svg></span>
+            <span class="accordion-button-text">Lower Body</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">Quads, hamstrings, glutes, and calves — squat and lunge variations for powerful legs.</p>
+              <div class="exercise-grid">
+                <span class="exercise-pill">Squats<span class="tooltip">Feet shoulder-width, toes slightly out. Sit back and down, knees tracking toes. Depth to parallel or below.</span></span>
+                <span class="exercise-pill">Lunges<span class="tooltip">Step forward, lower back knee toward floor. Front knee stays over ankle. Push back to start.</span></span>
+                <span class="exercise-pill">Jump Squats<span class="tooltip">Squat down, then explode upward. Land softly with bent knees. Go straight into next rep.</span></span>
+                <span class="exercise-pill">Glute Bridges<span class="tooltip">Lie on back, knees bent. Drive hips up squeezing glutes. Pause at top, lower with control.</span></span>
+                <span class="exercise-pill">Wall Sit<span class="tooltip">Back flat against wall, thighs parallel to floor. Hold position. Don't rest hands on legs.</span></span>
+                <span class="exercise-pill">Calf Raises<span class="tooltip">Rise onto balls of feet, pause at top. Lower with control. Use wall for balance if needed.</span></span>
+                <span class="exercise-pill">Sumo Squats<span class="tooltip">Wide stance, toes pointed out. Squat keeping knees over toes. Great for inner thighs and glutes.</span></span>
+                <span class="exercise-pill">Step-Ups<span class="tooltip">Step onto box, drive through heel. Bring other foot up, then step down with control.</span></span>
+                <span class="exercise-pill">Bulgarian Split Squat <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span><span class="tooltip">Rear foot elevated on bench. Lower until back knee nearly touches floor. Drive up through front heel.</span></span>
+                <span class="exercise-pill">Single Leg Deadlift <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span><span class="tooltip">Hinge at hip on one leg, back leg extends behind. Keep back flat. Touch floor and return.</span></span>
+                <span class="exercise-pill">Box Jumps<span class="tooltip">Jump onto box landing with both feet. Stand fully, step down. Use arm swing for power.</span></span>
+                <span class="exercise-pill">Lateral Lunges<span class="tooltip">Step wide to side, sit back into hip. Keep other leg straight. Push back to center.</span></span>
+                <span class="exercise-pill">Pistol Squats<span class="tooltip">Single leg squat, other leg extended forward. Go deep, drive up through heel. Use support if needed.</span></span>
+                <span class="exercise-pill">Curtsy Lunges<span class="tooltip">Step back and across behind standing leg. Lower into lunge, then return. Works glutes and inner thighs.</span></span>
+                <span class="exercise-pill">Frog Jumps<span class="tooltip">Deep squat, hands touch floor. Explode forward and up. Land softly, immediately repeat.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calisthenics -->
+        <div class="accordion-item">
+          <div class="accordion-button">
+            <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="3"/><path d="M12 22V8"/></svg></span>
+            <span class="accordion-button-text">Calisthenics</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">Advanced bodyweight skills — progress from basics to impressive feats of strength and control.</p>
+              <div class="exercise-grid">
+                <span class="exercise-pill">Pull-Ups<span class="tooltip">Hang with palms forward, pull chin over bar. Lead with chest, squeeze back at top. Control down.</span></span>
+                <span class="exercise-pill">Push-Ups<span class="tooltip">Hands shoulder-width, body straight. Lower chest to floor, elbows at 45°. Push back up fully.</span></span>
+                <span class="exercise-pill">Dips<span class="tooltip">Support on parallel bars, lower until shoulders below elbows. Press up to lockout. Lean forward for chest.</span></span>
+                <span class="exercise-pill">Muscle-Ups<span class="tooltip">Explosive pull-up transitioning over bar to dip. Requires strong pull and hip drive. Advanced move.</span></span>
+                <span class="exercise-pill">Handstand Hold<span class="tooltip">Kick up against wall or freestanding. Stack shoulders over wrists, engage core. Build time gradually.</span></span>
+                <span class="exercise-pill">L-Sit<span class="tooltip">Support on parallettes or floor, legs extended forward. Keep legs parallel to ground, core tight.</span></span>
+                <span class="exercise-pill">Pistol Squats<span class="tooltip">Single leg squat, other leg extended forward. Go deep, drive up through heel. Use support if needed.</span></span>
+                <span class="exercise-pill">Hanging Leg Raises<span class="tooltip">Hang from bar, raise legs to parallel or higher. Control the swing, squeeze abs at top.</span></span>
+                <span class="exercise-pill">Dragon Flags<span class="tooltip">Lie on bench, grip behind head. Raise body as one unit, lower slowly. Keep body straight throughout.</span></span>
+                <span class="exercise-pill">Planche Lean<span class="tooltip">In push-up position, lean forward shifting weight over hands. Shoulders past wrists. Build hold time.</span></span>
+                <span class="exercise-pill">Front Lever Raises<span class="tooltip">Hang from bar, raise body horizontal with straight arms. Lower with control. Very advanced.</span></span>
+                <span class="exercise-pill">Skin the Cat<span class="tooltip">Hang, rotate backwards through arms until stretched behind. Return through same path. Shoulder mobility.</span></span>
+                <span class="exercise-pill">Archer Push-Ups<span class="tooltip">Wide push-up, shift weight to one arm while other extends. Alternate sides. Builds toward one-arm.</span></span>
+                <span class="exercise-pill">One Arm Push-Up Prep<span class="tooltip">Staggered hand push-up, gradually widen until one arm does most work. Progress slowly.</span></span>
+                <span class="exercise-pill">Nordic Curls<span class="tooltip">Kneel, anchor feet. Lower body forward with control using hamstrings. Push off floor to return if needed.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cardio -->
+        <div class="accordion-item">
+          <div class="accordion-button">
+            <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+            <span class="accordion-button-text">Cardio</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">Heart-pumping exercises to boost endurance, burn calories, and improve cardiovascular health.</p>
+              <div class="exercise-grid">
+                <span class="exercise-pill">High Knees<span class="tooltip">Run in place driving knees to hip height. Pump arms. Stay on balls of feet for quick turnover.</span></span>
+                <span class="exercise-pill">Jumping Jacks<span class="tooltip">Jump feet wide while raising arms overhead. Jump back to start. Keep a steady rhythm.</span></span>
+                <span class="exercise-pill">Burpees<span class="tooltip">Drop to floor, chest down. Push up, jump feet to hands, then jump with arms overhead. Full extension.</span></span>
+                <span class="exercise-pill">Mountain Climbers<span class="tooltip">Start in plank. Drive knees to chest alternately at pace. Keep hips low and core tight throughout.</span></span>
+                <span class="exercise-pill">Jump Rope<span class="tooltip">Light bounce on balls of feet, wrists turn rope. Keep elbows close, jump just high enough to clear.</span></span>
+                <span class="exercise-pill">Speed Skaters<span class="tooltip">Leap side to side, landing on one foot. Touch down with opposite hand. Stay low.</span></span>
+                <span class="exercise-pill">Tuck Jumps<span class="tooltip">Jump and pull knees to chest at peak. Land softly with bent knees. Reset and repeat.</span></span>
+                <span class="exercise-pill">Box Jumps<span class="tooltip">Jump onto box landing with both feet. Stand fully, step down. Use arm swing for power.</span></span>
+                <span class="exercise-pill">Lateral Shuffles<span class="tooltip">Low athletic stance, shuffle sideways quickly. Stay low, don't cross feet. Quick direction changes.</span></span>
+                <span class="exercise-pill">Fast Feet<span class="tooltip">Quick small steps in place as fast as possible. Stay on balls of feet. Keep core engaged.</span></span>
+                <span class="exercise-pill">Butt Kicks<span class="tooltip">Run in place kicking heels to glutes. Keep upper body tall. Quick foot turnover.</span></span>
+                <span class="exercise-pill">Sprint in Place<span class="tooltip">Full speed running motion without moving forward. Drive knees high, pump arms hard.</span></span>
+                <span class="exercise-pill">Squat Jumps<span class="tooltip">Squat down, explode upward. Land softly back into squat. Continuous movement.</span></span>
+                <span class="exercise-pill">Star Jumps<span class="tooltip">Squat down, explode up spreading arms and legs wide like a star. Land softly in squat.</span></span>
+                <span class="exercise-pill">Plank Jacks<span class="tooltip">In plank position, jump feet wide then back together. Keep hips stable and core tight.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <!-- WEIGHTS LAYOUT -->
-      <div class="exercise-library-layout" data-mode="weights">
+      <!-- WEIGHTS ACCORDION -->
+      <div class="exercise-accordion" data-mode="weights">
 
-        <!-- Category List (Left) -->
-        <div class="category-list">
-          <button class="category-btn active" data-cat="w-core">
-            <span class="cat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span>
-            Core
-            <span class="cat-count">8</span>
-          </button>
-          <button class="category-btn" data-cat="w-fullbody">
-            <span class="cat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/></svg></span>
-            Full Body
-            <span class="cat-count">8</span>
-          </button>
-          <button class="category-btn" data-cat="w-upper">
-            <span class="cat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></span>
-            Upper Body
-            <span class="cat-count">15</span>
-          </button>
-          <button class="category-btn" data-cat="w-lower">
-            <span class="cat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/></svg></span>
-            Lower Body
-            <span class="cat-count">15</span>
-          </button>
-          <button class="category-btn" data-cat="w-cardio">
-            <span class="cat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
-            Cardio
-            <span class="cat-count">8</span>
-          </button>
+        <!-- Core -->
+        <div class="accordion-item">
+          <div class="accordion-button">
+            <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg></span>
+            <span class="accordion-button-text">Core</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">Weighted core work for serious midsection strength — add resistance to build a bulletproof core.</p>
+              <div class="exercise-grid">
+                <span class="exercise-pill">Cable Crunches<span class="tooltip">Kneel at cable, rope behind head. Crunch down bringing elbows to thighs. Squeeze abs hard.</span></span>
+                <span class="exercise-pill">Weighted Russian Twists<span class="tooltip">Hold weight at chest, lean back. Rotate side to side touching weight to floor each side.</span></span>
+                <span class="exercise-pill">Hanging Leg Raises<span class="tooltip">Hang from bar, raise legs to parallel or higher. Control the swing, don't use momentum.</span></span>
+                <span class="exercise-pill">Ab Rollouts<span class="tooltip">Kneel with wheel, roll out extending body. Pull back using abs, not arms. Keep core tight throughout.</span></span>
+                <span class="exercise-pill">Weighted Planks<span class="tooltip">Standard plank with plate on back. Hold position, don't let hips sag. Build time gradually.</span></span>
+                <span class="exercise-pill">Pallof Press<span class="tooltip">Stand sideways to cable, press handles straight out. Resist rotation. Hold, return, repeat.</span></span>
+                <span class="exercise-pill">Landmine Rotations<span class="tooltip">Hold bar end at chest, rotate side to side. Control the arc, engage obliques throughout.</span></span>
+                <span class="exercise-pill">Decline Weighted Sit-Ups<span class="tooltip">On decline bench, hold weight at chest. Sit up fully, lower with control. Don't use momentum.</span></span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- Content Panel (Right) -->
-        <div class="exercise-content-panel">
-
-          <!-- Core -->
-          <div class="exercise-panel active" data-panel="w-core">
-            <div class="panel-header">
-              <h3 class="panel-title">Core</h3>
-              <p class="panel-description">Weighted core work for serious midsection strength. Add resistance to build a bulletproof core.</p>
-            </div>
-            <div class="exercise-grid">
-              <span class="exercise-pill">Cable Crunches<span class="tooltip">Kneel at cable, rope behind head. Crunch down bringing elbows to thighs. Squeeze abs hard.</span></span>
-              <span class="exercise-pill">Weighted Russian Twists<span class="tooltip">Hold weight at chest, lean back. Rotate side to side touching weight to floor each side.</span></span>
-              <span class="exercise-pill">Hanging Leg Raises<span class="tooltip">Hang from bar, raise legs to parallel or higher. Control the swing, don't use momentum.</span></span>
-              <span class="exercise-pill">Ab Rollouts<span class="tooltip">Kneel with wheel, roll out extending body. Pull back using abs, not arms. Keep core tight throughout.</span></span>
-              <span class="exercise-pill">Weighted Planks<span class="tooltip">Standard plank with plate on back. Hold position, don't let hips sag. Build time gradually.</span></span>
-              <span class="exercise-pill">Pallof Press<span class="tooltip">Stand sideways to cable, press handles straight out. Resist rotation. Hold, return, repeat.</span></span>
-              <span class="exercise-pill">Landmine Rotations<span class="tooltip">Hold bar end at chest, rotate side to side. Control the arc, engage obliques throughout.</span></span>
-              <span class="exercise-pill">Decline Weighted Sit-Ups<span class="tooltip">On decline bench, hold weight at chest. Sit up fully, lower with control. Don't use momentum.</span></span>
+        <!-- Full Body -->
+        <div class="accordion-item">
+          <div class="accordion-button">
+            <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"/><path d="M2 20h20"/></svg></span>
+            <span class="accordion-button-text">Full Body</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">Compound lifts recruiting maximum muscle — build strength and power across your entire body.</p>
+              <div class="exercise-grid">
+                <span class="exercise-pill">Deadlifts<span class="tooltip">Bar over mid-foot, hinge and grip. Drive through floor, keep bar close. Stand tall, squeeze glutes.</span></span>
+                <span class="exercise-pill">Clean and Press<span class="tooltip">Pull bar explosively to shoulders, then press overhead. Two movements in one. Full body power.</span></span>
+                <span class="exercise-pill">Thrusters<span class="tooltip">Front squat into overhead press in one fluid motion. Use leg drive to power the press.</span></span>
+                <span class="exercise-pill">Kettlebell Swings<span class="tooltip">Hinge at hips, swing bell between legs. Drive hips forward powerfully. Arms guide, don't lift.</span></span>
+                <span class="exercise-pill">Turkish Get-Ups<span class="tooltip">Lie down, weight in one hand. Stand up while keeping weight overhead. Reverse to return.</span></span>
+                <span class="exercise-pill">Man Makers<span class="tooltip">Burpee with dumbbells plus rows and press. Drop, push-up, row each side, jump up, press overhead.</span></span>
+                <span class="exercise-pill">Barbell Complexes<span class="tooltip">Series of movements without putting bar down. Deadlift, row, clean, press, squat. No rest between.</span></span>
+                <span class="exercise-pill">Farmers Carry<span class="tooltip">Heavy dumbbells at sides, walk with control. Keep shoulders back, core tight. Great for grip and stability.</span></span>
+              </div>
             </div>
           </div>
-
-          <!-- Full Body -->
-          <div class="exercise-panel" data-panel="w-fullbody">
-            <div class="panel-header">
-              <h3 class="panel-title">Full Body</h3>
-              <p class="panel-description">Compound lifts that recruit maximum muscle. Build strength and power across your entire body.</p>
-            </div>
-            <div class="exercise-grid">
-              <span class="exercise-pill">Deadlifts<span class="tooltip">Bar over mid-foot, hinge and grip. Drive through floor, keep bar close. Stand tall, squeeze glutes.</span></span>
-              <span class="exercise-pill">Clean and Press<span class="tooltip">Pull bar explosively to shoulders, then press overhead. Two movements in one. Full body power.</span></span>
-              <span class="exercise-pill">Thrusters<span class="tooltip">Front squat into overhead press in one fluid motion. Use leg drive to power the press.</span></span>
-              <span class="exercise-pill">Kettlebell Swings<span class="tooltip">Hinge at hips, swing bell between legs. Drive hips forward powerfully. Arms guide, don't lift.</span></span>
-              <span class="exercise-pill">Turkish Get-Ups<span class="tooltip">Lie down, weight in one hand. Stand up while keeping weight overhead. Reverse to return.</span></span>
-              <span class="exercise-pill">Man Makers<span class="tooltip">Burpee with dumbbells plus rows and press. Drop, push-up, row each side, jump up, press overhead.</span></span>
-              <span class="exercise-pill">Barbell Complexes<span class="tooltip">Series of movements without putting bar down. Deadlift, row, clean, press, squat. No rest between.</span></span>
-              <span class="exercise-pill">Farmers Carry<span class="tooltip">Heavy dumbbells at sides, walk with control. Keep shoulders back, core tight. Great for grip and stability.</span></span>
-            </div>
-          </div>
-
-          <!-- Upper Body -->
-          <div class="exercise-panel" data-panel="w-upper">
-            <div class="panel-header">
-              <h3 class="panel-title">Upper Body</h3>
-              <p class="panel-description">Classic gym lifts for chest, back, shoulders, and arms. Build muscle with progressive overload.</p>
-            </div>
-            <div class="exercise-grid">
-              <span class="exercise-pill">Bench Press<span class="tooltip">Lie flat, grip bar slightly wider than shoulders. Lower to chest, press up. Keep feet planted, back slightly arched.</span></span>
-              <span class="exercise-pill">Overhead Press<span class="tooltip">Bar at shoulders, press straight up. Keep core tight, don't lean back. Lock out at top.</span></span>
-              <span class="exercise-pill">Bent Over Rows<span class="tooltip">Hinge forward, back flat. Pull bar to lower chest, squeeze shoulder blades. Control the descent.</span></span>
-              <span class="exercise-pill">Lat Pulldowns<span class="tooltip">Grip wide, pull bar to upper chest. Lead with elbows, squeeze lats at bottom. Control up slowly.</span></span>
-              <span class="exercise-pill">Bicep Curls<span class="tooltip">Elbows at sides, curl weight up. Don't swing body. Squeeze at top, lower with control.</span></span>
-              <span class="exercise-pill">Tricep Pushdowns<span class="tooltip">Elbows pinned at sides, push down until arms straight. Squeeze triceps, control the return.</span></span>
-              <span class="exercise-pill">Dumbbell Flyes<span class="tooltip">Lie flat, arms extended with slight bend. Lower wide, feel chest stretch. Squeeze back up.</span></span>
-              <span class="exercise-pill">Lateral Raises<span class="tooltip">Arms at sides, raise to shoulder height. Lead with elbows, slight bend. Don't go above parallel.</span></span>
-              <span class="exercise-pill">Face Pulls<span class="tooltip">Pull rope to face, elbows high. Squeeze rear delts and upper back. Great for posture.</span></span>
-              <span class="exercise-pill">Cable Crossovers<span class="tooltip">Cables high, step forward. Bring handles together in arc. Squeeze chest at bottom.</span></span>
-              <span class="exercise-pill">Incline Dumbbell Press<span class="tooltip">Bench at 30-45°. Press dumbbells up, bring together at top. Lower with control to chest.</span></span>
-              <span class="exercise-pill">Seated Rows<span class="tooltip">Sit upright, pull handle to torso. Squeeze shoulder blades together. Control the return.</span></span>
-              <span class="exercise-pill">Skull Crushers<span class="tooltip">Lie flat, lower bar to forehead by bending elbows. Extend arms back up. Keep upper arms still.</span></span>
-              <span class="exercise-pill">Hammer Curls<span class="tooltip">Palms facing each other, curl up. Works brachialis and forearms. Don't swing.</span></span>
-              <span class="exercise-pill">Reverse Flyes<span class="tooltip">Bent over, raise arms out to sides. Squeeze rear delts at top. Control the descent.</span></span>
-            </div>
-          </div>
-
-          <!-- Lower Body -->
-          <div class="exercise-panel" data-panel="w-lower">
-            <div class="panel-header">
-              <h3 class="panel-title">Lower Body</h3>
-              <p class="panel-description">Machine and free weight leg work. Build quad, hamstring, and glute strength with serious load.</p>
-            </div>
-            <div class="exercise-grid">
-              <span class="exercise-pill">Barbell Squats<span class="tooltip">Bar on upper back, feet shoulder-width. Squat to parallel or below. Drive through heels, chest up.</span></span>
-              <span class="exercise-pill">Leg Press<span class="tooltip">Feet shoulder-width on platform. Lower until 90° knee bend. Press up without locking knees.</span></span>
-              <span class="exercise-pill">Romanian Deadlifts<span class="tooltip">Slight knee bend, hinge at hips. Lower bar along legs feeling hamstring stretch. Squeeze glutes up.</span></span>
-              <span class="exercise-pill">Leg Curls<span class="tooltip">Lie face down, curl heels toward glutes. Squeeze hamstrings at top, lower with control.</span></span>
-              <span class="exercise-pill">Leg Extensions<span class="tooltip">Extend legs until straight, squeeze quads at top. Lower slowly, don't let weight stack touch.</span></span>
-              <span class="exercise-pill">Hip Thrusts<span class="tooltip">Upper back on bench, bar on hips. Drive hips up, squeeze glutes hard at top. Chin tucked.</span></span>
-              <span class="exercise-pill">Calf Raises<span class="tooltip">On calf raise machine or step. Rise high, pause at top. Lower with full stretch at bottom.</span></span>
-              <span class="exercise-pill">Goblet Squats<span class="tooltip">Hold dumbbell at chest. Squat deep, elbows between knees at bottom. Keep torso upright.</span></span>
-              <span class="exercise-pill">Walking Lunges<span class="tooltip">Step forward into lunge, back knee near floor. Push through front heel to next step.</span></span>
-              <span class="exercise-pill">Bulgarian Split Squats <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span><span class="tooltip">Rear foot elevated, dumbbells at sides. Lower until back knee nearly touches. Drive up through front heel.</span></span>
-              <span class="exercise-pill">Sumo Deadlifts<span class="tooltip">Wide stance, grip inside knees. Drive through heels, keep chest up. Squeeze glutes at top.</span></span>
-              <span class="exercise-pill">Front Squats<span class="tooltip">Bar on front delts, elbows high. Squat upright, core tight. More quad focused than back squat.</span></span>
-              <span class="exercise-pill">Good Mornings<span class="tooltip">Bar on upper back, hinge at hips. Lower torso parallel to floor. Drive hips forward to stand.</span></span>
-              <span class="exercise-pill">Hack Squats<span class="tooltip">On hack squat machine, feet forward. Lower until thighs parallel. Press up through heels.</span></span>
-              <span class="exercise-pill">Glute Kickbacks<span class="tooltip">On cable or machine, kick leg back. Squeeze glute at top. Control the return. Don't arch back.</span></span>
-            </div>
-          </div>
-
-          <!-- Cardio -->
-          <div class="exercise-panel" data-panel="w-cardio">
-            <div class="panel-header">
-              <h3 class="panel-title">Cardio</h3>
-              <p class="panel-description">Equipment-based conditioning. Use machines and implements for high-intensity metabolic work.</p>
-            </div>
-            <div class="exercise-grid">
-              <span class="exercise-pill">Kettlebell Swings<span class="tooltip">Hinge at hips, swing bell between legs. Drive hips forward powerfully. Arms guide, don't lift.</span></span>
-              <span class="exercise-pill">Battle Ropes<span class="tooltip">Grip rope ends, create waves with alternating or simultaneous arms. Stay low, keep moving.</span></span>
-              <span class="exercise-pill">Sled Push<span class="tooltip">Low position, drive through legs. Keep arms straight, push from hips. Full body conditioning.</span></span>
-              <span class="exercise-pill">Rowing Machine<span class="tooltip">Push with legs first, then pull with back and arms. Reverse sequence on return. Smooth strokes.</span></span>
-              <span class="exercise-pill">Ski Erg<span class="tooltip">Pull handles down using lats and core. Hinge at hips as hands pass knees. Powerful pulls.</span></span>
-              <span class="exercise-pill">Assault Bike<span class="tooltip">Push and pull with arms while pedaling. Full body effort. Maintain consistent pace or interval sprints.</span></span>
-              <span class="exercise-pill">Farmers Walk<span class="tooltip">Heavy weights at sides, walk with control. Stand tall, shoulders back. Grip and core challenge.</span></span>
-              <span class="exercise-pill">Tire Flips<span class="tooltip">Squat low, grip under tire. Drive through legs, flip tire over. Use hips, not back.</span></span>
-            </div>
-          </div>
-
         </div>
+
+        <!-- Upper Body -->
+        <div class="accordion-item">
+          <div class="accordion-button">
+            <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></span>
+            <span class="accordion-button-text">Upper Body</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">Classic gym lifts for chest, back, shoulders, and arms — build muscle with progressive overload.</p>
+              <div class="exercise-grid">
+                <span class="exercise-pill">Bench Press<span class="tooltip">Lie flat, grip bar slightly wider than shoulders. Lower to chest, press up. Keep feet planted, back slightly arched.</span></span>
+                <span class="exercise-pill">Overhead Press<span class="tooltip">Bar at shoulders, press straight up. Keep core tight, don't lean back. Lock out at top.</span></span>
+                <span class="exercise-pill">Bent Over Rows<span class="tooltip">Hinge forward, back flat. Pull bar to lower chest, squeeze shoulder blades. Control the descent.</span></span>
+                <span class="exercise-pill">Lat Pulldowns<span class="tooltip">Grip wide, pull bar to upper chest. Lead with elbows, squeeze lats at bottom. Control up slowly.</span></span>
+                <span class="exercise-pill">Bicep Curls<span class="tooltip">Elbows at sides, curl weight up. Don't swing body. Squeeze at top, lower with control.</span></span>
+                <span class="exercise-pill">Tricep Pushdowns<span class="tooltip">Elbows pinned at sides, push down until arms straight. Squeeze triceps, control the return.</span></span>
+                <span class="exercise-pill">Dumbbell Flyes<span class="tooltip">Lie flat, arms extended with slight bend. Lower wide, feel chest stretch. Squeeze back up.</span></span>
+                <span class="exercise-pill">Lateral Raises<span class="tooltip">Arms at sides, raise to shoulder height. Lead with elbows, slight bend. Don't go above parallel.</span></span>
+                <span class="exercise-pill">Face Pulls<span class="tooltip">Pull rope to face, elbows high. Squeeze rear delts and upper back. Great for posture.</span></span>
+                <span class="exercise-pill">Cable Crossovers<span class="tooltip">Cables high, step forward. Bring handles together in arc. Squeeze chest at bottom.</span></span>
+                <span class="exercise-pill">Incline Dumbbell Press<span class="tooltip">Bench at 30-45°. Press dumbbells up, bring together at top. Lower with control to chest.</span></span>
+                <span class="exercise-pill">Seated Rows<span class="tooltip">Sit upright, pull handle to torso. Squeeze shoulder blades together. Control the return.</span></span>
+                <span class="exercise-pill">Skull Crushers<span class="tooltip">Lie flat, lower bar to forehead by bending elbows. Extend arms back up. Keep upper arms still.</span></span>
+                <span class="exercise-pill">Hammer Curls<span class="tooltip">Palms facing each other, curl up. Works brachialis and forearms. Don't swing.</span></span>
+                <span class="exercise-pill">Reverse Flyes<span class="tooltip">Bent over, raise arms out to sides. Squeeze rear delts at top. Control the descent.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lower Body -->
+        <div class="accordion-item">
+          <div class="accordion-button">
+            <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/></svg></span>
+            <span class="accordion-button-text">Lower Body</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">Machine and free weight leg work — build quad, hamstring, and glute strength with serious load.</p>
+              <div class="exercise-grid">
+                <span class="exercise-pill">Barbell Squats<span class="tooltip">Bar on upper back, feet shoulder-width. Squat to parallel or below. Drive through heels, chest up.</span></span>
+                <span class="exercise-pill">Leg Press<span class="tooltip">Feet shoulder-width on platform. Lower until 90° knee bend. Press up without locking knees.</span></span>
+                <span class="exercise-pill">Romanian Deadlifts<span class="tooltip">Slight knee bend, hinge at hips. Lower bar along legs feeling hamstring stretch. Squeeze glutes up.</span></span>
+                <span class="exercise-pill">Leg Curls<span class="tooltip">Lie face down, curl heels toward glutes. Squeeze hamstrings at top, lower with control.</span></span>
+                <span class="exercise-pill">Leg Extensions<span class="tooltip">Extend legs until straight, squeeze quads at top. Lower slowly, don't let weight stack touch.</span></span>
+                <span class="exercise-pill">Hip Thrusts<span class="tooltip">Upper back on bench, bar on hips. Drive hips up, squeeze glutes hard at top. Chin tucked.</span></span>
+                <span class="exercise-pill">Calf Raises<span class="tooltip">On calf raise machine or step. Rise high, pause at top. Lower with full stretch at bottom.</span></span>
+                <span class="exercise-pill">Goblet Squats<span class="tooltip">Hold dumbbell at chest. Squat deep, elbows between knees at bottom. Keep torso upright.</span></span>
+                <span class="exercise-pill">Walking Lunges<span class="tooltip">Step forward into lunge, back knee near floor. Push through front heel to next step.</span></span>
+                <span class="exercise-pill">Bulgarian Split Squats <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded">L+R</span><span class="tooltip">Rear foot elevated, dumbbells at sides. Lower until back knee nearly touches. Drive up through front heel.</span></span>
+                <span class="exercise-pill">Sumo Deadlifts<span class="tooltip">Wide stance, grip inside knees. Drive through heels, keep chest up. Squeeze glutes at top.</span></span>
+                <span class="exercise-pill">Front Squats<span class="tooltip">Bar on front delts, elbows high. Squat upright, core tight. More quad focused than back squat.</span></span>
+                <span class="exercise-pill">Good Mornings<span class="tooltip">Bar on upper back, hinge at hips. Lower torso parallel to floor. Drive hips forward to stand.</span></span>
+                <span class="exercise-pill">Hack Squats<span class="tooltip">On hack squat machine, feet forward. Lower until thighs parallel. Press up through heels.</span></span>
+                <span class="exercise-pill">Glute Kickbacks<span class="tooltip">On cable or machine, kick leg back. Squeeze glute at top. Control the return. Don't arch back.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cardio -->
+        <div class="accordion-item">
+          <div class="accordion-button">
+            <span class="accordion-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+            <span class="accordion-button-text">Cardio</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              <p class="accordion-desc">Equipment-based conditioning — machines and implements for high-intensity metabolic work.</p>
+              <div class="exercise-grid">
+                <span class="exercise-pill">Kettlebell Swings<span class="tooltip">Hinge at hips, swing bell between legs. Drive hips forward powerfully. Arms guide, don't lift.</span></span>
+                <span class="exercise-pill">Battle Ropes<span class="tooltip">Grip rope ends, create waves with alternating or simultaneous arms. Stay low, keep moving.</span></span>
+                <span class="exercise-pill">Sled Push<span class="tooltip">Low position, drive through legs. Keep arms straight, push from hips. Full body conditioning.</span></span>
+                <span class="exercise-pill">Rowing Machine<span class="tooltip">Push with legs first, then pull with back and arms. Reverse sequence on return. Smooth strokes.</span></span>
+                <span class="exercise-pill">Ski Erg<span class="tooltip">Pull handles down using lats and core. Hinge at hips as hands pass knees. Powerful pulls.</span></span>
+                <span class="exercise-pill">Assault Bike<span class="tooltip">Push and pull with arms while pedaling. Full body effort. Maintain consistent pace or interval sprints.</span></span>
+                <span class="exercise-pill">Farmers Walk<span class="tooltip">Heavy weights at sides, walk with control. Stand tall, shoulders back. Grip and core challenge.</span></span>
+                <span class="exercise-pill">Tire Flips<span class="tooltip">Squat low, grip under tire. Drive through legs, flip tire over. Use hips, not back.</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Footer note -->
@@ -897,33 +857,42 @@
         document.querySelectorAll('.mode-btn[data-mode]').forEach((b) => b.classList.remove('active'));
         btn.classList.add('active');
 
-        // Show/hide layouts
-        document.querySelectorAll('.exercise-library-layout[data-mode]').forEach((layout) => {
-          layout.classList.remove('active');
+        // Show/hide accordions
+        document.querySelectorAll('.exercise-accordion[data-mode]').forEach((accordion) => {
+          accordion.classList.remove('active');
         });
-        const activeLayout = document.querySelector('.exercise-library-layout[data-mode="' + mode + '"]');
-        if (activeLayout) {
-          activeLayout.classList.add('active');
+        const activeAccordion = document.querySelector('.exercise-accordion[data-mode="' + mode + '"]');
+        if (activeAccordion) {
+          activeAccordion.classList.add('active');
         }
       });
     });
 
-    // Category button switching
-    document.querySelectorAll('.category-btn[data-cat]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const cat = btn.getAttribute('data-cat');
-        const layout = btn.closest('.exercise-library-layout');
+    // Accordion breathing animation
+    document.querySelectorAll('.exercise-accordion').forEach((accordion) => {
+      const items = accordion.querySelectorAll('.accordion-item');
+      let activeItem = null;
 
-        // Deactivate all category buttons in this layout
-        layout.querySelectorAll('.category-btn').forEach((b) => b.classList.remove('active'));
-        // Activate clicked button
-        btn.classList.add('active');
+      items.forEach((item) => {
+        const button = item.querySelector('.accordion-button');
 
-        // Hide all panels in this layout
-        layout.querySelectorAll('.exercise-panel').forEach((p) => p.classList.remove('active'));
-        // Show matching panel
-        const panel = layout.querySelector('.exercise-panel[data-panel="' + cat + '"]');
-        if (panel) panel.classList.add('active');
+        button.addEventListener('click', () => {
+          // If clicking the active item, close it
+          if (item === activeItem) {
+            item.classList.remove('active');
+            activeItem = null;
+            return;
+          }
+
+          // Close previous item
+          if (activeItem) {
+            activeItem.classList.remove('active');
+          }
+
+          // Open new item
+          item.classList.add('active');
+          activeItem = item;
+        });
       });
     });
   </script>
