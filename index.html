@@ -465,9 +465,9 @@
 
   <!-- ===== SPEED SECTION ===== -->
   <section class="py-8 sm:py-12">
-    <div class="px-4 sm:px-8">
+    <div class="px-4 sm:px-8 flex justify-center">
       <!-- Bento box with video -->
-      <div class="relative overflow-hidden rounded-2xl sm:rounded-ds-2xl min-h-[60vh] sm:min-h-[75vh] flex items-center">
+      <div id="speed-bento" class="relative overflow-hidden rounded-2xl sm:rounded-ds-2xl min-h-[60vh] sm:min-h-[75vh] flex items-center w-full md:w-[60%] transition-all duration-500 ease-out">
         <!-- Video Background -->
         <video
           autoplay
@@ -794,8 +794,35 @@
       requestAnimationFrame(update);
     }
 
-    // 4. Initialize Lucide icons
+    // 4. Speed section scroll-expand (desktop only)
+    const speedBento = document.getElementById('speed-bento');
+
+    if (speedBento && window.innerWidth >= 768) {
+      window.addEventListener('scroll', () => {
+        const rect = speedBento.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Calculate progress: 0 when entering view, 1 when centered
+        const elementCenter = rect.top + rect.height / 2;
+        const viewportCenter = windowHeight / 2;
+        const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
+        const maxDistance = windowHeight / 2 + rect.height / 2;
+
+        // Progress: 1 = centered, 0 = out of view
+        const progress = Math.max(0, Math.min(1, 1 - (distanceFromCenter / maxDistance)));
+
+        // Ease the progress
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+        // Width: 60% to 100%
+        const width = 60 + (40 * easedProgress);
+        speedBento.style.width = width + '%';
+      });
+    }
+
+    // 5. Initialize Lucide icons
     lucide.createIcons();
+
   </script>
 
 </body>
