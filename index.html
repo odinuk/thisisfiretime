@@ -682,7 +682,7 @@
               <div class="text-[10px] sm:text-sm text-white/60 uppercase tracking-wider mt-1 sm:mt-2">Ads</div>
             </div>
             <div class="text-center col-span-3 sm:col-span-1 mt-2 sm:mt-0">
-              <div class="text-7xl sm:text-8xl md:text-9xl font-bold text-primary">100<span class="text-5xl sm:text-6xl md:text-7xl">%</span></div>
+              <div class="text-7xl sm:text-8xl md:text-9xl font-bold text-primary"><span id="privacy-counter">0</span><span class="text-5xl sm:text-6xl md:text-7xl">%</span></div>
               <div class="text-[10px] sm:text-sm text-[#AD68FF] uppercase tracking-wider mt-1 sm:mt-2">Yours</div>
             </div>
           </div>
@@ -756,7 +756,43 @@
       });
     });
 
-    // 3. (Ring animation is handled via CSS @keyframes)
+    // 3. Privacy counter animation (0 → 100 with easing)
+    const counterEl = document.getElementById('privacy-counter');
+    let counterAnimated = false;
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !counterAnimated) {
+          counterAnimated = true;
+          animateCounter(counterEl, 0, 100, 2000);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    if (counterEl) counterObserver.observe(counterEl);
+
+    function animateCounter(el, start, end, duration) {
+      const startTime = performance.now();
+
+      function easeOutExpo(t) {
+        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+      }
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOutExpo(progress);
+        const current = Math.floor(start + (end - start) * easedProgress);
+
+        el.textContent = current;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
 
     // 4. Initialize Lucide icons
     lucide.createIcons();
