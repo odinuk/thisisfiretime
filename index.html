@@ -164,7 +164,7 @@
       display: block;
       opacity: 0;
       transform: translateY(100%);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transition: opacity 1s cubic-bezier(0.86, 0, 0.07, 1), transform 1s cubic-bezier(0.86, 0, 0.07, 1);
     }
     .reveal-lines.visible .line {
       opacity: 1;
@@ -178,14 +178,14 @@
     .hero-stagger {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transition: opacity 1s cubic-bezier(0.86, 0, 0.07, 1), transform 1s cubic-bezier(0.86, 0, 0.07, 1);
     }
     .hero-stagger.visible {
       opacity: 1;
       transform: translateY(0);
     }
     .hero-stagger.phone-mockup {
-      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+      transition: opacity 1.8s ease-out, transform 1.8s ease-out;
     }
     .hero-side-phone.visible {
       opacity: 0.8;
@@ -548,12 +548,15 @@
         </div>
         <!-- Text -->
         <div class="flex-1 text-center lg:text-left">
-          <span class="reveal inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Quick Build</span>
-          <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">Create your workout<br />in seconds.</h2>
-          <p class="reveal text-[17px] text-txt-default font-normal max-w-lg mb-4" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+          <span class="hero-stagger inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4" style="transition-delay: 0s;">Quick Build</span>
+          <h2 class="reveal-lines text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">
+            <span class="line">Create your workout</span>
+            <span class="line">in seconds.</span>
+          </h2>
+          <p class="hero-stagger text-[17px] text-txt-default font-normal max-w-lg mb-4" style="line-height: 1.4705882353; letter-spacing: -0.022em; transition-delay: 0.5s;">
             Duration. Style. Focus. Done.
           </p>
-          <p class="reveal text-[15px] text-txt-subtle font-normal max-w-lg" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+          <p class="hero-stagger text-[15px] text-txt-subtle font-normal max-w-lg" style="line-height: 1.4705882353; letter-spacing: -0.022em; transition-delay: 0.65s;">
             150+ curated exercises across bodyweight and weights.
           </p>
         </div>
@@ -574,9 +577,11 @@
         </div>
         <!-- Text -->
         <div class="flex-1 text-center lg:text-left">
-          <span class="reveal inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Full Control</span>
-          <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">Or build your own.</h2>
-          <p class="reveal text-[17px] text-txt-default font-normal max-w-lg" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+          <span class="hero-stagger inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4" style="transition-delay: 0s;">Full Control</span>
+          <h2 class="reveal-lines text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">
+            <span class="line">Or build your own.</span>
+          </h2>
+          <p class="hero-stagger text-[17px] text-txt-default font-normal max-w-lg" style="line-height: 1.4705882353; letter-spacing: -0.022em; transition-delay: 0.5s;">
             Name it. Time it. Make it yours.
           </p>
         </div>
@@ -591,9 +596,12 @@
       <div class="flex flex-col lg:flex-row-reverse items-center gap-10">
         <!-- Text - left side (above on mobile) -->
         <div class="flex-1 text-center lg:text-left max-w-md">
-          <span class="reveal inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Active Timer</span>
-          <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">A timer that<br />respects your focus.</h2>
-          <p class="reveal text-[17px] text-txt-default font-normal" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+          <span class="hero-stagger inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4" style="transition-delay: 0s;">Active Timer</span>
+          <h2 class="reveal-lines text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">
+            <span class="line">A timer that</span>
+            <span class="line">respects your focus.</span>
+          </h2>
+          <p class="hero-stagger text-[17px] text-txt-default font-normal" style="line-height: 1.4705882353; letter-spacing: -0.022em; transition-delay: 0.5s;">
             Large countdown ring, bold exercise names, and an &ldquo;up next&rdquo; preview so you&rsquo;re never caught off guard. Audio cues and haptics keep you moving without staring at your screen.
           </p>
         </div>
@@ -619,16 +627,18 @@
 
         <!-- Left: Content -->
         <div class="text-center lg:text-left">
-          <span class="reveal inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4">Apple Fitness</span>
-          <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">
-            Every rep.<br />Every calorie.<br /><span class="text-primary">Logged.</span>
+          <span class="hero-stagger inline-block text-sm font-medium text-primary-400 uppercase tracking-widest mb-4" style="transition-delay: 0s;">Apple Fitness</span>
+          <h2 class="reveal-lines text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">
+            <span class="line">Every rep.</span>
+            <span class="line">Every calorie.</span>
+            <span class="line"><span class="text-primary">Logged.</span></span>
           </h2>
-          <p class="reveal text-[17px] text-txt-default font-normal max-w-lg mb-8" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+          <p class="hero-stagger text-[17px] text-txt-default font-normal max-w-lg mb-8" style="line-height: 1.4705882353; letter-spacing: -0.022em; transition-delay: 0.6s;">
             FireTime automatically syncs your workouts to Apple Health. See your effort in the Fitness app — duration, calories burned, heart rate zones, and more.
           </p>
 
           <!-- Stats stack - Apple Fitness style -->
-          <div class="reveal flex justify-center lg:justify-start mb-8 text-left" style="font-family: 'Nunito', 'SF Pro Rounded', system-ui, sans-serif;">
+          <div class="hero-stagger flex justify-center lg:justify-start mb-8 text-left" style="font-family: 'Nunito', 'SF Pro Rounded', system-ui, sans-serif; transition-delay: 0.75s;">
             <div class="flex flex-col" style="gap: 24px;">
               <!-- Row 1: Duration -->
               <div class="flex items-end">
@@ -695,9 +705,12 @@
 
         <!-- Content Overlay -->
         <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 sm:p-8">
-          <span class="inline-block text-xs sm:text-sm font-medium text-primary-400 uppercase tracking-widest mb-3 sm:mb-4">Privacy First</span>
-          <h2 class="text-[2.5rem] font-bold text-white mb-5" style="line-height: 1.0834933333;">Your data stays&nbsp;<span class="text-primary">yours.</span></h2>
-          <p class="text-sm sm:text-[17px] text-white/80 font-normal max-w-lg mb-6 sm:mb-8" style="line-height: 1.5; letter-spacing: -0.022em;">
+          <span class="hero-stagger inline-block text-xs sm:text-sm font-medium text-primary-400 uppercase tracking-widest mb-3 sm:mb-4" style="transition-delay: 0s;">Privacy First</span>
+          <h2 class="reveal-lines text-[2.5rem] font-bold text-white mb-5" style="line-height: 1.0834933333;">
+            <span class="line">Your data stays</span>
+            <span class="line"><span class="text-primary">yours.</span></span>
+          </h2>
+          <p class="hero-stagger text-sm sm:text-[17px] text-white/80 font-normal max-w-lg mb-6 sm:mb-8" style="line-height: 1.5; letter-spacing: -0.022em; transition-delay: 0.5s;">
             No account required. No tracking. No&nbsp;ads. Just you and your&nbsp;workout.
           </p>
 
@@ -731,13 +744,13 @@
   <section class="py-12 relative overflow-hidden">
     <div class="hero-glow absolute inset-0 pointer-events-none"></div>
     <div class="relative max-w-3xl mx-auto px-6 text-center">
-      <h2 class="reveal text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">
-        10 seconds. <span class="text-primary">Go.</span>
+      <h2 class="reveal-lines text-[2.5rem] font-bold text-txt mb-5" style="line-height: 1.0834933333;">
+        <span class="line">10 seconds. <span class="text-primary">Go.</span></span>
       </h2>
-      <p class="reveal text-[17px] text-txt-default font-normal mb-10 max-w-lg mx-auto" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
+      <p class="hero-stagger text-[17px] text-txt-default font-normal mb-10 max-w-lg mx-auto" style="line-height: 1.4705882353; letter-spacing: -0.022em; transition-delay: 0.35s;">
         No account. No tracking. No ads. Just train.
       </p>
-      <button onclick="event.preventDefault(); alert('Coming Soon!')" class="reveal px-8 py-4 rounded-ds-full bg-interactive-primary text-txt-contrast font-semibold hover:bg-interactive-primary-hover transition-all duration-ds-fast shadow-ds-3">
+      <button onclick="event.preventDefault(); alert('Coming Soon!')" class="hero-stagger px-8 py-4 rounded-ds-full bg-interactive-primary text-txt-contrast font-semibold hover:bg-interactive-primary-hover transition-all duration-ds-fast shadow-ds-3" style="transition-delay: 0.5s;">
         Notify Me When It's Live
       </button>
     </div>
