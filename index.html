@@ -702,9 +702,9 @@
         <!-- Content Overlay -->
         <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 sm:p-8">
           <span class="hero-stagger inline-block text-xs sm:text-sm font-medium text-primary-400 uppercase tracking-widest mb-3 sm:mb-4" style="transition-delay: 0s;">Privacy First</span>
-          <h2 id="privacy-headline" class="text-[2.5rem] md:text-[5rem] font-bold text-white mb-5" style="line-height: 1.0834933333;">
-            <span class="scramble-line" data-text="Your data stays">Your data stays</span><br>
-            <span class="scramble-line text-primary" data-text="yours.">yours.</span>
+          <h2 class="reveal-lines text-[2.5rem] md:text-[5rem] font-bold text-white mb-5" style="line-height: 1.0834933333;">
+            <span class="line">Your data stays</span>
+            <span class="line"><span class="text-primary">yours.</span></span>
           </h2>
           <p class="hero-stagger text-sm sm:text-[17px] text-white/80 font-normal max-w-lg mb-6 sm:mb-8" style="line-height: 1.5; letter-spacing: -0.022em; transition-delay: 0.5s;">
             No account required. No tracking. No&nbsp;ads. Just you and your&nbsp;workout.
@@ -868,66 +868,7 @@
       });
     }
 
-    // 5. Scramble text animation for privacy headline
-    const scrambleChars = '!@#$%^&*()_+-=[]{}|;:,.<>?0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-    function scrambleText(element, finalText, duration = 1500) {
-      const length = finalText.length;
-      const intervalTime = 30;
-      const iterations = duration / intervalTime;
-      const revealPerIteration = length / iterations;
-      let revealed = 0;
-      let iteration = 0;
-
-      const interval = setInterval(() => {
-        iteration++;
-        revealed += revealPerIteration;
-        const revealedCount = Math.floor(revealed);
-
-        let result = '';
-        for (let i = 0; i < length; i++) {
-          if (finalText[i] === ' ') {
-            result += ' ';
-          } else if (i < revealedCount) {
-            result += finalText[i];
-          } else {
-            result += scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-          }
-        }
-
-        element.textContent = result;
-
-        if (revealedCount >= length) {
-          clearInterval(interval);
-          element.textContent = finalText;
-        }
-      }, intervalTime);
-    }
-
-    // Observer for privacy headline scramble
-    const privacyHeadline = document.getElementById('privacy-headline');
-    let scrambleAnimated = false;
-
-    if (privacyHeadline) {
-      const scrambleObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !scrambleAnimated) {
-            scrambleAnimated = true;
-            const lines = privacyHeadline.querySelectorAll('.scramble-line');
-            lines.forEach((line, index) => {
-              const finalText = line.getAttribute('data-text');
-              setTimeout(() => {
-                scrambleText(line, finalText, 1200);
-              }, index * 300);
-            });
-          }
-        });
-      }, { threshold: 0.5 });
-
-      scrambleObserver.observe(privacyHeadline);
-    }
-
-    // 6. Initialize Lucide icons
+    // 5. Initialize Lucide icons
     lucide.createIcons();
 
   </script>
