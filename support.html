@@ -259,6 +259,73 @@
       }
     }
 
+    /* Weights Section - Apple-style cards */
+    .weights-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 768px) {
+      .weights-grid {
+        grid-template-columns: 1fr;
+      }
+      .weight-card[style*="grid-column"] {
+        grid-column: span 1 !important;
+      }
+    }
+    .weight-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 24px;
+      transition: all 0.2s ease;
+    }
+    .weight-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    .weight-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .weight-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    .weight-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--semantic-color-text-neutral-bold);
+      letter-spacing: -0.01em;
+    }
+    .weight-card-count {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--semantic-color-text-neutral-subtle);
+      margin-left: auto;
+    }
+    .weight-card .exercise-grid {
+      justify-content: flex-start;
+      gap: 6px;
+    }
+    .weight-card .exercise-pill {
+      font-size: 13px;
+      padding: 0.5rem 0.875rem;
+    }
+    /* Card accent colors */
+    .weight-card.push .weight-card-icon { background: rgba(255, 99, 71, 0.15); color: #FF6347; }
+    .weight-card.pull .weight-card-icon { background: rgba(65, 182, 230, 0.15); color: #41B6E6; }
+    .weight-card.lower .weight-card-icon { background: rgba(50, 205, 50, 0.15); color: #32CD32; }
+    .weight-card.fullbody .weight-card-icon { background: rgba(173, 104, 255, 0.15); color: #AD68FF; }
+    .weight-card.core .weight-card-icon { background: rgba(255, 193, 7, 0.15); color: #FFC107; }
+
   </style>
 </head>
 
@@ -445,75 +512,107 @@
           </div>
 
           <div class="exercise-panel" data-panel="weights">
-            <!-- Upper Body - Push -->
-            <p class="text-xs font-semibold text-txt-subtle uppercase tracking-wider mb-3 mt-2">Upper Body — Push</p>
-            <div class="exercise-grid mb-6">
-              <span class="exercise-pill">Bench Press<span class="tooltip">Lie flat, grip bar slightly wider than shoulders. Lower to chest, press up. Keep feet planted.</span></span>
-              <span class="exercise-pill">Incline Dumbbell Press<span class="tooltip">Bench at 30-45°, press dumbbells up and together. Lower with control, elbows at 45°. Targets upper chest.</span></span>
-              <span class="exercise-pill">Overhead Press<span class="tooltip">Bar at shoulders, press straight up. Keep core tight, don't lean back. Lock out at top.</span></span>
-              <span class="exercise-pill">Dumbbell Flyes<span class="tooltip">Lie flat, arms extended with slight bend. Lower wide, feel chest stretch. Squeeze back up.</span></span>
-              <span class="exercise-pill">Cable Crossovers<span class="tooltip">Cables set high, step forward. Bring handles together in arc, squeeze chest. Control the return.</span></span>
-              <span class="exercise-pill">Lateral Raises<span class="tooltip">Arms at sides, raise to shoulder height. Lead with elbows, slight bend. Don't go above parallel.</span></span>
-              <span class="exercise-pill">Tricep Pushdowns<span class="tooltip">Elbows pinned at sides, push down until arms straight. Squeeze triceps, control the return.</span></span>
-              <span class="exercise-pill">Skull Crushers<span class="tooltip">Lie flat, lower weight to forehead by bending elbows. Keep upper arms vertical. Extend to lockout.</span></span>
-            </div>
+            <div class="weights-grid">
+              <!-- Upper Body - Push -->
+              <div class="weight-card push">
+                <div class="weight-card-header">
+                  <div class="weight-card-icon">↑</div>
+                  <span class="weight-card-title">Push</span>
+                  <span class="weight-card-count">8 exercises</span>
+                </div>
+                <div class="exercise-grid">
+                  <span class="exercise-pill">Bench Press<span class="tooltip">Lie flat, grip bar slightly wider than shoulders. Lower to chest, press up. Keep feet planted.</span></span>
+                  <span class="exercise-pill">Incline DB Press<span class="tooltip">Bench at 30-45°, press dumbbells up and together. Lower with control, elbows at 45°. Targets upper chest.</span></span>
+                  <span class="exercise-pill">Overhead Press<span class="tooltip">Bar at shoulders, press straight up. Keep core tight, don't lean back. Lock out at top.</span></span>
+                  <span class="exercise-pill">Dumbbell Flyes<span class="tooltip">Lie flat, arms extended with slight bend. Lower wide, feel chest stretch. Squeeze back up.</span></span>
+                  <span class="exercise-pill">Cable Crossovers<span class="tooltip">Cables set high, step forward. Bring handles together in arc, squeeze chest. Control the return.</span></span>
+                  <span class="exercise-pill">Lateral Raises<span class="tooltip">Arms at sides, raise to shoulder height. Lead with elbows, slight bend. Don't go above parallel.</span></span>
+                  <span class="exercise-pill">Tricep Pushdowns<span class="tooltip">Elbows pinned at sides, push down until arms straight. Squeeze triceps, control the return.</span></span>
+                  <span class="exercise-pill">Skull Crushers<span class="tooltip">Lie flat, lower weight to forehead by bending elbows. Keep upper arms vertical. Extend to lockout.</span></span>
+                </div>
+              </div>
 
-            <!-- Upper Body - Pull -->
-            <p class="text-xs font-semibold text-txt-subtle uppercase tracking-wider mb-3">Upper Body — Pull</p>
-            <div class="exercise-grid mb-6">
-              <span class="exercise-pill">Bent Over Rows<span class="tooltip">Hinge forward, back flat. Pull bar to lower chest, squeeze shoulder blades. Control the descent.</span></span>
-              <span class="exercise-pill">Lat Pulldowns<span class="tooltip">Grip wide, pull bar to upper chest. Lead with elbows, squeeze lats at bottom. Control up slowly.</span></span>
-              <span class="exercise-pill">Seated Rows<span class="tooltip">Sit upright, pull handle to torso. Squeeze shoulder blades together. Control the return.</span></span>
-              <span class="exercise-pill">Face Pulls<span class="tooltip">Pull rope to face, elbows high. Squeeze rear delts and upper back. Great for posture.</span></span>
-              <span class="exercise-pill">Reverse Flyes<span class="tooltip">Bent over or on incline bench. Raise arms out to sides, squeeze rear delts. Control the descent.</span></span>
-              <span class="exercise-pill">Bicep Curls<span class="tooltip">Elbows at sides, curl weight up. Don't swing body. Squeeze at top, lower with control.</span></span>
-              <span class="exercise-pill">Hammer Curls<span class="tooltip">Palms facing in, curl weight up. Targets brachialis and forearms. Keep elbows stationary.</span></span>
-            </div>
+              <!-- Upper Body - Pull -->
+              <div class="weight-card pull">
+                <div class="weight-card-header">
+                  <div class="weight-card-icon">↓</div>
+                  <span class="weight-card-title">Pull</span>
+                  <span class="weight-card-count">7 exercises</span>
+                </div>
+                <div class="exercise-grid">
+                  <span class="exercise-pill">Bent Over Rows<span class="tooltip">Hinge forward, back flat. Pull bar to lower chest, squeeze shoulder blades. Control the descent.</span></span>
+                  <span class="exercise-pill">Lat Pulldowns<span class="tooltip">Grip wide, pull bar to upper chest. Lead with elbows, squeeze lats at bottom. Control up slowly.</span></span>
+                  <span class="exercise-pill">Seated Rows<span class="tooltip">Sit upright, pull handle to torso. Squeeze shoulder blades together. Control the return.</span></span>
+                  <span class="exercise-pill">Face Pulls<span class="tooltip">Pull rope to face, elbows high. Squeeze rear delts and upper back. Great for posture.</span></span>
+                  <span class="exercise-pill">Reverse Flyes<span class="tooltip">Bent over or on incline bench. Raise arms out to sides, squeeze rear delts. Control the descent.</span></span>
+                  <span class="exercise-pill">Bicep Curls<span class="tooltip">Elbows at sides, curl weight up. Don't swing body. Squeeze at top, lower with control.</span></span>
+                  <span class="exercise-pill">Hammer Curls<span class="tooltip">Palms facing in, curl weight up. Targets brachialis and forearms. Keep elbows stationary.</span></span>
+                </div>
+              </div>
 
-            <!-- Lower Body -->
-            <p class="text-xs font-semibold text-txt-subtle uppercase tracking-wider mb-3">Lower Body</p>
-            <div class="exercise-grid mb-6">
-              <span class="exercise-pill">Barbell Squats<span class="tooltip">Bar on upper back, feet shoulder-width. Squat to parallel or below. Drive through heels, chest up.</span></span>
-              <span class="exercise-pill">Front Squats<span class="tooltip">Bar on front delts, elbows high. Squat deep, keeping torso upright. Targets quads more than back squat.</span></span>
-              <span class="exercise-pill">Goblet Squats<span class="tooltip">Hold dumbbell at chest. Squat deep, elbows between knees at bottom. Keep torso upright.</span></span>
-              <span class="exercise-pill">Hack Squats<span class="tooltip">Back against pad, shoulders under pads. Lower until thighs parallel. Press through heels.</span></span>
-              <span class="exercise-pill">Leg Press<span class="tooltip">Feet shoulder-width on platform. Lower until 90° knee bend. Press up without locking knees.</span></span>
-              <span class="exercise-pill">Romanian Deadlifts<span class="tooltip">Slight knee bend, hinge at hips. Lower bar along legs feeling hamstring stretch. Squeeze glutes up.</span></span>
-              <span class="exercise-pill">Sumo Deadlifts<span class="tooltip">Wide stance, toes out, grip inside knees. Drive through floor, keep chest up. Targets inner thighs and glutes.</span></span>
-              <span class="exercise-pill">Good Mornings<span class="tooltip">Bar on back, slight knee bend. Hinge forward until torso near parallel. Squeeze glutes to rise.</span></span>
-              <span class="exercise-pill">Hip Thrusts<span class="tooltip">Upper back on bench, bar on hips. Drive hips up, squeeze glutes hard at top. Chin tucked.</span></span>
-              <span class="exercise-pill">Bulgarian Split Squats<span class="tooltip">Rear foot on bench, lower until back knee nearly touches floor. Drive through front heel to rise.</span></span>
-              <span class="exercise-pill">Walking Lunges<span class="tooltip">Step forward into lunge, drive through front heel to step into next lunge. Keep torso upright.</span></span>
-              <span class="exercise-pill">Leg Curls<span class="tooltip">Lie face down, curl heels toward glutes. Squeeze hamstrings at top, lower with control.</span></span>
-              <span class="exercise-pill">Leg Extensions<span class="tooltip">Extend legs until straight, squeeze quads at top. Lower slowly, don't let weight stack touch.</span></span>
-              <span class="exercise-pill">Calf Raises<span class="tooltip">Rise onto balls of feet, pause and squeeze at top. Lower with control, feel the stretch at bottom.</span></span>
-              <span class="exercise-pill">Glute Kickbacks<span class="tooltip">On cable machine or all fours. Kick leg back, squeeze glute at top. Control the return.</span></span>
-            </div>
+              <!-- Lower Body -->
+              <div class="weight-card lower">
+                <div class="weight-card-header">
+                  <div class="weight-card-icon">⬇</div>
+                  <span class="weight-card-title">Lower Body</span>
+                  <span class="weight-card-count">15 exercises</span>
+                </div>
+                <div class="exercise-grid">
+                  <span class="exercise-pill">Barbell Squats<span class="tooltip">Bar on upper back, feet shoulder-width. Squat to parallel or below. Drive through heels, chest up.</span></span>
+                  <span class="exercise-pill">Front Squats<span class="tooltip">Bar on front delts, elbows high. Squat deep, keeping torso upright. Targets quads more than back squat.</span></span>
+                  <span class="exercise-pill">Goblet Squats<span class="tooltip">Hold dumbbell at chest. Squat deep, elbows between knees at bottom. Keep torso upright.</span></span>
+                  <span class="exercise-pill">Hack Squats<span class="tooltip">Back against pad, shoulders under pads. Lower until thighs parallel. Press through heels.</span></span>
+                  <span class="exercise-pill">Leg Press<span class="tooltip">Feet shoulder-width on platform. Lower until 90° knee bend. Press up without locking knees.</span></span>
+                  <span class="exercise-pill">Romanian Deadlifts<span class="tooltip">Slight knee bend, hinge at hips. Lower bar along legs feeling hamstring stretch. Squeeze glutes up.</span></span>
+                  <span class="exercise-pill">Sumo Deadlifts<span class="tooltip">Wide stance, toes out, grip inside knees. Drive through floor, keep chest up. Targets inner thighs and glutes.</span></span>
+                  <span class="exercise-pill">Good Mornings<span class="tooltip">Bar on back, slight knee bend. Hinge forward until torso near parallel. Squeeze glutes to rise.</span></span>
+                  <span class="exercise-pill">Hip Thrusts<span class="tooltip">Upper back on bench, bar on hips. Drive hips up, squeeze glutes hard at top. Chin tucked.</span></span>
+                  <span class="exercise-pill">Bulgarian Splits<span class="tooltip">Rear foot on bench, lower until back knee nearly touches floor. Drive through front heel to rise.</span></span>
+                  <span class="exercise-pill">Walking Lunges<span class="tooltip">Step forward into lunge, drive through front heel to step into next lunge. Keep torso upright.</span></span>
+                  <span class="exercise-pill">Leg Curls<span class="tooltip">Lie face down, curl heels toward glutes. Squeeze hamstrings at top, lower with control.</span></span>
+                  <span class="exercise-pill">Leg Extensions<span class="tooltip">Extend legs until straight, squeeze quads at top. Lower slowly, don't let weight stack touch.</span></span>
+                  <span class="exercise-pill">Calf Raises<span class="tooltip">Rise onto balls of feet, pause and squeeze at top. Lower with control, feel the stretch at bottom.</span></span>
+                  <span class="exercise-pill">Glute Kickbacks<span class="tooltip">On cable machine or all fours. Kick leg back, squeeze glute at top. Control the return.</span></span>
+                </div>
+              </div>
 
-            <!-- Full Body / Compound -->
-            <p class="text-xs font-semibold text-txt-subtle uppercase tracking-wider mb-3">Full Body</p>
-            <div class="exercise-grid mb-6">
-              <span class="exercise-pill">Deadlifts<span class="tooltip">Bar over mid-foot, hinge and grip. Drive through floor, keep bar close. Stand tall, squeeze glutes.</span></span>
-              <span class="exercise-pill">Clean and Press<span class="tooltip">Pull bar explosively to shoulders, then press overhead. Two movements in one. Full body power.</span></span>
-              <span class="exercise-pill">Thrusters<span class="tooltip">Front squat into overhead press in one fluid motion. Use leg drive to power the press.</span></span>
-              <span class="exercise-pill">Kettlebell Swings<span class="tooltip">Hinge at hips, swing bell between legs. Drive hips forward powerfully. Arms guide, don't lift.</span></span>
-              <span class="exercise-pill">Turkish Get-Ups<span class="tooltip">Lie down, weight in one hand. Stand up while keeping weight overhead. Reverse to return.</span></span>
-              <span class="exercise-pill">Man Makers<span class="tooltip">Burpee with dumbbells plus rows and press. Drop, push-up, row each side, jump up, press overhead.</span></span>
-              <span class="exercise-pill">Barbell Complexes<span class="tooltip">Multiple movements without putting bar down. Example: deadlift, row, clean, press, squat. No rest between.</span></span>
-              <span class="exercise-pill">Farmers Carry<span class="tooltip">Heavy dumbbells at sides, walk with control. Keep shoulders back, core tight. Great for grip and stability.</span></span>
-            </div>
+              <!-- Full Body -->
+              <div class="weight-card fullbody">
+                <div class="weight-card-header">
+                  <div class="weight-card-icon">◆</div>
+                  <span class="weight-card-title">Full Body</span>
+                  <span class="weight-card-count">8 exercises</span>
+                </div>
+                <div class="exercise-grid">
+                  <span class="exercise-pill">Deadlifts<span class="tooltip">Bar over mid-foot, hinge and grip. Drive through floor, keep bar close. Stand tall, squeeze glutes.</span></span>
+                  <span class="exercise-pill">Clean and Press<span class="tooltip">Pull bar explosively to shoulders, then press overhead. Two movements in one. Full body power.</span></span>
+                  <span class="exercise-pill">Thrusters<span class="tooltip">Front squat into overhead press in one fluid motion. Use leg drive to power the press.</span></span>
+                  <span class="exercise-pill">KB Swings<span class="tooltip">Hinge at hips, swing bell between legs. Drive hips forward powerfully. Arms guide, don't lift.</span></span>
+                  <span class="exercise-pill">Turkish Get-Ups<span class="tooltip">Lie down, weight in one hand. Stand up while keeping weight overhead. Reverse to return.</span></span>
+                  <span class="exercise-pill">Man Makers<span class="tooltip">Burpee with dumbbells plus rows and press. Drop, push-up, row each side, jump up, press overhead.</span></span>
+                  <span class="exercise-pill">BB Complexes<span class="tooltip">Multiple movements without putting bar down. Example: deadlift, row, clean, press, squat. No rest between.</span></span>
+                  <span class="exercise-pill">Farmers Carry<span class="tooltip">Heavy dumbbells at sides, walk with control. Keep shoulders back, core tight. Great for grip and stability.</span></span>
+                </div>
+              </div>
 
-            <!-- Core -->
-            <p class="text-xs font-semibold text-txt-subtle uppercase tracking-wider mb-3">Core</p>
-            <div class="exercise-grid">
-              <span class="exercise-pill">Cable Crunches<span class="tooltip">Kneel at cable, rope behind head. Crunch down bringing elbows to thighs. Squeeze abs hard.</span></span>
-              <span class="exercise-pill">Weighted Russian Twists<span class="tooltip">Sit with knees bent, hold weight. Rotate torso side to side, tapping weight on floor each side.</span></span>
-              <span class="exercise-pill">Hanging Leg Raises<span class="tooltip">Hang from bar, raise legs to parallel or higher. Control the swing, squeeze abs at top.</span></span>
-              <span class="exercise-pill">Ab Rollouts<span class="tooltip">Kneel with ab wheel or barbell. Roll forward keeping core tight. Pull back using abs, not arms.</span></span>
-              <span class="exercise-pill">Weighted Planks<span class="tooltip">Standard plank with weight plate on back. Hold position, keep hips level. Build time gradually.</span></span>
-              <span class="exercise-pill">Pallof Press<span class="tooltip">Stand sideways to cable, press handle straight out. Resist rotation, squeeze core. Hold, then return.</span></span>
-              <span class="exercise-pill">Landmine Rotations<span class="tooltip">Hold barbell end at chest, pivot and rotate to each side. Control the movement, engage obliques.</span></span>
-              <span class="exercise-pill">Decline Weighted Sit-Ups<span class="tooltip">On decline bench, hold weight at chest. Sit up fully, lower with control. Don't use momentum.</span></span>
+              <!-- Core -->
+              <div class="weight-card core" style="grid-column: span 2;">
+                <div class="weight-card-header">
+                  <div class="weight-card-icon">●</div>
+                  <span class="weight-card-title">Core</span>
+                  <span class="weight-card-count">8 exercises</span>
+                </div>
+                <div class="exercise-grid">
+                  <span class="exercise-pill">Cable Crunches<span class="tooltip">Kneel at cable, rope behind head. Crunch down bringing elbows to thighs. Squeeze abs hard.</span></span>
+                  <span class="exercise-pill">Weighted Russian Twists<span class="tooltip">Sit with knees bent, hold weight. Rotate torso side to side, tapping weight on floor each side.</span></span>
+                  <span class="exercise-pill">Hanging Leg Raises<span class="tooltip">Hang from bar, raise legs to parallel or higher. Control the swing, squeeze abs at top.</span></span>
+                  <span class="exercise-pill">Ab Rollouts<span class="tooltip">Kneel with ab wheel or barbell. Roll forward keeping core tight. Pull back using abs, not arms.</span></span>
+                  <span class="exercise-pill">Weighted Planks<span class="tooltip">Standard plank with weight plate on back. Hold position, keep hips level. Build time gradually.</span></span>
+                  <span class="exercise-pill">Pallof Press<span class="tooltip">Stand sideways to cable, press handle straight out. Resist rotation, squeeze core. Hold, then return.</span></span>
+                  <span class="exercise-pill">Landmine Rotations<span class="tooltip">Hold barbell end at chest, pivot and rotate to each side. Control the movement, engage obliques.</span></span>
+                  <span class="exercise-pill">Decline Sit-Ups<span class="tooltip">On decline bench, hold weight at chest. Sit up fully, lower with control. Don't use momentum.</span></span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
