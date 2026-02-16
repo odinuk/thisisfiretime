@@ -321,13 +321,13 @@
 
       <!-- Category Tabs -->
       <div class="category-tabs">
-        <button class="category-tab active" data-cat="core">Core</button>
-        <button class="category-tab" data-cat="fullbody">Full Body</button>
-        <button class="category-tab" data-cat="upper">Upper Body</button>
-        <button class="category-tab" data-cat="lower">Lower Body</button>
-        <button class="category-tab" data-cat="calisthenics">Calisthenics</button>
-        <button class="category-tab" data-cat="cardio">Cardio</button>
-        <button class="category-tab" data-cat="weights">Weights</button>
+        <button class="category-tab active" data-cat="core">Core <span class="text-txt-subtle font-normal">(14)</span></button>
+        <button class="category-tab" data-cat="fullbody">Full Body <span class="text-txt-subtle font-normal">(13)</span></button>
+        <button class="category-tab" data-cat="upper">Upper Body <span class="text-txt-subtle font-normal">(13)</span></button>
+        <button class="category-tab" data-cat="lower">Lower Body <span class="text-txt-subtle font-normal">(15)</span></button>
+        <button class="category-tab" data-cat="calisthenics">Calisthenics <span class="text-txt-subtle font-normal">(15)</span></button>
+        <button class="category-tab" data-cat="cardio">Cardio <span class="text-txt-subtle font-normal">(12)</span></button>
+        <button class="category-tab" data-cat="weights">Weights <span class="text-txt-subtle font-normal">(46)</span></button>
       </div>
 
       <!-- Exercise Panels -->
@@ -573,6 +573,36 @@
 
         <div class="faq-item">
           <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>How do I pause or skip an interval?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="faq-answer">
+            Tap the pause button during any workout to pause the timer. To skip to the next interval, tap the forward arrow. You can also swipe right on Apple Watch to access pause and end controls.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>How do I edit or delete a saved workout?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="faq-answer">
+            Tap on any saved workout to open it in the workout builder, where you can edit intervals, durations, and names. To delete a workout, swipe left on the workout card from the home screen and tap Delete.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+            <span>How do I reorder my workouts?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="faq-answer">
+            Long-press on any workout card and drag it to your preferred position. Your custom order is saved automatically.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
             <span>Does FireTime work with Apple Watch?</span>
             <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </div>
@@ -590,6 +620,9 @@
             When you complete a workout, FireTime can log it to Apple Health (with your permission). This includes workout duration, estimated calories burned, and heart rate data if you're wearing an Apple Watch. You can enable or disable this in Settings.
           </div>
         </div>
+
+        <!-- Troubleshooting -->
+        <h3 class="text-lg font-bold text-txt mt-12 mb-4">Troubleshooting</h3>
 
         <div class="faq-item">
           <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
@@ -657,7 +690,7 @@
   <!-- FOOTER -->
   <footer class="border-t border-border-subtle">
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-txt-subtle">&copy; 2026 FireTime</p>
+      <p class="text-sm text-txt-subtle">&copy; 2026 FireTime · v1.0</p>
       <div class="flex items-center gap-6 text-sm">
         <a href="privacy.html" class="text-txt-subtle hover:text-txt-default transition-colors">Privacy Policy</a>
         <a href="terms.html" class="text-txt-subtle hover:text-txt-default transition-colors">Terms & Conditions</a>
