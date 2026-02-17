@@ -221,20 +221,20 @@
 <body class="antialiased">
 
   <!-- NAV -->
-  <nav style="display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-bottom: 1px solid #18181b;">
-    <a href="index.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
-      <img src="firetime_images/FireTimePhoneIcon.svg" alt="FireTime" style="width: 28px; height: 28px;">
-      <span style="font-size: 18px; font-weight: 600; letter-spacing: -0.02em;">
-        <span style="color: #f5f5f7;">Fire</span><span style="color: #a78bfa;">Time</span>
-      </span>
-    </a>
-    <a href="index.html" style="color: #71717a; font-size: 14px; text-decoration: none; letter-spacing: -0.01em; display: flex; align-items: center; gap: 4px;">
-      ← Back to Home
-    </a>
+  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-gray-950/80 border-b border-border-subtle">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-txt tracking-tight">
+        <img src="firetime_images/FireTimePhoneIcon.svg" alt="FireTime" class="w-8 h-8">
+        <span style="font-family: 'Nunito', 'SF Pro Rounded', system-ui, sans-serif;"><span class="text-primary">Fire</span>Time</span>
+      </a>
+      <a href="index.html" class="text-txt-subtle hover:text-txt-default transition-colors text-sm">
+        ← Back to Home
+      </a>
+    </div>
   </nav>
 
   <!-- HERO -->
-  <header style="padding: 72px 32px 0; max-width: 720px; margin: 0 auto; text-align: center;">
+  <header style="padding: 120px 32px 0; max-width: 720px; margin: 0 auto; text-align: center;">
     <div class="fade-in" style="animation-delay: 0ms;">
       <h1 style="font-size: clamp(40px, 7vw, 64px); font-weight: 700; letter-spacing: -0.04em; margin: 0; line-height: 1.05;">
         How can we help?
