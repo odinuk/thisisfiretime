@@ -109,227 +109,10 @@
       flex-shrink: 0;
     }
 
-    /* Exercise pills */
-    .exercise-pill {
-      background: var(--primitive-color-neutral-gray-800);
-      border: 1px solid transparent;
-      border-radius: var(--primitive-radius-lg);
-      padding: 0.625rem 1rem;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--semantic-color-text-neutral-bold);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.375rem;
-      transition: all 0.2s ease;
-      cursor: default;
-      position: relative;
+    /* Exercise Library - rendered by React */
+    #exercise-library-root {
+      /* Container for React component */
     }
-    .exercise-pill:hover {
-      border-color: var(--primitive-color-brand-primary-500);
-      background: var(--primitive-color-brand-primary-950);
-    }
-
-    /* Tooltip */
-    .exercise-pill .tooltip {
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-10px);
-      background: var(--primitive-color-brand-primary-950);
-      border: 1px solid var(--primitive-color-brand-primary-700);
-      border-radius: var(--primitive-radius-2xl);
-      padding: 1.2rem 1.5rem;
-      width: 360px;
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--semantic-color-text-neutral-bold);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
-      z-index: 100;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-      pointer-events: none;
-    }
-    .exercise-pill .tooltip::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 10px solid transparent;
-      border-top-color: var(--primitive-color-brand-primary-950);
-    }
-    /* Desktop: show on hover */
-    @media (hover: hover) {
-      .exercise-pill:hover .tooltip {
-        opacity: 1;
-        visibility: visible;
-        transform: translateX(-50%) translateY(-12px);
-      }
-    }
-    /* Mobile: show on tap (via JS class) */
-    .exercise-pill.tooltip-active .tooltip {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(-12px);
-      pointer-events: auto;
-    }
-    /* Mobile responsive tooltip */
-    @media (max-width: 480px) {
-      .exercise-pill .tooltip {
-        width: calc(100vw - 48px);
-        max-width: 360px;
-        left: auto;
-        right: auto;
-        transform: translateX(-50%) translateY(-10px);
-        font-size: 15px;
-        padding: 1rem 1.25rem;
-      }
-      .exercise-pill.tooltip-active .tooltip {
-        transform: translateX(-50%) translateY(-12px);
-      }
-    }
-
-    /* Category Tabs */
-    .category-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 32px;
-    }
-
-    .category-tab {
-      background: transparent;
-      border: 1px solid var(--semantic-color-border-neutral-subtle);
-      border-radius: var(--primitive-radius-lg);
-      padding: 0.625rem 1.25rem;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--semantic-color-text-neutral-default);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .category-tab:hover {
-      border-color: var(--primitive-color-brand-primary-500);
-      color: var(--primitive-color-brand-primary-400);
-    }
-
-    .category-tab.active {
-      background: var(--primitive-color-brand-primary-500);
-      border-color: var(--primitive-color-brand-primary-500);
-      color: white;
-    }
-
-    /* Exercise Panels Container */
-    .exercise-panels {
-    }
-
-    .exercise-panel {
-      display: none;
-    }
-
-    .exercise-panel.active {
-      display: block;
-    }
-
-    .exercise-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-    }
-
-    /* Staggered fade-in animation */
-    .exercise-panel.active .exercise-pill {
-      opacity: 0;
-      animation: fadeInUp 0.4s ease forwards;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Weights Section - Apple-style cards (compact) */
-    .weights-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    @media (max-width: 900px) {
-      .weights-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 600px) {
-      .weights-grid {
-        grid-template-columns: 1fr;
-      }
-      .weight-card[style*="grid-column"] {
-        grid-column: span 1 !important;
-      }
-    }
-    .weight-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 16px;
-      transition: all 0.2s ease;
-    }
-    .weight-card:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-    .weight-card-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .weight-card-icon {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-    }
-    .weight-card-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--semantic-color-text-neutral-bold);
-      letter-spacing: -0.01em;
-    }
-    .weight-card-count {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--semantic-color-text-neutral-subtle);
-      margin-left: auto;
-    }
-    .weight-card .exercise-grid {
-      justify-content: flex-start;
-      gap: 4px;
-    }
-    .weight-card .exercise-pill {
-      font-size: 11px;
-      padding: 0.375rem 0.625rem;
-    }
-    /* Card accent colors */
-    .weight-card.push .weight-card-icon { background: rgba(255, 99, 71, 0.15); color: #FF6347; }
-    .weight-card.pull .weight-card-icon { background: rgba(65, 182, 230, 0.15); color: #41B6E6; }
-    .weight-card.lower .weight-card-icon { background: rgba(50, 205, 50, 0.15); color: #32CD32; }
-    .weight-card.fullbody .weight-card-icon { background: rgba(173, 104, 255, 0.15); color: #AD68FF; }
-    .weight-card.core .weight-card-icon { background: rgba(255, 193, 7, 0.15); color: #FFC107; }
 
   </style>
 </head>
@@ -381,253 +164,9 @@
     </div>
   </section>
 
-  <!-- EXERCISE LIBRARY -->
+  <!-- EXERCISE LIBRARY (React Component) -->
   <section class="pb-8">
-    <div class="max-w-5xl mx-auto px-6">
-      <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold text-txt mb-4">Exercise Library</h2>
-        <p class="text-[17px] text-txt-default mb-6" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-          150+ curated exercises. Hover for form tips.
-        </p>
-      </div>
-
-      <!-- Category Tabs -->
-      <div class="category-tabs">
-        <button class="category-tab active" data-cat="core">Core <span class="text-txt-subtle font-normal">(14)</span></button>
-        <button class="category-tab" data-cat="fullbody">Full Body <span class="text-txt-subtle font-normal">(13)</span></button>
-        <button class="category-tab" data-cat="upper">Upper Body <span class="text-txt-subtle font-normal">(13)</span></button>
-        <button class="category-tab" data-cat="lower">Lower Body <span class="text-txt-subtle font-normal">(15)</span></button>
-        <button class="category-tab" data-cat="calisthenics">Calisthenics <span class="text-txt-subtle font-normal">(15)</span></button>
-        <button class="category-tab" data-cat="cardio">Cardio <span class="text-txt-subtle font-normal">(12)</span></button>
-        <button class="category-tab" data-cat="weights">Weights <span class="text-txt-subtle font-normal">(46)</span></button>
-      </div>
-
-      <!-- Exercise Panels -->
-      <div class="exercise-panels">
-          <div class="exercise-panel active" data-panel="core">
-            <div class="exercise-grid">
-              <span class="exercise-pill">Plank<span class="tooltip">Hold a straight line from head to heels. Engage core, don't let hips sag or pike. Keep neck neutral.</span></span>
-              <span class="exercise-pill">Mountain Climbers<span class="tooltip">Start in plank. Drive knees to chest alternately at pace. Keep hips low and core tight throughout.</span></span>
-              <span class="exercise-pill">Dead Bug<span class="tooltip">Lie on back, arms up, knees at 90°. Lower opposite arm and leg while pressing lower back into floor.</span></span>
-              <span class="exercise-pill">Bicycle Crunches<span class="tooltip">Hands behind head, bring elbow to opposite knee. Rotate through the torso, not just the arms.</span></span>
-              <span class="exercise-pill">Russian Twists<span class="tooltip">Sit with knees bent, lean back slightly. Rotate torso side to side, keeping core engaged throughout.</span></span>
-              <span class="exercise-pill">Leg Raises<span class="tooltip">Lie flat, hands under hips. Raise legs to 90° then lower slowly. Press lower back into floor.</span></span>
-              <span class="exercise-pill">Flutter Kicks<span class="tooltip">Lie flat, hands under hips. Small alternating kicks with straight legs. Keep lower back pressed down.</span></span>
-              <span class="exercise-pill">Bird Dogs<span class="tooltip">From all fours, extend opposite arm and leg. Keep back flat and hips level. Pause at full extension.</span></span>
-              <span class="exercise-pill">Side Plank <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded-full">L+R</span><span class="tooltip">Stack feet or stagger, lift hips forming straight line. Hold, keeping hips up. Do both sides.</span></span>
-              <span class="exercise-pill">V-Ups<span class="tooltip">Lie flat, arms overhead. Lift legs and torso simultaneously, reaching hands to toes. Control the descent.</span></span>
-              <span class="exercise-pill">Hollow Hold<span class="tooltip">Lie flat, press lower back down. Lift shoulders and legs slightly off ground. Hold the banana shape.</span></span>
-              <span class="exercise-pill">Reverse Crunches<span class="tooltip">Lie flat, knees bent. Curl hips off floor bringing knees to chest. Lower with control, don't swing.</span></span>
-              <span class="exercise-pill">Toe Touches<span class="tooltip">Lie flat, legs vertical. Reach hands to toes, lifting shoulders off ground. Lower with control.</span></span>
-              <span class="exercise-pill">Plank Hip Dips<span class="tooltip">In forearm plank, rotate hips to touch floor each side. Keep core tight, control the movement.</span></span>
-            </div>
-          </div>
-
-          <div class="exercise-panel" data-panel="fullbody">
-            <div class="exercise-grid">
-              <span class="exercise-pill">Burpees<span class="tooltip">Drop to floor, chest down. Push up, jump feet to hands, then jump with arms overhead. Full extension.</span></span>
-              <span class="exercise-pill">Mountain Climbers<span class="tooltip">Start in plank. Drive knees to chest alternately at pace. Keep hips low and core tight throughout.</span></span>
-              <span class="exercise-pill">Plank Jacks<span class="tooltip">In plank position, jump feet wide then back together. Keep hips stable and core tight.</span></span>
-              <span class="exercise-pill">Jumping Jacks<span class="tooltip">Jump feet wide while raising arms overhead. Jump back to start. Keep a steady rhythm.</span></span>
-              <span class="exercise-pill">Bear Crawl<span class="tooltip">On all fours, knees hovering. Move opposite hand and foot together. Keep back flat, hips low.</span></span>
-              <span class="exercise-pill">Inchworms<span class="tooltip">From standing, walk hands out to plank. Walk feet to hands, stand up. Keep legs as straight as possible.</span></span>
-              <span class="exercise-pill">Star Jumps<span class="tooltip">Squat down, explode up spreading arms and legs wide like a star. Land softly in squat.</span></span>
-              <span class="exercise-pill">Sprawls<span class="tooltip">Like a burpee without the push-up. Drop hips to floor, chest stays up. Pop back up quickly.</span></span>
-              <span class="exercise-pill">Squat Thrusts<span class="tooltip">From standing, drop to plank, jump feet back to hands, stand. No push-up or jump at top.</span></span>
-              <span class="exercise-pill">Turkish Get-Up<span class="tooltip">Lie down, weight in one hand. Stand up while keeping weight overhead. Reverse to return. Complex but effective.</span></span>
-              <span class="exercise-pill">Renegade Rows<span class="tooltip">Plank on dumbbells. Row one weight while stabilizing. Alternate sides. Minimize hip rotation.</span></span>
-              <span class="exercise-pill">Man Makers<span class="tooltip">Burpee with dumbbells plus rows and press. Drop, push-up, row each side, jump up, press overhead.</span></span>
-              <span class="exercise-pill">Devil Press<span class="tooltip">Burpee with dumbbells, swing weights overhead at top. Powerful hip drive on the way up.</span></span>
-            </div>
-          </div>
-
-          <div class="exercise-panel" data-panel="upper">
-            <div class="exercise-grid">
-              <span class="exercise-pill">Push-Ups<span class="tooltip">Hands shoulder-width, body straight. Lower chest to floor, elbows at 45°. Push back up fully.</span></span>
-              <span class="exercise-pill">Diamond Push-Ups<span class="tooltip">Hands together forming diamond. Elbows stay close to body. Great for triceps emphasis.</span></span>
-              <span class="exercise-pill">Wide Push-Ups<span class="tooltip">Hands wider than shoulders. More chest emphasis. Keep elbows tracking over wrists.</span></span>
-              <span class="exercise-pill">Pike Push-Ups<span class="tooltip">Hips high in inverted V. Lower head toward floor between hands. Targets shoulders.</span></span>
-              <span class="exercise-pill">Tricep Dips<span class="tooltip">Hands on edge behind you. Lower body by bending elbows to 90°. Press back up without locking.</span></span>
-              <span class="exercise-pill">Shoulder Taps<span class="tooltip">In plank, tap opposite shoulder with hand. Minimize hip rotation. Keep core tight.</span></span>
-              <span class="exercise-pill">Plank Up-Downs<span class="tooltip">From forearm plank, push up to hands one arm at a time. Alternate leading arm each rep.</span></span>
-              <span class="exercise-pill">Archer Push-Ups<span class="tooltip">Wide push-up, shift weight to one arm while other extends. Alternate sides. Builds toward one-arm.</span></span>
-              <span class="exercise-pill">Hindu Push-Ups<span class="tooltip">Start in downward dog, swoop down and through to upward dog. Reverse the motion. Fluid movement.</span></span>
-              <span class="exercise-pill">Dive Bombers<span class="tooltip">Like Hindu push-ups but reverse back through the same path. Great for shoulders and chest.</span></span>
-              <span class="exercise-pill">Decline Push-Ups<span class="tooltip">Feet elevated on bench or step. Increases difficulty and shoulder engagement. Keep body straight.</span></span>
-              <span class="exercise-pill">Superman Pull<span class="tooltip">Lie face down, arms extended. Lift chest and pull elbows back squeezing shoulder blades together.</span></span>
-              <span class="exercise-pill">Commando Planks<span class="tooltip">Forearm plank to high plank and back. Alternate leading arm. Keep hips stable throughout.</span></span>
-            </div>
-          </div>
-
-          <div class="exercise-panel" data-panel="lower">
-            <div class="exercise-grid">
-              <span class="exercise-pill">Squats<span class="tooltip">Feet shoulder-width, toes slightly out. Sit back and down, knees tracking toes. Depth to parallel or below.</span></span>
-              <span class="exercise-pill">Lunges<span class="tooltip">Step forward, lower back knee toward floor. Front knee stays over ankle. Push back to start.</span></span>
-              <span class="exercise-pill">Jump Squats<span class="tooltip">Squat down, then explode upward. Land softly with bent knees. Go straight into next rep.</span></span>
-              <span class="exercise-pill">Glute Bridges<span class="tooltip">Lie on back, knees bent. Drive hips up squeezing glutes. Pause at top, lower with control.</span></span>
-              <span class="exercise-pill">Wall Sit<span class="tooltip">Back flat against wall, thighs parallel to floor. Hold position. Don't rest hands on legs.</span></span>
-              <span class="exercise-pill">Calf Raises<span class="tooltip">Rise onto balls of feet, pause at top. Lower with control. Use wall for balance if needed.</span></span>
-              <span class="exercise-pill">Sumo Squats<span class="tooltip">Wide stance, toes pointed out. Squat keeping knees over toes. Great for inner thighs and glutes.</span></span>
-              <span class="exercise-pill">Step-Ups<span class="tooltip">Step onto box, drive through heel. Bring other foot up, then step down with control.</span></span>
-              <span class="exercise-pill">Box Jumps<span class="tooltip">Jump onto box landing with both feet. Stand fully, step down. Use arm swing for power.</span></span>
-              <span class="exercise-pill">Lateral Lunges<span class="tooltip">Step wide to side, sit back into hip. Keep other leg straight. Push back to center.</span></span>
-              <span class="exercise-pill">Pistol Squats<span class="tooltip">Single leg squat, other leg extended forward. Go deep, drive up through heel. Use support if needed.</span></span>
-              <span class="exercise-pill">Curtsy Lunges<span class="tooltip">Step back and across behind standing leg. Lower into lunge, then return. Works glutes and inner thighs.</span></span>
-              <span class="exercise-pill">Frog Jumps<span class="tooltip">Deep squat, hands touch floor. Explode forward and up. Land softly, immediately repeat.</span></span>
-              <span class="exercise-pill">Bulgarian Split Squat <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded-full">L+R</span><span class="tooltip">Rear foot elevated on bench. Lower until back knee nearly touches floor. Drive up through front heel.</span></span>
-              <span class="exercise-pill">Single Leg Deadlift <span class="text-[10px] font-semibold text-primary bg-primary-950 px-1.5 py-0.5 rounded-full">L+R</span><span class="tooltip">Hinge at hip on one leg, back leg extends behind. Keep back flat. Touch floor and return.</span></span>
-            </div>
-          </div>
-
-          <div class="exercise-panel" data-panel="calisthenics">
-            <div class="exercise-grid">
-              <span class="exercise-pill">Pull-Ups<span class="tooltip">Hang with palms forward, pull chin over bar. Lead with chest, squeeze back at top. Control down.</span></span>
-              <span class="exercise-pill">Push-Ups<span class="tooltip">Hands shoulder-width, body straight. Lower chest to floor, elbows at 45°. Push back up fully.</span></span>
-              <span class="exercise-pill">Dips<span class="tooltip">Support on parallel bars, lower until shoulders below elbows. Press up to lockout. Lean forward for chest.</span></span>
-              <span class="exercise-pill">Muscle-Ups<span class="tooltip">Explosive pull-up transitioning over bar to dip. Requires strong pull and hip drive. Advanced move.</span></span>
-              <span class="exercise-pill">Handstand Hold<span class="tooltip">Kick up against wall or freestanding. Stack shoulders over wrists, engage core. Build time gradually.</span></span>
-              <span class="exercise-pill">L-Sit<span class="tooltip">Support on parallettes or floor, legs extended forward. Keep legs parallel to ground, core tight.</span></span>
-              <span class="exercise-pill">Pistol Squats<span class="tooltip">Single leg squat, other leg extended forward. Go deep, drive up through heel. Use support if needed.</span></span>
-              <span class="exercise-pill">Hanging Leg Raises<span class="tooltip">Hang from bar, raise legs to parallel or higher. Control the swing, squeeze abs at top.</span></span>
-              <span class="exercise-pill">Dragon Flags<span class="tooltip">Lie on bench, grip behind head. Raise body as one unit, lower slowly. Keep body straight throughout.</span></span>
-              <span class="exercise-pill">Planche Lean<span class="tooltip">In push-up position, lean forward shifting weight over hands. Shoulders past wrists. Build hold time.</span></span>
-              <span class="exercise-pill">Front Lever Raises<span class="tooltip">Hang from bar, raise body horizontal with straight arms. Lower with control. Very advanced.</span></span>
-              <span class="exercise-pill">Skin the Cat<span class="tooltip">Hang, rotate backwards through arms until stretched behind. Return through same path. Shoulder mobility.</span></span>
-              <span class="exercise-pill">Nordic Curls<span class="tooltip">Kneel, anchor feet. Lower body forward with control using hamstrings. Push off floor to return if needed.</span></span>
-              <span class="exercise-pill">Archer Push-Ups<span class="tooltip">Wide push-up, shift weight to one arm while other extends. Alternate sides. Builds toward one-arm.</span></span>
-              <span class="exercise-pill">One Arm Push-Up Prep<span class="tooltip">Staggered hand push-up, gradually widen until one arm does most work. Progress slowly.</span></span>
-            </div>
-          </div>
-
-          <div class="exercise-panel" data-panel="cardio">
-            <div class="exercise-grid">
-              <span class="exercise-pill">High Knees<span class="tooltip">Run in place driving knees to hip height. Pump arms. Stay on balls of feet for quick turnover.</span></span>
-              <span class="exercise-pill">Jumping Jacks<span class="tooltip">Jump feet wide while raising arms overhead. Jump back to start. Keep a steady rhythm.</span></span>
-              <span class="exercise-pill">Burpees<span class="tooltip">Drop to floor, chest down. Push up, jump feet to hands, then jump with arms overhead. Full extension.</span></span>
-              <span class="exercise-pill">Mountain Climbers<span class="tooltip">Start in plank. Drive knees to chest alternately at pace. Keep hips low and core tight throughout.</span></span>
-              <span class="exercise-pill">Jump Rope<span class="tooltip">Light bounce on balls of feet, wrists turn rope. Keep elbows close, jump just high enough to clear.</span></span>
-              <span class="exercise-pill">Speed Skaters<span class="tooltip">Leap side to side, landing on one foot. Touch down with opposite hand. Stay low.</span></span>
-              <span class="exercise-pill">Tuck Jumps<span class="tooltip">Jump and pull knees to chest at peak. Land softly with bent knees. Reset and repeat.</span></span>
-              <span class="exercise-pill">Box Jumps<span class="tooltip">Jump onto box landing with both feet. Stand fully, step down. Use arm swing for power.</span></span>
-              <span class="exercise-pill">Lateral Shuffles<span class="tooltip">Low athletic stance, shuffle sideways quickly. Stay low, don't cross feet. Quick direction changes.</span></span>
-              <span class="exercise-pill">Fast Feet<span class="tooltip">Quick small steps in place as fast as possible. Stay on balls of feet. Keep core engaged.</span></span>
-              <span class="exercise-pill">Butt Kicks<span class="tooltip">Run in place kicking heels to glutes. Keep upper body tall. Quick foot turnover.</span></span>
-              <span class="exercise-pill">Sprint in Place<span class="tooltip">Full speed running motion without moving forward. Drive knees high, pump arms hard.</span></span>
-            </div>
-          </div>
-
-          <div class="exercise-panel" data-panel="weights">
-            <div class="weights-grid">
-              <!-- Upper Body - Push -->
-              <div class="weight-card push">
-                <div class="weight-card-header">
-                  <div class="weight-card-icon">↑</div>
-                  <span class="weight-card-title">Push</span>
-                  <span class="weight-card-count">8 exercises</span>
-                </div>
-                <div class="exercise-grid">
-                  <span class="exercise-pill">Bench Press<span class="tooltip">Lie flat, grip bar slightly wider than shoulders. Lower to chest, press up. Keep feet planted.</span></span>
-                  <span class="exercise-pill">Incline DB Press<span class="tooltip">Bench at 30-45°, press dumbbells up and together. Lower with control, elbows at 45°. Targets upper chest.</span></span>
-                  <span class="exercise-pill">Overhead Press<span class="tooltip">Bar at shoulders, press straight up. Keep core tight, don't lean back. Lock out at top.</span></span>
-                  <span class="exercise-pill">Dumbbell Flyes<span class="tooltip">Lie flat, arms extended with slight bend. Lower wide, feel chest stretch. Squeeze back up.</span></span>
-                  <span class="exercise-pill">Cable Crossovers<span class="tooltip">Cables set high, step forward. Bring handles together in arc, squeeze chest. Control the return.</span></span>
-                  <span class="exercise-pill">Lateral Raises<span class="tooltip">Arms at sides, raise to shoulder height. Lead with elbows, slight bend. Don't go above parallel.</span></span>
-                  <span class="exercise-pill">Tricep Pushdowns<span class="tooltip">Elbows pinned at sides, push down until arms straight. Squeeze triceps, control the return.</span></span>
-                  <span class="exercise-pill">Skull Crushers<span class="tooltip">Lie flat, lower weight to forehead by bending elbows. Keep upper arms vertical. Extend to lockout.</span></span>
-                </div>
-              </div>
-
-              <!-- Upper Body - Pull -->
-              <div class="weight-card pull">
-                <div class="weight-card-header">
-                  <div class="weight-card-icon">↓</div>
-                  <span class="weight-card-title">Pull</span>
-                  <span class="weight-card-count">7 exercises</span>
-                </div>
-                <div class="exercise-grid">
-                  <span class="exercise-pill">Bent Over Rows<span class="tooltip">Hinge forward, back flat. Pull bar to lower chest, squeeze shoulder blades. Control the descent.</span></span>
-                  <span class="exercise-pill">Lat Pulldowns<span class="tooltip">Grip wide, pull bar to upper chest. Lead with elbows, squeeze lats at bottom. Control up slowly.</span></span>
-                  <span class="exercise-pill">Seated Rows<span class="tooltip">Sit upright, pull handle to torso. Squeeze shoulder blades together. Control the return.</span></span>
-                  <span class="exercise-pill">Face Pulls<span class="tooltip">Pull rope to face, elbows high. Squeeze rear delts and upper back. Great for posture.</span></span>
-                  <span class="exercise-pill">Reverse Flyes<span class="tooltip">Bent over or on incline bench. Raise arms out to sides, squeeze rear delts. Control the descent.</span></span>
-                  <span class="exercise-pill">Bicep Curls<span class="tooltip">Elbows at sides, curl weight up. Don't swing body. Squeeze at top, lower with control.</span></span>
-                  <span class="exercise-pill">Hammer Curls<span class="tooltip">Palms facing in, curl weight up. Targets brachialis and forearms. Keep elbows stationary.</span></span>
-                </div>
-              </div>
-
-              <!-- Lower Body -->
-              <div class="weight-card lower">
-                <div class="weight-card-header">
-                  <div class="weight-card-icon">⬇</div>
-                  <span class="weight-card-title">Lower Body</span>
-                  <span class="weight-card-count">15 exercises</span>
-                </div>
-                <div class="exercise-grid">
-                  <span class="exercise-pill">Barbell Squats<span class="tooltip">Bar on upper back, feet shoulder-width. Squat to parallel or below. Drive through heels, chest up.</span></span>
-                  <span class="exercise-pill">Front Squats<span class="tooltip">Bar on front delts, elbows high. Squat deep, keeping torso upright. Targets quads more than back squat.</span></span>
-                  <span class="exercise-pill">Goblet Squats<span class="tooltip">Hold dumbbell at chest. Squat deep, elbows between knees at bottom. Keep torso upright.</span></span>
-                  <span class="exercise-pill">Hack Squats<span class="tooltip">Back against pad, shoulders under pads. Lower until thighs parallel. Press through heels.</span></span>
-                  <span class="exercise-pill">Leg Press<span class="tooltip">Feet shoulder-width on platform. Lower until 90° knee bend. Press up without locking knees.</span></span>
-                  <span class="exercise-pill">Romanian Deadlifts<span class="tooltip">Slight knee bend, hinge at hips. Lower bar along legs feeling hamstring stretch. Squeeze glutes up.</span></span>
-                  <span class="exercise-pill">Sumo Deadlifts<span class="tooltip">Wide stance, toes out, grip inside knees. Drive through floor, keep chest up. Targets inner thighs and glutes.</span></span>
-                  <span class="exercise-pill">Good Mornings<span class="tooltip">Bar on back, slight knee bend. Hinge forward until torso near parallel. Squeeze glutes to rise.</span></span>
-                  <span class="exercise-pill">Hip Thrusts<span class="tooltip">Upper back on bench, bar on hips. Drive hips up, squeeze glutes hard at top. Chin tucked.</span></span>
-                  <span class="exercise-pill">Bulgarian Splits<span class="tooltip">Rear foot on bench, lower until back knee nearly touches floor. Drive through front heel to rise.</span></span>
-                  <span class="exercise-pill">Walking Lunges<span class="tooltip">Step forward into lunge, drive through front heel to step into next lunge. Keep torso upright.</span></span>
-                  <span class="exercise-pill">Leg Curls<span class="tooltip">Lie face down, curl heels toward glutes. Squeeze hamstrings at top, lower with control.</span></span>
-                  <span class="exercise-pill">Leg Extensions<span class="tooltip">Extend legs until straight, squeeze quads at top. Lower slowly, don't let weight stack touch.</span></span>
-                  <span class="exercise-pill">Calf Raises<span class="tooltip">Rise onto balls of feet, pause and squeeze at top. Lower with control, feel the stretch at bottom.</span></span>
-                  <span class="exercise-pill">Glute Kickbacks<span class="tooltip">On cable machine or all fours. Kick leg back, squeeze glute at top. Control the return.</span></span>
-                </div>
-              </div>
-
-              <!-- Full Body -->
-              <div class="weight-card fullbody">
-                <div class="weight-card-header">
-                  <div class="weight-card-icon">◆</div>
-                  <span class="weight-card-title">Full Body</span>
-                  <span class="weight-card-count">8 exercises</span>
-                </div>
-                <div class="exercise-grid">
-                  <span class="exercise-pill">Deadlifts<span class="tooltip">Bar over mid-foot, hinge and grip. Drive through floor, keep bar close. Stand tall, squeeze glutes.</span></span>
-                  <span class="exercise-pill">Clean and Press<span class="tooltip">Pull bar explosively to shoulders, then press overhead. Two movements in one. Full body power.</span></span>
-                  <span class="exercise-pill">Thrusters<span class="tooltip">Front squat into overhead press in one fluid motion. Use leg drive to power the press.</span></span>
-                  <span class="exercise-pill">KB Swings<span class="tooltip">Hinge at hips, swing bell between legs. Drive hips forward powerfully. Arms guide, don't lift.</span></span>
-                  <span class="exercise-pill">Turkish Get-Ups<span class="tooltip">Lie down, weight in one hand. Stand up while keeping weight overhead. Reverse to return.</span></span>
-                  <span class="exercise-pill">Man Makers<span class="tooltip">Burpee with dumbbells plus rows and press. Drop, push-up, row each side, jump up, press overhead.</span></span>
-                  <span class="exercise-pill">BB Complexes<span class="tooltip">Multiple movements without putting bar down. Example: deadlift, row, clean, press, squat. No rest between.</span></span>
-                  <span class="exercise-pill">Farmers Carry<span class="tooltip">Heavy dumbbells at sides, walk with control. Keep shoulders back, core tight. Great for grip and stability.</span></span>
-                </div>
-              </div>
-
-              <!-- Core -->
-              <div class="weight-card core" style="grid-column: 1 / -1;">
-                <div class="weight-card-header">
-                  <div class="weight-card-icon">●</div>
-                  <span class="weight-card-title">Core</span>
-                  <span class="weight-card-count">8 exercises</span>
-                </div>
-                <div class="exercise-grid">
-                  <span class="exercise-pill">Cable Crunches<span class="tooltip">Kneel at cable, rope behind head. Crunch down bringing elbows to thighs. Squeeze abs hard.</span></span>
-                  <span class="exercise-pill">Weighted Russian Twists<span class="tooltip">Sit with knees bent, hold weight. Rotate torso side to side, tapping weight on floor each side.</span></span>
-                  <span class="exercise-pill">Hanging Leg Raises<span class="tooltip">Hang from bar, raise legs to parallel or higher. Control the swing, squeeze abs at top.</span></span>
-                  <span class="exercise-pill">Ab Rollouts<span class="tooltip">Kneel with ab wheel or barbell. Roll forward keeping core tight. Pull back using abs, not arms.</span></span>
-                  <span class="exercise-pill">Weighted Planks<span class="tooltip">Standard plank with weight plate on back. Hold position, keep hips level. Build time gradually.</span></span>
-                  <span class="exercise-pill">Pallof Press<span class="tooltip">Stand sideways to cable, press handle straight out. Resist rotation, squeeze core. Hold, then return.</span></span>
-                  <span class="exercise-pill">Landmine Rotations<span class="tooltip">Hold barbell end at chest, pivot and rotate to each side. Control the movement, engage obliques.</span></span>
-                  <span class="exercise-pill">Decline Sit-Ups<span class="tooltip">On decline bench, hold weight at chest. Sit up fully, lower with control. Don't use momentum.</span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer note -->
-      <p class="text-center text-sm text-txt-subtle mt-4">
-        Exercises marked <span class="text-primary">L+R</span> automatically split into left and right intervals.
-      </p>
-    </div>
+    <div id="exercise-library-root"></div>
   </section>
 
   <!-- FAQ -->
@@ -803,71 +342,640 @@
     </div>
   </footer>
 
-  <!-- SCRIPTS -->
-  <script>
-    // Tab switching with staggered animation
-    const tabs = document.querySelectorAll('.category-tab');
-    const panels = document.querySelectorAll('.exercise-panel');
+  <!-- React CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    // Set up staggered delays for initial active panel
-    const initialPanel = document.querySelector('.exercise-panel.active');
-    if (initialPanel) {
-      const pills = initialPanel.querySelectorAll('.exercise-pill');
-      pills.forEach((pill, i) => {
-        pill.style.animationDelay = (i * 0.02) + 's';
-      });
+  <!-- Exercise Library Component -->
+  <script type="text/babel">
+    const DATA = {
+      core: [
+        { name: "Plank", tip: "Hold a straight line from head to heels. Engage core, don't let hips sag or pike." },
+        { name: "Mountain Climbers", tip: "Start in plank. Drive knees to chest alternately. Keep hips low and core tight." },
+        { name: "Dead Bug", tip: "Lie on back, arms up, knees at 90°. Lower opposite arm and leg while pressing lower back into floor." },
+        { name: "Bicycle Crunches", tip: "Hands behind head, bring elbow to opposite knee. Rotate through the torso." },
+        { name: "Russian Twists", tip: "Sit with knees bent, lean back slightly. Rotate torso side to side, keeping core engaged." },
+        { name: "Leg Raises", tip: "Lie flat, hands under hips. Raise legs to 90° then lower slowly. Press lower back into floor." },
+        { name: "Flutter Kicks", tip: "Lie flat, hands under hips. Small alternating kicks with straight legs." },
+        { name: "Bird Dogs", tip: "From all fours, extend opposite arm and leg. Keep back flat and hips level." },
+        { name: "Side Plank", tip: "Stack feet or stagger, lift hips forming straight line. Do both sides.", lr: true },
+        { name: "V-Ups", tip: "Lie flat, arms overhead. Lift legs and torso simultaneously, reaching hands to toes." },
+        { name: "Hollow Hold", tip: "Lie flat, press lower back down. Lift shoulders and legs slightly off ground." },
+        { name: "Reverse Crunches", tip: "Lie flat, knees bent. Curl hips off floor bringing knees to chest." },
+        { name: "Toe Touches", tip: "Lie flat, legs vertical. Reach hands to toes, lifting shoulders off ground." },
+        { name: "Plank Hip Dips", tip: "In forearm plank, rotate hips to touch floor each side. Keep core tight." }
+      ],
+      fullBody: [
+        { name: "Burpees", tip: "Drop to floor, chest down. Push up, jump feet to hands, then jump with arms overhead." },
+        { name: "Mountain Climbers", tip: "Start in plank. Drive knees to chest alternately. Keep hips low and core tight." },
+        { name: "Plank Jacks", tip: "In plank position, jump feet wide then back together. Keep hips stable." },
+        { name: "Jumping Jacks", tip: "Jump feet wide while raising arms overhead. Jump back to start." },
+        { name: "Bear Crawl", tip: "On all fours, knees hovering. Move opposite hand and foot together. Keep back flat." },
+        { name: "Inchworms", tip: "From standing, walk hands out to plank. Walk feet to hands, stand up." },
+        { name: "Star Jumps", tip: "Squat down, explode up spreading arms and legs wide. Land softly in squat." },
+        { name: "Sprawls", tip: "Like a burpee without the push-up. Drop hips to floor, chest stays up. Pop back up." },
+        { name: "Squat Thrusts", tip: "From standing, drop to plank, jump feet back to hands, stand." },
+        { name: "Turkish Get-Up", tip: "Lie down, weight in one hand. Stand up keeping weight overhead. Reverse to return." },
+        { name: "Renegade Rows", tip: "Plank on dumbbells. Row one weight while stabilizing. Alternate sides." },
+        { name: "Man Makers", tip: "Burpee with dumbbells plus rows and press. Full body power move." },
+        { name: "Devil Press", tip: "Burpee with dumbbells, swing weights overhead at top. Powerful hip drive." }
+      ],
+      upperBody: [
+        { name: "Push-Ups", tip: "Hands shoulder-width, body straight. Lower chest to floor, elbows at 45°." },
+        { name: "Diamond Push-Ups", tip: "Hands together forming diamond. Elbows stay close to body. Great for triceps." },
+        { name: "Wide Push-Ups", tip: "Hands wider than shoulders. More chest emphasis. Keep elbows tracking over wrists." },
+        { name: "Pike Push-Ups", tip: "Hips high in inverted V. Lower head toward floor between hands. Targets shoulders." },
+        { name: "Tricep Dips", tip: "Hands on edge behind you. Lower body by bending elbows to 90°." },
+        { name: "Shoulder Taps", tip: "In plank, tap opposite shoulder with hand. Minimize hip rotation." },
+        { name: "Plank Up-Downs", tip: "From forearm plank, push up to hands one arm at a time. Alternate leading arm." },
+        { name: "Archer Push-Ups", tip: "Wide push-up, shift weight to one arm while other extends. Builds toward one-arm." },
+        { name: "Hindu Push-Ups", tip: "Start in downward dog, swoop down and through to upward dog. Fluid movement." },
+        { name: "Dive Bombers", tip: "Like Hindu push-ups but reverse back through the same path." },
+        { name: "Decline Push-Ups", tip: "Feet elevated on bench or step. Increases difficulty and shoulder engagement." },
+        { name: "Superman Pull", tip: "Lie face down, arms extended. Lift chest and pull elbows back squeezing shoulder blades." },
+        { name: "Commando Planks", tip: "Forearm plank to high plank and back. Keep hips stable throughout." }
+      ],
+      lowerBody: [
+        { name: "Squats", tip: "Feet shoulder-width, toes slightly out. Sit back and down, knees tracking toes." },
+        { name: "Lunges", tip: "Step forward, lower back knee toward floor. Front knee stays over ankle." },
+        { name: "Jump Squats", tip: "Squat down, then explode upward. Land softly with bent knees." },
+        { name: "Glute Bridges", tip: "Lie on back, knees bent. Drive hips up squeezing glutes. Pause at top." },
+        { name: "Wall Sit", tip: "Back flat against wall, thighs parallel to floor. Hold position." },
+        { name: "Calf Raises", tip: "Rise onto balls of feet, pause at top. Lower with control." },
+        { name: "Sumo Squats", tip: "Wide stance, toes pointed out. Squat keeping knees over toes." },
+        { name: "Step-Ups", tip: "Step onto box, drive through heel. Bring other foot up, then step down." },
+        { name: "Box Jumps", tip: "Jump onto box landing with both feet. Stand fully, step down." },
+        { name: "Lateral Lunges", tip: "Step wide to side, sit back into hip. Keep other leg straight." },
+        { name: "Pistol Squats", tip: "Single leg squat, other leg extended forward. Go deep, drive up through heel." },
+        { name: "Curtsy Lunges", tip: "Step back and across behind standing leg. Works glutes and inner thighs." },
+        { name: "Frog Jumps", tip: "Deep squat, hands touch floor. Explode forward and up. Land softly." },
+        { name: "Bulgarian Split Squat", tip: "Rear foot elevated. Lower until back knee nearly touches floor.", lr: true },
+        { name: "Single Leg Deadlift", tip: "Hinge at hip on one leg, back leg extends behind. Keep back flat.", lr: true }
+      ],
+      calisthenics: [
+        { name: "Pull-Ups", tip: "Hang with palms forward, pull chin over bar. Lead with chest, squeeze back at top." },
+        { name: "Push-Ups", tip: "Hands shoulder-width, body straight. Lower chest to floor, elbows at 45°." },
+        { name: "Dips", tip: "Support on parallel bars, lower until shoulders below elbows. Press up to lockout." },
+        { name: "Muscle-Ups", tip: "Explosive pull-up transitioning over bar to dip. Requires strong pull and hip drive." },
+        { name: "Handstand Hold", tip: "Kick up against wall or freestanding. Stack shoulders over wrists, engage core." },
+        { name: "L-Sit", tip: "Support on parallettes or floor, legs extended forward. Keep legs parallel to ground." },
+        { name: "Pistol Squats", tip: "Single leg squat, other leg extended forward. Use support if needed." },
+        { name: "Hanging Leg Raises", tip: "Hang from bar, raise legs to parallel or higher. Control the swing." },
+        { name: "Dragon Flags", tip: "Lie on bench, grip behind head. Raise body as one unit, lower slowly." },
+        { name: "Planche Lean", tip: "In push-up position, lean forward shifting weight over hands. Build hold time." },
+        { name: "Front Lever Raises", tip: "Hang from bar, raise body horizontal with straight arms. Very advanced." },
+        { name: "Skin the Cat", tip: "Hang, rotate backwards through arms until stretched behind. Shoulder mobility." },
+        { name: "Nordic Curls", tip: "Kneel, anchor feet. Lower body forward with control using hamstrings." },
+        { name: "Archer Push-Ups", tip: "Wide push-up, shift weight to one arm while other extends." },
+        { name: "One Arm Push-Up Prep", tip: "Staggered hand push-up, gradually widen until one arm does most work." }
+      ],
+      cardio: [
+        { name: "High Knees", tip: "Run in place driving knees to hip height. Stay on balls of feet." },
+        { name: "Jumping Jacks", tip: "Jump feet wide while raising arms overhead. Keep a steady rhythm." },
+        { name: "Burpees", tip: "Drop to floor, chest down. Push up, jump feet to hands, jump with arms overhead." },
+        { name: "Mountain Climbers", tip: "Start in plank. Drive knees to chest alternately at pace." },
+        { name: "Jump Rope", tip: "Light bounce on balls of feet, wrists turn rope. Jump just high enough to clear." },
+        { name: "Speed Skaters", tip: "Leap side to side, landing on one foot. Touch down with opposite hand." },
+        { name: "Tuck Jumps", tip: "Jump and pull knees to chest at peak. Land softly with bent knees." },
+        { name: "Box Jumps", tip: "Jump onto box landing with both feet. Stand fully, step down." },
+        { name: "Lateral Shuffles", tip: "Low athletic stance, shuffle sideways quickly. Don't cross feet." },
+        { name: "Fast Feet", tip: "Quick small steps in place as fast as possible. Keep core engaged." },
+        { name: "Butt Kicks", tip: "Run in place kicking heels to glutes. Quick foot turnover." },
+        { name: "Sprint in Place", tip: "Full speed running motion without moving forward. Drive knees high." }
+      ],
+      weights: {
+        push: [
+          { name: "Bench Press", tip: "Lie flat, grip bar slightly wider than shoulders. Lower to chest, press up." },
+          { name: "Incline DB Press", tip: "Bench at 30-45°, press dumbbells up and together. Targets upper chest." },
+          { name: "Overhead Press", tip: "Bar at shoulders, press straight up. Keep core tight, don't lean back." },
+          { name: "Dumbbell Flyes", tip: "Lie flat, arms extended with slight bend. Lower wide, feel chest stretch." },
+          { name: "Cable Crossovers", tip: "Cables set high, step forward. Bring handles together in arc." },
+          { name: "Lateral Raises", tip: "Arms at sides, raise to shoulder height. Lead with elbows, slight bend." },
+          { name: "Tricep Pushdowns", tip: "Elbows pinned at sides, push down until arms straight. Squeeze triceps." },
+          { name: "Skull Crushers", tip: "Lie flat, lower weight to forehead by bending elbows. Extend to lockout." }
+        ],
+        pull: [
+          { name: "Bent Over Rows", tip: "Hinge forward, back flat. Pull bar to lower chest, squeeze shoulder blades." },
+          { name: "Lat Pulldowns", tip: "Grip wide, pull bar to upper chest. Lead with elbows, squeeze lats." },
+          { name: "Seated Rows", tip: "Sit upright, pull handle to torso. Squeeze shoulder blades together." },
+          { name: "Face Pulls", tip: "Pull rope to face, elbows high. Squeeze rear delts and upper back." },
+          { name: "Reverse Flyes", tip: "Bent over or on incline bench. Raise arms out to sides, squeeze rear delts." },
+          { name: "Bicep Curls", tip: "Elbows at sides, curl weight up. Don't swing body. Squeeze at top." },
+          { name: "Hammer Curls", tip: "Palms facing in, curl weight up. Targets brachialis and forearms." }
+        ],
+        lower: [
+          { name: "Barbell Squats", tip: "Bar on upper back, feet shoulder-width. Squat to parallel or below." },
+          { name: "Front Squats", tip: "Bar on front delts, elbows high. Squat deep, keeping torso upright." },
+          { name: "Goblet Squats", tip: "Hold dumbbell at chest. Squat deep, elbows between knees at bottom." },
+          { name: "Hack Squats", tip: "Back against pad, shoulders under pads. Lower until thighs parallel." },
+          { name: "Leg Press", tip: "Feet shoulder-width on platform. Lower until 90° knee bend. Press up." },
+          { name: "Romanian Deadlifts", tip: "Slight knee bend, hinge at hips. Feel hamstring stretch. Squeeze glutes up." },
+          { name: "Sumo Deadlifts", tip: "Wide stance, toes out, grip inside knees. Drive through floor, keep chest up." },
+          { name: "Good Mornings", tip: "Bar on back, slight knee bend. Hinge forward until torso near parallel." },
+          { name: "Hip Thrusts", tip: "Upper back on bench, bar on hips. Drive hips up, squeeze glutes hard." },
+          { name: "Bulgarian Splits", tip: "Rear foot on bench, lower until back knee nearly touches floor." },
+          { name: "Walking Lunges", tip: "Step forward into lunge, drive through front heel to step into next." },
+          { name: "Leg Curls", tip: "Lie face down, curl heels toward glutes. Squeeze hamstrings at top." },
+          { name: "Leg Extensions", tip: "Extend legs until straight, squeeze quads at top. Lower slowly." },
+          { name: "Calf Raises", tip: "Rise onto balls of feet, pause and squeeze at top. Lower with control." },
+          { name: "Glute Kickbacks", tip: "On cable machine or all fours. Kick leg back, squeeze glute at top." }
+        ],
+        fullBody: [
+          { name: "Deadlifts", tip: "Bar over mid-foot, hinge and grip. Drive through floor, keep bar close." },
+          { name: "Clean and Press", tip: "Pull bar explosively to shoulders, then press overhead. Full body power." },
+          { name: "Thrusters", tip: "Front squat into overhead press in one fluid motion. Use leg drive." },
+          { name: "KB Swings", tip: "Hinge at hips, swing bell between legs. Drive hips forward powerfully." },
+          { name: "Turkish Get-Ups", tip: "Lie down, weight in one hand. Stand up while keeping weight overhead." },
+          { name: "Man Makers", tip: "Burpee with dumbbells plus rows and press. Ultimate full body move." },
+          { name: "BB Complexes", tip: "Multiple movements without putting bar down. No rest between exercises." },
+          { name: "Farmers Carry", tip: "Heavy dumbbells at sides, walk with control. Great for grip and stability." }
+        ],
+        core: [
+          { name: "Cable Crunches", tip: "Kneel at cable, rope behind head. Crunch down bringing elbows to thighs." },
+          { name: "Weighted Russian Twists", tip: "Sit with knees bent, hold weight. Rotate torso side to side." },
+          { name: "Hanging Leg Raises", tip: "Hang from bar, raise legs to parallel or higher. Control the swing." },
+          { name: "Ab Rollouts", tip: "Kneel with ab wheel or barbell. Roll forward keeping core tight." },
+          { name: "Weighted Planks", tip: "Standard plank with weight plate on back. Build time gradually." },
+          { name: "Pallof Press", tip: "Stand sideways to cable, press handle straight out. Resist rotation." },
+          { name: "Landmine Rotations", tip: "Hold barbell end at chest, pivot and rotate to each side." },
+          { name: "Decline Sit-Ups", tip: "On decline bench, hold weight at chest. Sit up fully, lower with control." }
+        ]
+      }
+    };
+
+    const CATEGORIES = [
+      { key: 'core', label: 'Core' },
+      { key: 'fullBody', label: 'Full Body' },
+      { key: 'upperBody', label: 'Upper Body' },
+      { key: 'lowerBody', label: 'Lower Body' },
+      { key: 'calisthenics', label: 'Calisthenics' },
+      { key: 'cardio', label: 'Cardio' },
+      { key: 'weights', label: 'Weights' }
+    ];
+
+    const WEIGHT_SUBS = [
+      { key: 'push', label: 'Push', icon: '↑' },
+      { key: 'pull', label: 'Pull', icon: '↓' },
+      { key: 'lower', label: 'Lower Body', icon: '⬇' },
+      { key: 'fullBody', label: 'Full Body', icon: '◆' },
+      { key: 'core', label: 'Core', icon: '●' }
+    ];
+
+    function ExercisePill({ exercise, index }) {
+      const [showTip, setShowTip] = React.useState(false);
+      return (
+        <div
+          className="exercise-pill"
+          style={{ animationDelay: `${index * 0.02}s` }}
+          onMouseEnter={() => setShowTip(true)}
+          onMouseLeave={() => setShowTip(false)}
+          onClick={() => setShowTip(!showTip)}
+        >
+          <span>{exercise.name}</span>
+          {exercise.lr && <span className="lr-badge">L+R</span>}
+          {showTip && <div className="tooltip">{exercise.tip}</div>}
+        </div>
+      );
     }
 
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const category = tab.getAttribute('data-cat');
+    function CategorySection({ catKey, label, exercises, isOpen, onToggle, index }) {
+      const count = Array.isArray(exercises) ? exercises.length :
+        Object.values(exercises).reduce((sum, arr) => sum + arr.length, 0);
 
-        // Update tabs
-        tabs.forEach((t) => t.classList.remove('active'));
-        tab.classList.add('active');
+      return (
+        <div className="category-section" style={{ animationDelay: `${index * 0.05}s` }}>
+          <button className="category-header" onClick={onToggle}>
+            <span className="category-label">{label}</span>
+            <span className="category-meta">
+              <span className="category-count">{count}</span>
+              <svg className={`chevron ${isOpen ? 'open' : ''}`} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m6 9 6 6 6-6"/>
+              </svg>
+            </span>
+          </button>
+          {isOpen && (
+            <div className="category-content">
+              {catKey === 'weights' ? (
+                <div className="weights-grid">
+                  {WEIGHT_SUBS.map(sub => (
+                    <div key={sub.key} className="weight-subcategory">
+                      <div className="weight-sub-header">
+                        <span className="weight-sub-icon">{sub.icon}</span>
+                        <span className="weight-sub-label">{sub.label}</span>
+                        <span className="weight-sub-count">{exercises[sub.key].length}</span>
+                      </div>
+                      <div className="exercise-grid">
+                        {exercises[sub.key].map((ex, i) => (
+                          <ExercisePill key={ex.name} exercise={ex} index={i} />
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="exercise-grid">
+                  {exercises.map((ex, i) => (
+                    <ExercisePill key={ex.name} exercise={ex} index={i} />
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      );
+    }
 
-        // Update panels
-        panels.forEach((p) => p.classList.remove('active'));
-        const targetPanel = document.querySelector('[data-panel="' + category + '"]');
-        if (targetPanel) {
-          targetPanel.classList.add('active');
+    function SearchResults({ results }) {
+      if (results.length === 0) {
+        return <div className="no-results">No exercises found</div>;
+      }
+      return (
+        <div className="search-results">
+          {results.map((result, i) => (
+            <div key={`${result.category}-${result.exercise.name}`} className="search-result" style={{ animationDelay: `${i * 0.02}s` }}>
+              <span className="result-name">{result.exercise.name}</span>
+              <span className="result-category">{result.categoryLabel}</span>
+              {result.exercise.lr && <span className="lr-badge">L+R</span>}
+            </div>
+          ))}
+        </div>
+      );
+    }
 
-          // Stagger animation for each pill
-          const pills = targetPanel.querySelectorAll('.exercise-pill');
-          pills.forEach((pill, i) => {
-            pill.style.animationDelay = (i * 0.02) + 's';
-          });
-        }
-      });
-    });
+    function ExerciseLibrary() {
+      const [openCategories, setOpenCategories] = React.useState(['core']);
+      const [searchQuery, setSearchQuery] = React.useState('');
 
-    // Mobile tooltip tap-to-show
-    const isTouchDevice = window.matchMedia('(hover: none)').matches;
+      const toggleCategory = (key) => {
+        setOpenCategories(prev =>
+          prev.includes(key) ? prev.filter(k => k !== key) : [...prev, key]
+        );
+      };
 
-    if (isTouchDevice) {
-      const allPills = document.querySelectorAll('.exercise-pill');
+      const searchResults = React.useMemo(() => {
+        if (!searchQuery.trim()) return null;
+        const query = searchQuery.toLowerCase();
+        const results = [];
 
-      allPills.forEach((pill) => {
-        pill.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const wasActive = pill.classList.contains('tooltip-active');
-
-          // Close all other tooltips
-          allPills.forEach((p) => p.classList.remove('tooltip-active'));
-
-          // Toggle this one
-          if (!wasActive) {
-            pill.classList.add('tooltip-active');
+        CATEGORIES.forEach(cat => {
+          const exercises = DATA[cat.key];
+          if (Array.isArray(exercises)) {
+            exercises.forEach(ex => {
+              if (ex.name.toLowerCase().includes(query)) {
+                results.push({ exercise: ex, category: cat.key, categoryLabel: cat.label });
+              }
+            });
+          } else {
+            Object.entries(exercises).forEach(([subKey, subExercises]) => {
+              subExercises.forEach(ex => {
+                if (ex.name.toLowerCase().includes(query)) {
+                  const subLabel = WEIGHT_SUBS.find(s => s.key === subKey)?.label || subKey;
+                  results.push({ exercise: ex, category: cat.key, categoryLabel: `Weights · ${subLabel}` });
+                }
+              });
+            });
           }
         });
-      });
 
-      // Close tooltip when tapping outside
-      document.addEventListener('click', () => {
-        allPills.forEach((p) => p.classList.remove('tooltip-active'));
-      });
+        return results;
+      }, [searchQuery]);
+
+      return (
+        <div className="exercise-library">
+          <div className="library-header">
+            <h2 className="library-title">Exercise Library</h2>
+            <p className="library-subtitle">150+ curated exercises. Tap for form tips.</p>
+            <div className="search-container">
+              <svg className="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.3-4.3"/>
+              </svg>
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Search exercises..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              {searchQuery && (
+                <button className="clear-search" onClick={() => setSearchQuery('')}>×</button>
+              )}
+            </div>
+          </div>
+
+          {searchResults ? (
+            <SearchResults results={searchResults} />
+          ) : (
+            <div className="categories">
+              {CATEGORIES.map((cat, i) => (
+                <CategorySection
+                  key={cat.key}
+                  catKey={cat.key}
+                  label={cat.label}
+                  exercises={DATA[cat.key]}
+                  isOpen={openCategories.includes(cat.key)}
+                  onToggle={() => toggleCategory(cat.key)}
+                  index={i}
+                />
+              ))}
+            </div>
+          )}
+
+          <p className="library-footer">
+            Exercises marked <span className="lr-text">L+R</span> automatically split into left and right intervals.
+          </p>
+        </div>
+      );
     }
+
+    const root = ReactDOM.createRoot(document.getElementById('exercise-library-root'));
+    root.render(<ExerciseLibrary />);
   </script>
+
+  <style>
+    /* Exercise Library Styles */
+    .exercise-library {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .library-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .library-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--semantic-color-text-neutral-bold);
+      margin-bottom: 0.5rem;
+    }
+    .library-subtitle {
+      font-size: 17px;
+      color: var(--semantic-color-text-neutral-default);
+      line-height: 1.47;
+      letter-spacing: -0.022em;
+      margin-bottom: 1.5rem;
+    }
+    .search-container {
+      position: relative;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--semantic-color-text-neutral-subtle);
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      padding: 12px 40px 12px 44px;
+      border-radius: var(--primitive-radius-full);
+      border: 1px solid var(--semantic-color-border-neutral-subtle);
+      background: var(--semantic-color-surface-neutral-default);
+      color: var(--semantic-color-text-neutral-bold);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--primitive-color-brand-primary-500);
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15);
+    }
+    .search-input::placeholder {
+      color: var(--semantic-color-text-neutral-subtle);
+    }
+    .clear-search {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--semantic-color-surface-neutral-subtle);
+      border: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      color: var(--semantic-color-text-neutral-subtle);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .clear-search:hover {
+      background: var(--semantic-color-border-neutral-default);
+      color: var(--semantic-color-text-neutral-bold);
+    }
+
+    /* Categories */
+    .categories {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .category-section {
+      border-bottom: 1px solid var(--semantic-color-border-neutral-subtle);
+      animation: fadeIn 0.3s ease both;
+    }
+    .category-section:last-child {
+      border-bottom: none;
+    }
+    .category-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--semantic-color-text-neutral-bold);
+    }
+    .category-header:hover {
+      color: var(--primitive-color-brand-primary-400);
+    }
+    .category-label {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .category-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .category-count {
+      font-size: 14px;
+      color: var(--semantic-color-text-neutral-subtle);
+      background: var(--semantic-color-surface-neutral-subtle);
+      padding: 2px 10px;
+      border-radius: var(--primitive-radius-full);
+    }
+    .chevron {
+      color: var(--semantic-color-text-neutral-subtle);
+      transition: transform 0.3s ease;
+    }
+    .chevron.open {
+      transform: rotate(180deg);
+    }
+    .category-content {
+      padding-bottom: 1.5rem;
+    }
+
+    /* Exercise Grid */
+    .exercise-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .exercise-pill {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: var(--semantic-color-surface-neutral-default);
+      border: 1px solid var(--semantic-color-border-neutral-subtle);
+      border-radius: var(--primitive-radius-full);
+      font-size: 14px;
+      color: var(--semantic-color-text-neutral-default);
+      cursor: pointer;
+      transition: all 0.2s;
+      animation: fadeIn 0.3s ease both;
+    }
+    .exercise-pill:hover {
+      background: var(--primitive-color-brand-primary-950);
+      border-color: var(--primitive-color-brand-primary-700);
+      color: var(--semantic-color-text-neutral-bold);
+    }
+    .lr-badge {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--primitive-color-brand-primary-500);
+      background: var(--primitive-color-brand-primary-950);
+      padding: 2px 6px;
+      border-radius: var(--primitive-radius-full);
+    }
+    .tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primitive-color-neutral-gray-800);
+      color: var(--semantic-color-text-neutral-bold);
+      padding: 10px 14px;
+      border-radius: var(--primitive-radius-md);
+      font-size: 13px;
+      line-height: 1.4;
+      width: max-content;
+      max-width: 260px;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      animation: tooltipIn 0.2s ease;
+    }
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--primitive-color-neutral-gray-800);
+    }
+
+    /* Weights Subcategories */
+    .weights-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .weight-subcategory {
+      background: var(--semantic-color-surface-neutral-subtle);
+      border-radius: var(--primitive-radius-lg);
+      padding: 1rem 1.25rem;
+    }
+    .weight-sub-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--semantic-color-border-neutral-subtle);
+    }
+    .weight-sub-icon {
+      font-size: 14px;
+      color: var(--primitive-color-brand-primary-400);
+    }
+    .weight-sub-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--semantic-color-text-neutral-bold);
+    }
+    .weight-sub-count {
+      font-size: 12px;
+      color: var(--semantic-color-text-neutral-subtle);
+      margin-left: auto;
+    }
+
+    /* Search Results */
+    .search-results {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 2rem;
+    }
+    .search-result {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 12px 16px;
+      background: var(--semantic-color-surface-neutral-default);
+      border: 1px solid var(--semantic-color-border-neutral-subtle);
+      border-radius: var(--primitive-radius-md);
+      animation: fadeIn 0.3s ease both;
+    }
+    .result-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--semantic-color-text-neutral-bold);
+    }
+    .result-category {
+      font-size: 13px;
+      color: var(--semantic-color-text-neutral-subtle);
+      margin-left: auto;
+    }
+    .no-results {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--semantic-color-text-neutral-subtle);
+      font-size: 15px;
+    }
+
+    /* Footer */
+    .library-footer {
+      text-align: center;
+      font-size: 14px;
+      color: var(--semantic-color-text-neutral-subtle);
+      margin-top: 1.5rem;
+    }
+    .lr-text {
+      color: var(--primitive-color-brand-primary-500);
+      font-weight: 600;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes tooltipIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+      to { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+  </style>
 
 </body>
 </html>
