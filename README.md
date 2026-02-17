@@ -2,7 +2,7 @@
 
 Marketing landing page for FireTime — the interval timer app for iPhone.
 
-**Last Updated:** February 13, 2026 (Evening)
+**Last Updated:** February 17, 2026
 
 ## Tech Stack
 
@@ -43,7 +43,7 @@ Website/
 
 | Section | Description |
 |---------|-------------|
-| Hero | App intro with 3 phone mockups (fan layout with video center) |
+| Hero | "Open. Train. Finish." headline with 3 phone mockups (fan layout with video center) |
 | Speed | Full-width video bento with "intention to exertion" headline |
 | Quick Build | Feature highlight — workout generation |
 | Full Control | Custom interval editing |
@@ -104,7 +104,9 @@ All colors, radii, shadows, and durations use CSS variables from the design syst
 }
 ```
 
-### Hero Video
+### Hero Section
+- Single-line headline: "Open. Train. Finish." (Train in purple)
+- Subheader: "From 'what should I do?' to moving in seconds."
 - Center phone uses rounded corners (`rounded-[4rem]`)
 - Drop shadow for depth (`filter: drop-shadow()`)
 
