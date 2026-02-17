@@ -542,23 +542,31 @@
     function CategorySection({ catKey, label, color, exercises, isOpen, onToggle, index }) {
       const contentRef = React.useRef(null);
       const [height, setHeight] = React.useState(isOpen ? 'auto' : '0px');
+      const [isAnimating, setIsAnimating] = React.useState(false);
       const count = Array.isArray(exercises) ? exercises.length :
         Object.values(exercises).reduce((sum, arr) => sum + arr.length, 0);
 
       React.useEffect(() => {
         if (isOpen) {
+          setIsAnimating(true);
           const contentHeight = contentRef.current?.scrollHeight;
           setHeight(`${contentHeight}px`);
-          // After animation, set to auto for dynamic content
-          const timer = setTimeout(() => setHeight('auto'), 300);
+          // After animation, set to auto and allow overflow for tooltips
+          const timer = setTimeout(() => {
+            setHeight('auto');
+            setIsAnimating(false);
+          }, 300);
           return () => clearTimeout(timer);
         } else {
+          setIsAnimating(true);
           // First set explicit height, then animate to 0
           const contentHeight = contentRef.current?.scrollHeight;
           setHeight(`${contentHeight}px`);
           requestAnimationFrame(() => {
             requestAnimationFrame(() => setHeight('0px'));
           });
+          const timer = setTimeout(() => setIsAnimating(false), 300);
+          return () => clearTimeout(timer);
         }
       }, [isOpen]);
 
@@ -579,7 +587,11 @@
           <div
             ref={contentRef}
             className="category-content"
-            style={{ height, overflow: 'hidden', transition: 'height 0.3s ease' }}
+            style={{
+              height,
+              overflow: isAnimating || !isOpen ? 'hidden' : 'visible',
+              transition: 'height 0.3s ease'
+            }}
           >
             {catKey === 'weights' ? (
               <div className="weights-grid">
