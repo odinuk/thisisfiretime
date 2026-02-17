@@ -61,52 +61,148 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Outfit', system-ui, sans-serif;
-      background: var(--primitive-color-neutral-gray-950);
-      color: var(--semantic-color-text-neutral-bold);
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #09090b;
+      color: #f5f5f7;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Help Cards */
+    .help-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .help-card {
+      background: #141416;
+      border: 1px solid #1e1e21;
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .help-card:hover {
+      background: #1c1c1e;
+      border-color: #2a2a2e;
+      transform: translateY(-2px);
+    }
+    .help-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .help-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: #f5f5f7;
+      margin: 0 0 6px 0;
+      letter-spacing: -0.02em;
+    }
+    .help-card p {
+      font-size: 14px;
+      color: #52525b;
+      margin: 0;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+    .help-card-cta {
+      font-size: 13px;
+      margin-top: auto;
+      letter-spacing: -0.01em;
+      opacity: 0.7;
+    }
+
+    /* Response badge */
+    .response-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #18181b;
+      border-radius: 100px;
+      padding: 8px 18px;
+    }
+    .response-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e55;
+    }
+    .response-badge span {
+      font-size: 13px;
+      color: #71717a;
+      letter-spacing: -0.01em;
+    }
+
+    /* FAQ - New style */
+    .faq-section {
+      border-top: 1px solid #18181b;
+      padding-top: 48px;
     }
     .faq-item {
-      border-bottom: 1px solid var(--semantic-color-border-neutral-subtle);
-    }
-    .faq-item:last-child {
-      border-bottom: none;
+      border-bottom: 1px solid #18181b;
     }
     .faq-question {
-      font-size: 21px;
-      font-weight: 700;
-      color: var(--semantic-color-text-neutral-bold);
-      padding: 1.5rem 0;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 0;
       cursor: pointer;
+      font-family: inherit;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 1rem;
+      justify-content: space-between;
+      gap: 16px;
     }
-    .faq-question:hover {
-      color: var(--primitive-color-brand-primary-400);
+    .faq-question span {
+      font-size: 16px;
+      font-weight: 500;
+      color: #e4e4e7;
+      text-align: left;
+      letter-spacing: -0.015em;
+    }
+    .faq-toggle {
+      color: #52525b;
+      font-size: 20px;
+      flex-shrink: 0;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .faq-item.open .faq-toggle {
+      transform: rotate(45deg);
     }
     .faq-answer {
-      font-size: 17px;
-      line-height: 1.5;
-      color: var(--semantic-color-text-neutral-default);
       max-height: 0;
       overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
-      padding-bottom: 0;
+      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .faq-item.open .faq-answer {
-      max-height: 500px;
-      opacity: 1;
-      padding-bottom: 1.5rem;
+      max-height: 200px;
     }
-    .faq-item.open .faq-icon {
-      transform: rotate(180deg);
-    }
-    .faq-icon {
-      transition: transform 0.3s ease;
-      color: var(--semantic-color-text-neutral-subtle);
-      flex-shrink: 0;
+    .faq-answer p {
+      font-size: 15px;
+      color: #71717a;
+      margin: 0 0 18px 0;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
     }
 
     /* Exercise Library - rendered by React */
@@ -120,224 +216,157 @@
 <body class="antialiased">
 
   <!-- NAV -->
-  <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-gray-950/80 border-b border-border-subtle">
-    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-2 text-xl font-bold text-txt tracking-tight">
-        <img src="firetime_images/FireTimePhoneIcon.svg" alt="FireTime" class="w-8 h-8">
-        <span style="font-family: 'Nunito', 'SF Pro Rounded', system-ui, sans-serif;"><span class="text-primary">Fire</span>Time</span>
-      </a>
-      <a href="index.html" class="text-txt-subtle hover:text-txt-default transition-colors text-sm">
-        ← Back to Home
-      </a>
-    </div>
+  <nav style="display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-bottom: 1px solid #18181b;">
+    <a href="index.html" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+      <img src="firetime_images/FireTimePhoneIcon.svg" alt="FireTime" style="width: 28px; height: 28px;">
+      <span style="font-size: 18px; font-weight: 600; letter-spacing: -0.02em;">
+        <span style="color: #f5f5f7;">Fire</span><span style="color: #a78bfa;">Time</span>
+      </span>
+    </a>
+    <a href="index.html" style="color: #71717a; font-size: 14px; text-decoration: none; letter-spacing: -0.01em; display: flex; align-items: center; gap: 4px;">
+      ← Back to Home
+    </a>
   </nav>
 
   <!-- HERO -->
-  <section class="pt-32 pb-16">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold text-txt mb-4" style="line-height: 1.08;">Support</h1>
-      <p class="text-[17px] text-txt-default" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-        Got a question? We're here to help.
+  <header style="padding: 72px 32px 0; max-width: 720px; margin: 0 auto; text-align: center;">
+    <div class="fade-in" style="animation-delay: 0ms;">
+      <h1 style="font-size: clamp(40px, 7vw, 64px); font-weight: 700; letter-spacing: -0.04em; margin: 0; line-height: 1.05;">
+        How can we help?
+      </h1>
+    </div>
+    <div class="fade-in" style="animation-delay: 80ms;">
+      <p style="font-size: 18px; color: #71717a; margin: 16px auto 0; max-width: 400px; line-height: 1.5; letter-spacing: -0.01em;">
+        Find answers below or reach out directly. We're a small team and we read every message.
       </p>
+    </div>
+  </header>
+
+  <!-- HELP CARDS -->
+  <section style="max-width: 720px; margin: 56px auto 0; padding: 0 24px;">
+    <div class="help-cards">
+      <a href="mailto:firetime.app@gmail.com?subject=Bug%20Report" class="help-card fade-in" style="animation-delay: 160ms;">
+        <div class="help-card-icon" style="background: #ef444415; color: #ef4444;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="10" cy="11" r="5" />
+            <path d="M10 6V4" />
+            <path d="M6.5 7.5L4 5.5" />
+            <path d="M13.5 7.5L16 5.5" />
+            <path d="M5 11H3" />
+            <path d="M17 11H15" />
+            <path d="M5.5 14.5L4 16.5" />
+            <path d="M14.5 14.5L16 16.5" />
+          </svg>
+        </div>
+        <div>
+          <h3>Report a Bug</h3>
+          <p>Something not working right? Let us know what happened.</p>
+        </div>
+        <div class="help-card-cta" style="color: #ef4444;">Send email →</div>
+      </a>
+
+      <a href="mailto:firetime.app@gmail.com?subject=Feature%20Request" class="help-card fade-in" style="animation-delay: 220ms;">
+        <div class="help-card-icon" style="background: #a78bfa15; color: #a78bfa;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 16h4" />
+            <path d="M8.5 18h3" />
+            <path d="M10 2a6 6 0 0 1 3.5 10.86V14a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1.14A6 6 0 0 1 10 2z" />
+          </svg>
+        </div>
+        <div>
+          <h3>Feature Request</h3>
+          <p>Got an idea for FireTime? We're actively building.</p>
+        </div>
+        <div class="help-card-cta" style="color: #a78bfa;">Send email →</div>
+      </a>
+
+      <a href="mailto:firetime.app@gmail.com?subject=Question" class="help-card fade-in" style="animation-delay: 280ms;">
+        <div class="help-card-icon" style="background: #22c55e15; color: #22c55e;">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 4h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H7l-4 3V5a1 1 0 0 1 1-1z" />
+          </svg>
+        </div>
+        <div>
+          <h3>General Question</h3>
+          <p>Anything else — subscriptions, exercises, how things work.</p>
+        </div>
+        <div class="help-card-cta" style="color: #22c55e;">Send email →</div>
+      </a>
     </div>
   </section>
 
-  <!-- CONTACT CARD -->
-  <section class="pb-16">
-    <div class="max-w-3xl mx-auto px-6">
-      <div class="bg-surface border border-border-subtle rounded-ds-xl p-8 text-center">
-        <div class="w-16 h-16 mx-auto mb-4 rounded-ds-lg bg-primary-950 flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary-400">
-            <rect width="20" height="16" x="2" y="4" rx="2"/>
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
-        </div>
-        <h2 class="text-xl font-bold text-txt mb-2">Contact Us</h2>
-        <p class="text-[17px] text-txt-default mb-4" style="line-height: 1.4705882353; letter-spacing: -0.022em;">
-          For bugs, feature requests, or general questions
-        </p>
-        <a href="mailto:firetime.app@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-ds-full bg-interactive-primary text-txt-contrast font-semibold hover:bg-interactive-primary-hover transition-all">
-          firetime.app@gmail.com
-        </a>
-        <p class="text-sm text-txt-subtle mt-4">We typically respond within 24-48 hours</p>
+  <!-- RESPONSE TIME -->
+  <div class="fade-in" style="animation-delay: 380ms; text-align: center; padding: 40px 24px 0;">
+    <div class="response-badge">
+      <div class="response-dot"></div>
+      <span>Usually respond within 24 hours</span>
+    </div>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <section style="max-width: 720px; margin: 72px auto 0; padding: 0 24px;">
+    <div class="faq-section fade-in" style="animation-delay: 440ms;">
+      <h2 style="font-size: 28px; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 8px 0; color: #f5f5f7;">
+        Common Questions
+      </h2>
+      <p style="font-size: 15px; color: #52525b; margin: 0 0 28px 0;">
+        Quick answers before you reach out.
+      </p>
+    </div>
+
+    <div class="faq-item fade-in" style="animation-delay: 500ms;">
+      <button class="faq-question" onclick="toggleFaq(this.parentElement)">
+        <span>How do I cancel my subscription?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Open FireTime → Settings → Manage Subscription. You can cancel anytime and keep access until the end of your billing period.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in" style="animation-delay: 560ms;">
+      <button class="faq-question" onclick="toggleFaq(this.parentElement)">
+        <span>Can I create custom exercises?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Not yet — but it's on our roadmap. Right now you can build workouts from our library of 130+ exercises across 7 categories.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in" style="animation-delay: 620ms;">
+      <button class="faq-question" onclick="toggleFaq(this.parentElement)">
+        <span>Why don't I see calories or heart rate in Apple Fitness?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>FireTime uses your Watch's sensors for accurate data. Make sure Health permissions are enabled on both your iPhone and Watch: Settings → Privacy & Security → Health → FireTime.</p>
+      </div>
+    </div>
+
+    <div class="faq-item fade-in" style="animation-delay: 680ms;">
+      <button class="faq-question" onclick="toggleFaq(this.parentElement)">
+        <span>Is my workout data backed up?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        <p>Your workouts are stored locally on your device. We're working on cloud sync for a future update.</p>
       </div>
     </div>
   </section>
 
   <!-- EXERCISE LIBRARY (React Component) -->
-  <section class="pb-8">
+  <section style="padding: 80px 0 32px;">
     <div id="exercise-library-root"></div>
   </section>
 
-  <!-- FAQ -->
-  <section class="pb-24">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-4xl font-bold text-txt mb-12 text-center" style="padding-top: 62px;">Questions? Answers.</h2>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>How do I create a quick workout?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            From the home screen, tap the plus icon. Choose your workout duration, style (HIIT, EMOM, Tabata, etc.), and focus area (full body, upper, lower, core). FireTime will generate a complete workout with exercises — ready in about 10 seconds.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>How do I use Weights mode?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            Weights mode is designed for gym sessions. Tap the plus icon and select "Weights" as your structure. Pick your exercises (up to 8), and set your rest time between exercises (60s, 90s, or 120s). Each exercise is an open interval — work at your own pace and tap Done when you're finished. The app tracks your sets for you. The app will give you a timed rest before the next exercise.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>What is an open interval?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            An open interval has no countdown — you work at your own pace and tap Done when you're ready to move on. This is useful for strength training where you want to control your tempo, or any exercise where a fixed timer doesn't fit. You can add open intervals to any custom workout by setting the duration to 0 in the workout builder.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>Can I create my own custom workouts?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            Yes! Tap "New Workout" to open the workout builder. You can add intervals, set work and rest times, name your exercises, and save your workout for future use. Your custom workouts are stored locally on your device.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>How do I pause a workout?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            Tap the pause button during any workout to pause the timer. Tap again to resume. On Apple Watch, swipe right to access pause and end controls.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>How do I edit or delete a saved workout?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            Tap on any saved workout to open it in the workout builder, where you can edit intervals, durations, and names. To delete a workout, swipe left on the workout card from the home screen and tap Delete.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>How do I reorder my workouts?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            Long-press on any workout card and drag it to your preferred position. Your custom order is saved automatically.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>Does FireTime work with Apple Watch?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            Yes! FireTime includes a companion Apple Watch app. Start a workout on your iPhone and it syncs to your watch, or start directly from your watch. You'll see the timer, current exercise, and upcoming intervals right on your wrist.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>How does Apple Health integration work?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            When you complete a workout, FireTime can log it to Apple Health (with your permission). This includes workout duration, estimated calories burned, and heart rate data if you're wearing an Apple Watch. You can enable or disable this in Settings.
-          </div>
-        </div>
-
-        <!-- Troubleshooting -->
-        <h3 class="text-lg font-bold text-txt mt-12 mb-4">Troubleshooting</h3>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>Why don't I see calories or heart rate in Apple Fitness?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            If you have an Apple Watch, FireTime uses your Watch's sensors for accurate heart rate and calorie data. For this to work, you need to grant Health permissions on <strong>both</strong> your iPhone and your Watch. On your Watch, go to Settings → Privacy & Security → Health → FireTime and make sure Active Calories and Heart Rate are enabled. Without an Apple Watch, FireTime saves workouts with estimated calories (based on duration) but no heart rate data.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>Do I need to create an account?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            No. FireTime works completely offline and doesn't require any account, login, or personal information. Just download and start training.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>Can I use FireTime without an Apple Watch?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            Absolutely. The Apple Watch app is optional. FireTime works perfectly on iPhone alone with audio cues and haptic feedback to guide you through your workout.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>My workouts disappeared. How do I get them back?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            Workouts are stored locally on your device. If you deleted and reinstalled the app, or got a new device, the workouts won't transfer automatically. We recommend taking screenshots of important custom workouts as a backup. A cloud sync feature may be added in a future update.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>Is FireTime free?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            FireTime is free to download with a 7-day free trial — no credit card required. After that, you can continue with a £2.99/month subscription or unlock the app forever with a one-time purchase of £19.99. There are no ads.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this.parentElement)">
-            <span>How do I report a bug or request a feature?</span>
-            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="faq-answer">
-            Email us at <a href="mailto:firetime.app@gmail.com" class="text-primary-400 underline">firetime.app@gmail.com</a>. We read every message and appreciate your feedback. Bug reports help us improve, and feature requests shape the future of the app.
-          </div>
-        </div>
-
-    </div>
-  </section>
-
   <!-- FOOTER -->
-  <footer class="border-t border-border-subtle">
-    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-txt-subtle">&copy; 2026 FireTime · v1.0</p>
-      <div class="flex items-center gap-6 text-sm">
-        <a href="privacy.html" class="text-txt-subtle hover:text-txt-default transition-colors">Privacy Policy</a>
-        <a href="terms.html" class="text-txt-subtle hover:text-txt-default transition-colors">Terms & Conditions</a>
-        <a href="support.html" class="text-txt-default font-medium">Support</a>
+  <footer style="border-top: 1px solid #18181b; margin-top: 48px;">
+    <div style="max-width: 720px; margin: 0 auto; padding: 32px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
+      <p style="font-size: 14px; color: #52525b; margin: 0;">&copy; 2026 FireTime</p>
+      <div style="display: flex; align-items: center; gap: 24px; font-size: 14px;">
+        <a href="privacy.html" style="color: #52525b; text-decoration: none;">Privacy</a>
+        <a href="terms.html" style="color: #52525b; text-decoration: none;">Terms</a>
       </div>
     </div>
   </footer>
