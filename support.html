@@ -505,13 +505,13 @@
     };
 
     const CATEGORIES = [
-      { key: 'core', label: 'Core' },
-      { key: 'fullBody', label: 'Full Body' },
-      { key: 'upperBody', label: 'Upper Body' },
-      { key: 'lowerBody', label: 'Lower Body' },
-      { key: 'calisthenics', label: 'Calisthenics' },
-      { key: 'cardio', label: 'Cardio' },
-      { key: 'weights', label: 'Weights' }
+      { key: 'core', label: 'Core', color: '#FF6B00' },
+      { key: 'fullBody', label: 'Full Body', color: '#34C759' },
+      { key: 'upperBody', label: 'Upper Body', color: '#007AFF' },
+      { key: 'lowerBody', label: 'Lower Body', color: '#AF52DE' },
+      { key: 'calisthenics', label: 'Calisthenics', color: '#FF2D55' },
+      { key: 'cardio', label: 'Cardio', color: '#FF9500' },
+      { key: 'weights', label: 'Weights', color: '#5856D6' }
     ];
 
     const WEIGHT_SUBS = [
@@ -539,14 +539,36 @@
       );
     }
 
-    function CategorySection({ catKey, label, exercises, isOpen, onToggle, index }) {
+    function CategorySection({ catKey, label, color, exercises, isOpen, onToggle, index }) {
+      const contentRef = React.useRef(null);
+      const [height, setHeight] = React.useState(isOpen ? 'auto' : '0px');
       const count = Array.isArray(exercises) ? exercises.length :
         Object.values(exercises).reduce((sum, arr) => sum + arr.length, 0);
+
+      React.useEffect(() => {
+        if (isOpen) {
+          const contentHeight = contentRef.current?.scrollHeight;
+          setHeight(`${contentHeight}px`);
+          // After animation, set to auto for dynamic content
+          const timer = setTimeout(() => setHeight('auto'), 300);
+          return () => clearTimeout(timer);
+        } else {
+          // First set explicit height, then animate to 0
+          const contentHeight = contentRef.current?.scrollHeight;
+          setHeight(`${contentHeight}px`);
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => setHeight('0px'));
+          });
+        }
+      }, [isOpen]);
 
       return (
         <div className="category-section" style={{ animationDelay: `${index * 0.05}s` }}>
           <button className="category-header" onClick={onToggle}>
-            <span className="category-label">{label}</span>
+            <span className="category-label">
+              <span className="category-dot" style={{ backgroundColor: color }}></span>
+              {label}
+            </span>
             <span className="category-meta">
               <span className="category-count">{count}</span>
               <svg className={`chevron ${isOpen ? 'open' : ''}`} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -554,34 +576,36 @@
               </svg>
             </span>
           </button>
-          {isOpen && (
-            <div className="category-content">
-              {catKey === 'weights' ? (
-                <div className="weights-grid">
-                  {WEIGHT_SUBS.map(sub => (
-                    <div key={sub.key} className="weight-subcategory">
-                      <div className="weight-sub-header">
-                        <span className="weight-sub-icon">{sub.icon}</span>
-                        <span className="weight-sub-label">{sub.label}</span>
-                        <span className="weight-sub-count">{exercises[sub.key].length}</span>
-                      </div>
-                      <div className="exercise-grid">
-                        {exercises[sub.key].map((ex, i) => (
-                          <ExercisePill key={ex.name} exercise={ex} index={i} />
-                        ))}
-                      </div>
+          <div
+            ref={contentRef}
+            className="category-content"
+            style={{ height, overflow: 'hidden', transition: 'height 0.3s ease' }}
+          >
+            {catKey === 'weights' ? (
+              <div className="weights-grid">
+                {WEIGHT_SUBS.map(sub => (
+                  <div key={sub.key} className="weight-subcategory">
+                    <div className="weight-sub-header">
+                      <span className="weight-sub-icon">{sub.icon}</span>
+                      <span className="weight-sub-label">{sub.label}</span>
+                      <span className="weight-sub-count">{exercises[sub.key].length}</span>
                     </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="exercise-grid">
-                  {exercises.map((ex, i) => (
-                    <ExercisePill key={ex.name} exercise={ex} index={i} />
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+                    <div className="exercise-grid">
+                      {exercises[sub.key].map((ex, i) => (
+                        <ExercisePill key={ex.name} exercise={ex} index={i} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="exercise-grid">
+                {exercises.map((ex, i) => (
+                  <ExercisePill key={ex.name} exercise={ex} index={i} />
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       );
     }
@@ -674,6 +698,7 @@
                   key={cat.key}
                   catKey={cat.key}
                   label={cat.label}
+                  color={cat.color}
                   exercises={DATA[cat.key]}
                   isOpen={openCategories.includes(cat.key)}
                   onToggle={() => toggleCategory(cat.key)}
@@ -820,8 +845,17 @@
       color: var(--primitive-color-brand-primary-400);
     }
     .category-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 18px;
       font-weight: 600;
+    }
+    .category-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
     .category-meta {
       display: flex;
@@ -843,6 +877,9 @@
       transform: rotate(180deg);
     }
     .category-content {
+      /* Height animation handled inline */
+    }
+    .category-content > div {
       padding-bottom: 1.5rem;
     }
 
