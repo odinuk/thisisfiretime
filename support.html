@@ -190,12 +190,16 @@
       transform: rotate(45deg);
     }
     .faq-answer {
-      max-height: 0;
+      display: grid;
+      grid-template-rows: 0fr;
       overflow: hidden;
-      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .faq-item.open .faq-answer {
-      max-height: 500px;
+      grid-template-rows: 1fr;
+    }
+    .faq-answer > div {
+      overflow: hidden;
     }
     .faq-answer p {
       font-size: 15px;
@@ -306,12 +310,9 @@
   <!-- FAQ SECTION -->
   <section style="max-width: 720px; margin: 72px auto 0; padding: 0 24px;">
     <div class="faq-section fade-in" style="animation-delay: 440ms;">
-      <h2 style="font-size: 28px; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 8px 0; color: #f5f5f7;">
-        Common Questions
+      <h2 style="font-size: 28px; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 28px 0; color: #f5f5f7;">
+        Questions? Answers.
       </h2>
-      <p style="font-size: 15px; color: #52525b; margin: 0 0 28px 0;">
-        Quick answers before you reach out.
-      </p>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 500ms;">
@@ -319,9 +320,9 @@
         <span>How do I create a quick workout?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>From the home screen, tap the plus icon. Choose your workout duration, style (HIIT, EMOM, Tabata, etc.), and focus area (full body, upper, lower, core). FireTime will generate a complete workout with exercises — ready in about 10 seconds.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 540ms;">
@@ -329,9 +330,9 @@
         <span>How do I use Weights mode?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>Weights mode is designed for gym sessions. Tap the plus icon and select "Weights" as your structure. Pick your exercises (up to 8), and set your rest time between exercises (60s, 90s, or 120s). Each exercise is an open interval — work at your own pace and tap Done when you're finished.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 580ms;">
@@ -339,9 +340,9 @@
         <span>What is an open interval?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>An open interval has no countdown — you work at your own pace and tap Done when you're ready to move on. This is useful for strength training where you want to control your tempo. You can add open intervals to any custom workout by setting the duration to 0.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 620ms;">
@@ -349,9 +350,9 @@
         <span>Can I create my own custom workouts?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>Yes! Tap "New Workout" to open the workout builder. You can add intervals, set work and rest times, name your exercises, and save your workout for future use. Your custom workouts are stored locally on your device.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 660ms;">
@@ -359,9 +360,9 @@
         <span>How do I pause a workout?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>Tap the pause button during any workout to pause the timer. Tap again to resume. On Apple Watch, swipe right to access pause and end controls.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 700ms;">
@@ -369,9 +370,9 @@
         <span>How do I edit or delete a saved workout?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>Tap on any saved workout to open it in the workout builder, where you can edit intervals, durations, and names. To delete a workout, swipe left on the workout card from the home screen and tap Delete.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 740ms;">
@@ -379,9 +380,9 @@
         <span>How do I reorder my workouts?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>Long-press on any workout card and drag it to your preferred position. Your custom order is saved automatically.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 780ms;">
@@ -389,9 +390,9 @@
         <span>Does FireTime work with Apple Watch?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>Yes! FireTime includes a companion Apple Watch app. Start a workout on your iPhone and it syncs to your watch, or start directly from your watch. You'll see the timer, current exercise, and upcoming intervals right on your wrist.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 820ms;">
@@ -399,9 +400,9 @@
         <span>How does Apple Health integration work?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>When you complete a workout, FireTime can log it to Apple Health (with your permission). This includes workout duration, estimated calories burned, and heart rate data if you're wearing an Apple Watch.</p>
-      </div>
+      </div></div>
     </div>
 
     <!-- Troubleshooting -->
@@ -412,9 +413,9 @@
         <span>Why don't I see calories or heart rate in Apple Fitness?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>If you have an Apple Watch, FireTime uses your Watch's sensors for accurate heart rate and calorie data. For this to work, you need to grant Health permissions on <strong>both</strong> your iPhone and your Watch. On your Watch, go to Settings → Privacy & Security → Health → FireTime and make sure Active Calories and Heart Rate are enabled.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 940ms;">
@@ -422,9 +423,9 @@
         <span>Do I need to create an account?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>No. FireTime works completely offline and doesn't require any account, login, or personal information. Just download and start training.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 980ms;">
@@ -432,9 +433,9 @@
         <span>Can I use FireTime without an Apple Watch?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>Absolutely. The Apple Watch app is optional. FireTime works perfectly on iPhone alone with audio cues and haptic feedback to guide you through your workout.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 1020ms;">
@@ -442,9 +443,9 @@
         <span>My workouts disappeared. How do I get them back?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>Workouts are stored locally on your device. If you deleted and reinstalled the app, or got a new device, the workouts won't transfer automatically. We recommend taking screenshots of important custom workouts as a backup. Cloud sync is coming in a future update.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 1060ms;">
@@ -452,9 +453,9 @@
         <span>Is FireTime free?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>FireTime is free to download with a 7-day free trial — no credit card required. After that, you can continue with a £2.99/month subscription or unlock the app forever with a one-time purchase of £19.99. There are no ads.</p>
-      </div>
+      </div></div>
     </div>
 
     <div class="faq-item fade-in" style="animation-delay: 1100ms;">
@@ -462,9 +463,9 @@
         <span>How do I cancel my subscription?</span>
         <span class="faq-toggle">+</span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer"><div>
         <p>Open FireTime → Settings → Manage Subscription, or go to your iPhone's Settings → Your Name → Subscriptions → FireTime. You can cancel anytime and keep access until the end of your billing period.</p>
-      </div>
+      </div></div>
     </div>
   </section>
 
